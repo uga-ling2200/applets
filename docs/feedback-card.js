@@ -10,6 +10,7 @@
   var repository = script.dataset.repository || "uga-ling2200/applets";
   var template = script.dataset.template || "applet-feedback.yml";
   var stylesheetUrl = new URL("feedback-card.css", script.src).href;
+  var tutorialVideoUrl = "https://kaltura.uga.edu/media/t/1_f87mpua2";
 
   if (!document.querySelector('link[data-applet-feedback-styles]')) {
     var stylesheet = document.createElement("link");
@@ -38,8 +39,15 @@
   heading.textContent = "Help us improve this applet";
 
   var description = document.createElement("p");
-  description.textContent =
-    "Found a problem, unclear instruction, or accessibility issue? Send feedback using our shared GitHub form.";
+  description.textContent = "Report a problem or share a suggestion.";
+
+  var tutorial = document.createElement("a");
+  tutorial.className = "applet-feedback-card__tutorial";
+  tutorial.href = tutorialVideoUrl;
+  tutorial.target = "_blank";
+  tutorial.rel = "noopener noreferrer";
+  tutorial.textContent = "New to GitHub? Watch the 40-second guide";
+  tutorial.setAttribute("aria-label", "Watch the GitHub feedback guide on Kaltura");
 
   var button = document.createElement("a");
   button.className = "applet-feedback-card__button";
@@ -51,6 +59,7 @@
 
   copy.appendChild(heading);
   copy.appendChild(description);
+  copy.appendChild(tutorial);
   content.appendChild(copy);
   content.appendChild(button);
   card.appendChild(content);
