@@ -8,7 +8,6 @@
 
   var applet = script.dataset.applet || document.title || "Unknown applet";
   var repository = script.dataset.repository || "uga-ling2200/applets";
-  var template = script.dataset.template || "applet-feedback.yml";
   var stylesheetUrl = new URL("feedback-card.css", script.src).href;
   var tutorialVideoUrl = "https://kaltura.uga.edu/media/t/1_f87mpua2";
 
@@ -20,11 +19,15 @@
     document.head.appendChild(stylesheet);
   }
 
+  var sourceUrl = window.location.href.split("#")[0];
+  var issueBody =
+    "Applet: " + applet + "\n" +
+    "Applet page: " + sourceUrl + "\n\n" +
+    "Please describe the problem or suggestion:\n";
+
   var issueUrl = new URL("https://github.com/" + repository + "/issues/new");
-  issueUrl.searchParams.set("template", template);
   issueUrl.searchParams.set("title", "[Applet feedback] " + applet + ": ");
-  issueUrl.searchParams.set("applet", applet);
-  issueUrl.searchParams.set("source-url", window.location.href.split("#")[0]);
+  issueUrl.searchParams.set("body", issueBody);
 
   var card = document.createElement("section");
   card.className = "applet-feedback-card";
