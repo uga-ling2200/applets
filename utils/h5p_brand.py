@@ -80,6 +80,18 @@ HEAD_INSERT = """            <link rel="preconnect" href="https://fonts.googleap
 """
 
 BRANDING_STYLE = """    <style>
+    /* H5P's own core CSS ships "html.h5p-iframe, html.h5p-iframe>body {
+       height:100%}". Because our <body> is a direct child of
+       <html class="h5p-iframe">, that rule matches it and locks body to
+       exactly one viewport tall -- once the H5P content (book chapters,
+       feedback text, etc.) grows past that, it visibly overflows below
+       body's own painted background, cutting the background off partway
+       down the page. !important here forces body back to its natural,
+       content-driven height so the background covers everything. */
+    html.h5p-iframe > body {
+        height: auto !important;
+        min-height: 100% !important;
+    }
     body {
         font-family: 'Merriweather Sans', 'Georgia', sans-serif !important;
         background-color: var(--bg);
@@ -96,7 +108,7 @@ BRANDING_STYLE = """    <style>
         background-color: #ffffff;
     }
     html.h5p-iframe, body.h5p-iframe {
-    height: 100% !important;
+    min-height: 100% !important;
 }
 
     .applet-wrapper{
@@ -110,7 +122,6 @@ BRANDING_STYLE = """    <style>
         font-weight: 800;
         margin: 0;
         letter-spacing: 0.5px;
-        text-transform: none;
     }
 
     
