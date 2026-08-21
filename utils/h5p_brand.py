@@ -174,6 +174,7 @@ BRANDING_STYLE = """    <style>
         text-decoration: none; color: inherit; font-weight: bold;
       }
       .uga-applet-header{
+        text-transform: uppercase;
         text-decoration: none; color: inherit; font-weight: bold;
       }
     </style>
