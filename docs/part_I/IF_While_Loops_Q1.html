@@ -97,6 +97,35 @@ H5P.RequestQueue=((n,t)=>{function e(e){t.call(this),this.processingQueue=!1,thi
         letter-spacing: 0.5px;
         text-transform: none;
     }
+    /* H5P question types (multiple choice, etc.) wrap their intro text in
+       .h5p-question-introduction, which the core CSS sets to
+       "font-size:1.125em". Regular text components (.h5p-advanced-text)
+       don't get that wrapper, so their headings use the browser's plain
+       em-based defaults (h2 = 1.5em = 24px off a 16px root). Inside a
+       question intro, that same 1.5em compounds on top of the ancestor's
+       1.125em, landing at 27px -- a mismatch purely from which H5P
+       component the heading happens to be in, not any intentional design
+       choice. Some question types (multichoice) even restate their own
+       ".h5p-multichoice h2{font-size:1.5em}", which is more specific
+       than a plain "h2" selector and would still win (and still compute
+       27px in that context) even without the fix below.
+       Scoped to .h5p-question-introduction (not all h1-h6 site-wide) so
+       we don't touch the header, book status bar, or nav title, which
+       are deliberately smaller. !important guarantees this beats any
+       question-type-specific selector, current or future. Sized in rem
+       to match .h5p-advanced-text's actual rendered sizes exactly. */
+    .h5p-question-introduction h1 { font-size: 2rem !important; }
+    .h5p-question-introduction h2 { font-size: 1.5rem !important; }
+    .h5p-question-introduction h3 { font-size: 1.25rem !important; }
+    .h5p-question-introduction h4 { font-size: 1.125rem !important; }
+    .h5p-question-introduction h5 { font-size: 1rem !important; }
+    .h5p-question-introduction h6 { font-size: .875rem !important; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.125rem; }
+    h5 { font-size: 1rem; }
+    h6 { font-size: .875rem; }
 
     
     .h5p-question-introduction {
