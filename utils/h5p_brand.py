@@ -122,6 +122,7 @@ BRANDING_STYLE = """    <style>
         font-weight: 800;
         margin: 0;
         letter-spacing: 0.5px;
+        text-transform: none;
     }
 
     
