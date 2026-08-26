@@ -77,6 +77,20 @@ HEAD_INSERT = """            <link rel="preconnect" href="https://fonts.googleap
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{page_title}</title>
+        <style id="ling2200-accessibility-fixes">
+          .h5p-interactive-book-status-fullscreen:focus-visible,
+          .h5p-interactive-book-status-arrow:focus-visible,
+          .h5p-interactive-book-status-menu:focus-visible,
+          .h5p-interactive-book-navigation-current:focus-visible,
+          .h5p-interactive-book-summary-menu-button:focus-visible,
+          .h5p-interactive-book-status-to-top:focus-visible {{
+            outline: 3px solid #005fcc !important;
+            outline-offset: 3px !important;
+            box-shadow: 0 0 0 2px #ffffff !important;
+          }}
+        </style>
 """
 
 BRANDING_STYLE = """    <style>
@@ -341,6 +355,7 @@ TAIL_RE = re.compile(
 
 CID_RE = re.compile(r'data-content-id="(\d+)"')
 COVER_TITLE_RE = re.compile(r'coverDescription[^{]*?<strong>([^<]+)</strong>')
+COVER_SUBTITLE_RE = re.compile(r'coverDescription[^{]*?<strong>[^<]+</strong>\\?"?\s*<br\s*/?>\s*([^<]+?)\s*</p>')
 ROMAN_PREFIX_RE = re.compile(r'^\s*([IVXLC]+)\.')
 
 
@@ -357,6 +372,42 @@ def extract_title(html: str) -> str:
     #1</strong>' -> 'I.F While Loops, #1'. Returns '' if not found."""
     m = COVER_TITLE_RE.search(html)
     return m.group(1).strip() if m else ""
+
+
+def extract_subtitle(html: str) -> str:
+    """Best-effort auto-detection of the cover subtitle -- the line after
+    the <br/> in the same coverDescription, e.g. 'Fencepost problems and
+    action ordering'. Returns '' if not found."""
+    m = COVER_SUBTITLE_RE.search(html)
+    return m.group(1).strip() if m else ""
+
+
+def title_case(text: str) -> str:
+    """Capitalizes each word, but leaves short lowercase function words
+    (a, an, the, and, or, but, for, nor, on, at, to, in, of, ...)
+    lowercase unless they're the first word."""
+    small = {
+        "a", "an", "the", "and", "or", "but", "for", "nor", "on", "at",
+        "to", "in", "of", "with", "as", "by", "is",
+    }
+    words = text.split(" ")
+    out = []
+    for i, w in enumerate(words):
+        core = w.strip("()")
+        if core and (i == 0 or core.lower() not in small):
+            w = w[0].upper() + w[1:] if w else w
+        else:
+            w = w.lower()
+        out.append(w)
+    return " ".join(out)
+
+
+def build_page_title(title: str, subtitle: str) -> str:
+    """'I.F While Loops, #1' + 'Fencepost problems and action ordering'
+    -> 'I.F While Loops, #1 \u2014 Fencepost Problems and Action Ordering'"""
+    if subtitle:
+        return f"{title} \u2014 {title_case(subtitle)}"
+    return title
 
 
 def derive_part_dir(title: str) -> str:
@@ -388,6 +439,7 @@ def transform(
     *,
     title: str = "",
     part_dir: str = "",
+    page_title: str = "",
     dept_name: str = "University of Georgia",
     dept_url: str = "https://linguistics.uga.edu/",
     index_name: str = "Quantitative Linguistics Webapps",
@@ -411,10 +463,16 @@ def transform(
     if not part_dir:
         part_dir = derive_part_dir(title)
 
+    if not page_title:
+        page_title = build_page_title(title, extract_subtitle(html))
+
     issue_url = build_issue_url(repo, part_dir, title)
 
-    # 1. Insert the head links/scripts right after <head>
-    html = html.replace("<head>\n", "<head>\n" + HEAD_INSERT, 1)
+    # 0. Mark the document's language.
+    html = html.replace('<html class="h5p-iframe">', '<html lang="en" class="h5p-iframe">', 1)
+
+    # 1. Insert the head links/scripts/title/a11y-fixes right after <head>
+    html = html.replace("<head>\n", "<head>\n" + HEAD_INSERT.format(page_title=page_title), 1)
 
     # 2. Replace the tail (core-css-close -> </html>) with the branded
     #    styles + branded body + feedback card.
@@ -452,6 +510,7 @@ def main(argv=None):
     parser.add_argument("-o", "--output", type=Path, help="Output path (default: <input>_formatted.html)")
     parser.add_argument("--title", default="", help="Applet title, e.g. 'I.F While Loops, #1' (auto-detected if omitted)")
     parser.add_argument("--part", default="", dest="part_dir", help="Part directory, e.g. 'part_I' (derived from title if omitted)")
+    parser.add_argument("--page-title", default="", help="Browser <title>, e.g. 'I.F While Loops, #1 \u2014 Fencepost Problems and Action Ordering' (auto-built from the title + cover subtitle if omitted)")
     parser.add_argument("--dept-name", default="University of Georgia")
     parser.add_argument("--dept-url", default="https://linguistics.uga.edu/")
     parser.add_argument("--index-name", default="Quantitative Linguistics Webapps")
@@ -467,6 +526,7 @@ def main(argv=None):
             html,
             title=args.title,
             part_dir=args.part_dir,
+            page_title=args.page_title,
             dept_name=args.dept_name,
             dept_url=args.dept_url,
             index_name=args.index_name,
