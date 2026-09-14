@@ -24,6 +24,14 @@
   --muted: #555555;
   --muted-dim: #888888;
 }
+.uga-header-h5p-apps{
+  text-transform: uppercase;
+  text-decoration: none; color: inherit; font-weight: bold;
+}
+.uga-applet-header-h5p-apps{
+  text-transform: uppercase;
+  text-decoration: none; color: inherit; font-weight: bold;
+}
 
 .text-primary {
   color: var(--bs-primary) !important;
