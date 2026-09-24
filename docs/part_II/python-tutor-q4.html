@@ -1,93 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Q4 · Python trace</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 12px; color: #202020; background: white; font: 16px/1.5 system-ui, sans-serif; }
-    form { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; }
-    label { display: block; font-weight: 600; }
-    input, button { min-height: 44px; padding: 8px 12px; font: inherit; border: 1px solid #666; border-radius: 4px; }
-    input { width: 150px; }
-    button { background: #ba0c2f; color: white; border-color: #ba0c2f; cursor: pointer; }
-    :focus-visible { outline: 3px solid #005fcc; outline-offset: 3px; }
-    [hidden] { display: none !important; }
-    p { margin: 10px 0; }
-    #trace { display: block; width: 100%; height: 590px; border: 1px solid #aaa; }
-    details { margin-top: 12px; }
-    summary { cursor: pointer; }
-    pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px; background: #f5f5f5; }
-    .note { font-size: 14px; color: #444; }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q4 · Python Tutor trace</title>
+<script src="python-tutor-assets/pytutor-embed.bundle.js" defer></script>
+<script src="python-tutor-assets/q4-trace.js" defer></script>
+<link rel="stylesheet" href="python-tutor-assets/q4-trace.css">
 </head>
-<body>
-  <form id="trace-form" novalidate>
-    <div><label for="number">Number to trace</label><input id="number" type="text" inputmode="numeric" autocomplete="off" aria-describedby="range"></div>
-    <button type="submit">Load trace here</button>
-  </form>
-  <p id="range" class="note">Whole numbers 0–999999. Predict the result before loading a new trace.</p>
-  <p id="status" role="status" aria-live="polite"></p>
-  <p class="note">Use Next and Prev below. If shown, select Click to Start Visualization first. Stay in this activity to compare examples.</p>
-  <iframe id="trace" title="Python Tutor: step-by-step execution" sandbox="allow-scripts allow-same-origin" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
-  <details><summary>Code and alternative if the visualization does not load</summary>
-    <p>Run this code in your course notebook, or trace each assignment on paper. This visualization needs an internet connection to Python Tutor.</p>
-    <pre id="code" tabindex="0"></pre>
-  </details>
-  <script>
-    'use strict';
-    const params = new URLSearchParams(location.search);
-    const focus = ['parts', 'condition', 'string'].includes(params.get('focus')) ? params.get('focus') : 'parts';
-    const input = document.getElementById('number');
-    const trace = document.getElementById('trace');
-    const status = document.getElementById('status');
-    input.value = params.get('number') || (focus === 'condition' ? '121' : focus === 'string' ? '23' : '111');
-    if (params.get('controls') === 'external') {
-      document.getElementById('trace-form').hidden = true;
-      document.getElementById('range').hidden = true;
-    }
-    function clearTrace() {
-      trace.hidden = true;
-      trace.removeAttribute('src');
-    }
-    function loadTrace() {
-      clearTrace();
-      if (!/^\d{1,6}$/.test(input.value.trim())) {
-        input.setAttribute('aria-invalid', 'true');
-        document.getElementById('code').textContent = '';
-        status.textContent = 'Enter a whole number from 0 to 999999.';
-        return false;
-      }
-      input.removeAttribute('aria-invalid');
-      const number = Number(input.value.trim());
-      let code = 'number = ' + number + '\n';
-      if (focus === 'string') {
-        const tail = number % 100;
-        const suffix = tail >= 11 && tail <= 13 ? 'th' : ({1: 'st', 2: 'nd', 3: 'rd'}[number % 10] || 'th');
-        code += 'suffix = "' + suffix + '"\nnumber_text = str(number)\nordinal = number_text + suffix\n';
-      } else {
-        code += 'units = number % 10\nlast_two = number % 100\n';
-        if (focus === 'condition') code += 'is_teen_ending = (last_two == 11 or last_two == 12 or last_two == 13)\n';
-      }
-      document.getElementById('code').textContent = code;
-      // The official embed still contains target=_blank links. Deliberately omit
-      // allow-popups and allow-top-navigation from the sandbox permissions.
-      trace.src = 'https://pythontutor.com/iframe-embed.html#code=' + encodeURIComponent(code) + '&py=311&curInstr=0';
-      trace.hidden = false;
-      status.textContent = 'Trace requested for ' + number + '. Use Next and Prev when the visualization appears.';
-      return true;
-    }
-    input.addEventListener('input', () => {
-      clearTrace();
-      document.getElementById('code').textContent = '';
-      status.textContent = 'Number changed. Predict the result, then load the new trace.';
-    });
-    document.getElementById('trace-form').addEventListener('submit', event => {
-      event.preventDefault();
-      if (!loadTrace()) input.focus();
-    });
-    loadTrace();
-  </script>
-</body>
-</html>
+<body><main>
+<h1>Python Tutor trace</h1>
+<form id="trace-form" novalidate>
+<div><label for="number">Number to trace</label><input id="number" type="text" inputmode="numeric" autocomplete="off" aria-describedby="range input-error"></div>
+<button type="submit">Load trace here</button>
+</form>
+<p id="range">Whole numbers 0–999999. Predict the result before loading a new trace.</p>
+<p id="input-error" role="alert"></p>
+<p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+<section id="activity" aria-label="Step-by-step Python execution" hidden>
+<p>Use Next step and Previous step to follow the code. The statement and variable values for each step are also written below.</p>
+<div class="controls" role="group" aria-label="Trace controls">
+<button id="previous" type="button">Previous step</button>
+<button id="next" type="button">Next step</button>
+<button id="restart" type="button">Restart trace</button>
+</div>
+<p id="step-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<div id="visualizer"></div>
+</section>
+<details><summary>Read or copy the Python code</summary>
+<p>You can run the same code in your course notebook.</p><pre id="code"></pre>
+</details>
+<p class="credit">Python Tutor © Philip J. Guo · locally hosted with accessibility modifications. <a href="python-tutor-assets/LICENSE.txt">Python Tutor license</a></p>
+<noscript><p>This trace requires JavaScript. Use the example code in the activity to trace assignments in your course notebook.</p></noscript>
+</main></body></html>
