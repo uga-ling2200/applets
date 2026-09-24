@@ -2,7 +2,9 @@
 
 Q4 uses H5P IFrame Embed → `python-tutor-q4.html` → the official Python Tutor
 `iframe-embed.html`. The standalone HTML bundles the existing IFrame Embed
-constructor; the H5P archive keeps its library files unchanged.
+constructor. The H5P archive now includes a local IFrameEmbed 1.0.30 patch
+adding a metadata-derived iframe title and enabling scrolling. This is not an
+official upstream release. Import requires H5P library update permission.
 
 Deploy the wrapper alongside `II.E_Strings_Q4.html` and `II.E_Strings_Q4.h5p`.
 Both artifacts refer to the wrapper's absolute GitHub Pages URL, so the H5P
@@ -41,3 +43,14 @@ used for functional verification.
 
 The visualization requires an internet connection and Python Tutor availability.
 Code and a course-notebook/paper fallback remain available in the activity.
+
+## Accessibility audit
+
+Chrome axe DevTools Pro (axe-core 4.13.0, WCAG 2.1 AA, advanced rules enabled)
+was run on all four pages and representative answer-feedback states in the
+standalone HTML and a separate preview of the actual H5P package. The H5P
+frame-title issue is fixed in the local library patch. Upstream Python Tutor
+still has low-contrast line numbers/start text and a keyboard-inaccessible code
+scroll region in some states. These cross-origin issues remain unresolved;
+this is not a claim of complete accessibility compliance. LMS import and a
+complete assistive-technology audit remain unverified.
