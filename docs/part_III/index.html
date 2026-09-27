@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LING2200 Part III — Guided Activities</title><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <style>
+    .week-section {
+          margin-bottom: 2.5rem;
+        }
+        .week-section h2 {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 2px solid var(--line);
+          color: var(--olympic);
+        }
+        .app-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 16px;
+        }
+        .app-card {
+          background: var(--panel-alt);
+          border: 1px solid var(--line);
+          border-radius: 6px;
+          padding: 16px;
+          transition: border-color 0.2s, transform 0.1s;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .app-card:hover {
+          border-color: var(--uga-red);
+          transform: translateY(-2px);
+          background: #fff;
+        }
+        .app-card h3 {
+          font-size: 1rem;
+          margin-bottom: 6px;
+        }
+        .app-card p {
+          font-size: 0.85rem;
+          color: var(--muted);
+          font-family: "IBM Plex Mono", monospace;
+          margin-bottom: 16px;
+        }
+        .btn-uga {
+            background-color: var(--uga-red);
+            border: none;
+            color: #fff;
+            font-family: 'Merriweather Sans', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+        .btn-uga:hover {
+            opacity: 0.9;
+            background-color: var(--uga-red);
+            color: #fff;
+        }
+        .statusbar {
+          margin-top: 36px;
+          padding-top: 16px;
+          border-top: 1px solid var(--line);
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 10px;
+          font-size: 11px;
+          color: var(--muted);
+          font-family: "IBM Plex Mono", monospace;
+        }
+    </style>
+
+</head><body><header class="text-center mb-4"><h1 style="font-size:1.4rem"><a href="https://linguistics.uga.edu/" style="color:#000">University of Georgia</a></h1><p>Quantitative Linguistics Webapps</p></header><main class="wrap"><h1>LING2200 · Part III</h1><p>Predict, explain, check, and then implement your own function in the course notebook. Work with a partner and switch roles between pages.</p>        <section class="week-section" aria-labelledby="part-iii-title">
+            <h2 id="part-iii-title">Part III: Tuples and Indexing</h2>
+            <div class="app-grid">
+                <div class="app-card"><div><h3>III.A Tuples, Q7</h3><p>Counting first and last names: guided partner activity.</p></div><a href="III_A_Q7_Counting_Names.html" class="btn-uga" aria-label="Launch III.A Q7 counting names">Launch App</a></div>
+                <div class="app-card"><div><h3>III.B Indexing, Q7</h3><p>Extracting the tens digit: guided partner activity.</p></div><a href="III_B_Q7_Tens_Digit.html" class="btn-uga" aria-label="Launch III.B Q7 extracting the tens digit">Launch App</a></div>
+            </div>
+        </section>
+<p><a href="../index.html">All LING2200 activities</a></p></main><style>a:focus-visible{outline:3px solid #0055a4;outline-offset:3px}@media(max-width:600px){.wrap{padding:1rem}.app-grid{grid-template-columns:1fr}}</style></body></html>
