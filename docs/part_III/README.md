@@ -24,3 +24,11 @@ Used the user's Chrome **axe DevTools Pro**, axe-core 4.13.0, with **advanced ru
 Checked all 19 scored questions, correct/incorrect feedback, retry, chapter navigation, and disabled solution buttons. Keyboard Space selects a radio option and Enter submits Check. Both activities were checked at a 390px viewport with document width equal to scroll width (no horizontal document overflow).
 
 The 0 result describes the scanned states and tool configuration; it is not a claim that automated scanning alone proves every WCAG criterion. Local screenshots and the scan-state history are retained in the delivery outputs. Advanced AI checks are nondeterministic; future content edits should be rescanned.
+
+## Wording and challenge review
+
+Rechecked the original III.A Q7 and III.B Q7 notebook prompts against the meeting guidance. Simplified surrounding prose while retaining Python terms and the print/return distinction. Students still predict, compare inputs, draw index diagrams, justify a rule and write their own function.
+
+Removed an opening example that gave away a later tens-digit answer. Randomized answer order and revised distractors to reflect plausible mistakes. Comparison prompts now ask students to discover what changes rather than stating the observation first. Loaded the Merriweather and Merriweather Sans fonts already specified by the shared 2200 template.
+
+All ten chapters were reviewed with axe DevTools Pro (core and advanced rules), before and after answering; final scans showed 0 issues with no ignored issues. AI heading suggestions on normal paragraphs/links were checked against their actual semantics; no incorrect heading roles were added. The AI results are nondeterministic. The latest complete full-page scans were taken from the chapter top.
