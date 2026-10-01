@@ -32,7 +32,7 @@ PAGE_NOTES = {
     ],
     "III_E_Q1_Reversing_Sequences": [
         "Before choosing slice syntax, locate the items you want to visit. Separating positions from direction will make the later boundary choices easier to explain.",
-        "Now use the position diagram to compare two slices that differ at one boundary. Changing one thing at a time shows what the stop value excludes and what type the slice returns.",
+        "Now use the position diagram to compare two slices that differ at one boundary. The first comparison isolates what the stop excludes; the next check distinguishes a slice result from an item selected by indexing.",
         "After checking the boundaries, change the step while keeping the endpoints in view. Tracing visited positions explains why a slice can move toward its stop or return nothing.",
         "The previous trace may leave an edge item behind. Compare a written stop with an omitted stop so you can explain how to reach the entire sequence in reverse.",
         "Use the boundary and step rules you discovered to make a slice that works for any length. Testing values and types on small inputs checks the whole requirement, not just the order.",
@@ -45,6 +45,45 @@ PAGE_NOTES = {
         "Combine boundary search, joining, and repetition in a plan you can test. Edge cases show whether the plan preserves outside text and avoids extra spaces.",
     ],
 }
+
+QUESTION_CHANGES = {
+    "III_A_Q7_Counting_Names": [
+        (0, 2,
+         '<p>What does <code>len("Mary Ann")</code> measure?</p>',
+         '<p>You counted the tuple items. Now look inside its first string: what does <code>len("Mary Ann")</code> measure?</p>'),
+    ],
+    "III_B_Q7_Tens_Digit": [
+        (0, 2,
+         ('<p>Suppose <code>number = 482</code>. Can you use square brackets to pick out a digit right away?</p>',
+          '<p>After locating the tens digit on paper, how can you make <code>number = 482</code> indexable by digit in Python?</p>'),
+         '<p>After locating the tens digit on paper, consider <code>number = 482</code>. What should you do before selecting one of its digits by index in Python?</p>'),
+    ],
+    "III_E_Q1_Reversing_Sequences": [
+        (1, 2,
+         ('<p>For <code>items = ("oak", "elm", "ash")</code>, what is the type of <code>items[1:2]</code>?</p>',
+          '<p>For <code>items = ("oak", "elm", "ash")</code>, what is the type of the value returned by <code>items[1:2]</code>? Answer for the entire slice result, not for the item inside it.</p>'),
+         '<p>Now distinguish the slice result from the items inside it. For <code>items = ("oak", "elm", "ash")</code>, what is the type of the entire value returned by <code>items[1:2]</code>?</p>'),
+    ],
+    "III_F_Q4_Removing_Parentheticals": [
+        (0, 2,
+         '<p>In <code>"go (go) go"</code>, which occurrences of <code>go</code> should survive?</p>',
+         '<p>Apply the same outside-text rule to repeated words: in <code>"go (go) go"</code>, which occurrences of <code>go</code> should survive?</p>'),
+    ],
+}
+
+TITLE_CHANGES = {
+    "III_B_Q7_Tens_Digit": [(4, 1, "A zero can be a valid tens digit", "Check the tens position in 100")],
+    "III_F_Q4_Removing_Parentheticals": [(0, 2, "Check repeated letters", "Check repeated words")],
+}
+
+
+def replace_expected(value, old, new):
+    """Apply a copy edit once and fail if the source changed unexpectedly."""
+    candidates = old if isinstance(old, tuple) else (old,)
+    assert any(candidate in value for candidate in candidates) or new in value, (old, value[:200])
+    for candidate in candidates:
+        value = value.replace(candidate, new)
+    return value
 
 
 def revise_content(stem, book):
@@ -65,23 +104,29 @@ def revise_content(stem, book):
         assert count == 1
         units[0]["content"]["params"]["text"] = text
 
+    for chapter_idx, unit_idx, old, new in QUESTION_CHANGES.get(stem, []):
+        params = book["chapters"][chapter_idx]["params"]["content"][unit_idx]["content"]["params"]
+        params["question"] = replace_expected(params["question"], old, new)
+    for chapter_idx, unit_idx, old, new in TITLE_CHANGES.get(stem, []):
+        unit = book["chapters"][chapter_idx]["params"]["content"][unit_idx]["content"]
+        unit["metadata"]["title"] = replace_expected(unit["metadata"]["title"], old, new)
+        unit["metadata"]["extraTitle"] = replace_expected(unit["metadata"]["extraTitle"], old, new)
+        unit["params"]["question"] = replace_expected(unit["params"]["question"], old, new)
+
     if stem == "III_B_Q7_Tens_Digit":
         checks = book["chapters"][4]["params"]["content"]
         question = checks[1]["content"]["params"]
         old = "What should your integer function return for <code>100</code>?"
         new = ("For the input <code>100</code>, what integer should "
                "<code>extract_tens_digit()</code> return as the tens digit?")
-        assert old in question["question"] or new in question["question"]
-        question["question"] = question["question"].replace(old, new)
+        question["question"] = replace_expected(question["question"], old, new)
     elif stem == "III_E_Q1_Reversing_Sequences":
-        checks = book["chapters"][1]["params"]["content"]
-        question = checks[2]["content"]["params"]
-        old = 'For <code>items = ("oak", "elm", "ash")</code>, what is the type of <code>items[1:2]</code>?'
-        new = ('For <code>items = ("oak", "elm", "ash")</code>, what is the type of '
-               'the value returned by <code>items[1:2]</code>? Answer for the entire slice result, '
-               'not for the item inside it.')
-        assert old in question["question"] or new in question["question"]
-        question["question"] = question["question"].replace(old, new)
+        feedback = book["chapters"][2]["params"]["content"][1]["content"]["params"]["answers"][1]["tipsAndFeedback"]
+        feedback["chosenFeedback"] = replace_expected(
+            feedback["chosenFeedback"],
+            "The direction is right, but stop=1 is excluded.",
+            "Your leftward steps are correct, but stop=1 is excluded.",
+        )
     return book
 
 

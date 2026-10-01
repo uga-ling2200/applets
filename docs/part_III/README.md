@@ -35,6 +35,11 @@ III.B Q7 check for input `100` explicitly asks for the integer tens digit;
 the III.E Q1 slice check explicitly asks for the type of the returned slice,
 not the contained item. Question answers and scoring are unchanged.
 
+A follow-up wording review connected selected adjacent checks, removed an
+ambiguous use of “right” in feedback about leftward slicing, corrected a
+“repeated letters” heading that actually tested repeated words, and changed a
+heading that disclosed the tens-digit answer before students checked it.
+
 The editable H5P packages and standalone HTML pages carry the same text.
 After changing III.A or III.B source content, run
 `python3 -B utils/part_iii_scaffolding.py`; after changing III.E or III.F,

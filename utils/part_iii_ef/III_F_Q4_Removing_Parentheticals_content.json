@@ -212,12 +212,12 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check repeated letters</h3><p>In <code>\"go (go) go\"</code>, which occurrences of <code>go</code> should survive?</p>"
+                "question": "<h3>Check repeated words</h3><p>Apply the same outside-text rule to repeated words: in <code>\"go (go) go\"</code>, which occurrences of <code>go</code> should survive?</p>"
               },
               "subContentId": "8dc76c99-b17b-525e-a308-807196a7a6b6",
               "metadata": {
-                "title": "Check repeated letters",
-                "extraTitle": "Check repeated letters",
+                "title": "Check repeated words",
+                "extraTitle": "Check repeated words",
                 "license": "U",
                 "authors": [],
                 "changes": []

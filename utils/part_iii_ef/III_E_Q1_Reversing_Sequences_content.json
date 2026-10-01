@@ -244,7 +244,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Predict before checking</h2><p class=\"part-iii-rationale\">Now use the position diagram to compare two slices that differ at one boundary. Changing one thing at a time shows what the stop value excludes and what type the slice returns.</p><p>A slice is written <code>sequence[start:stop:step]</code>. The starting position is included; the stopping position is excluded. First compare these forward slices on paper: <code>\"plant\"[1:4]</code> and <code>\"plant\"[1:3]</code>. Change only one boundary. Which character changes?</p><table><caption>Characters and their positions in &#x27;plant&#x27;</caption><thead><tr><th scope=\"col\">Character</th><th scope=\"col\">p</th><th scope=\"col\">l</th><th scope=\"col\">a</th><th scope=\"col\">n</th><th scope=\"col\">t</th></tr></thead><tbody><tr><th scope=\"row\">Positive index</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">Negative index</th><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td></tr></tbody></table>"
+                "text": "<h2>Predict before checking</h2><p class=\"part-iii-rationale\">Now use the position diagram to compare two slices that differ at one boundary. The first comparison isolates what the stop excludes; the next check distinguishes a slice result from an item selected by indexing.</p><p>A slice is written <code>sequence[start:stop:step]</code>. The starting position is included; the stopping position is excluded. First compare these forward slices on paper: <code>\"plant\"[1:4]</code> and <code>\"plant\"[1:3]</code>. Change only one boundary. Which character changes?</p><table><caption>Characters and their positions in &#x27;plant&#x27;</caption><thead><tr><th scope=\"col\">Character</th><th scope=\"col\">p</th><th scope=\"col\">l</th><th scope=\"col\">a</th><th scope=\"col\">n</th><th scope=\"col\">t</th></tr></thead><tbody><tr><th scope=\"row\">Positive index</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">Negative index</th><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td></tr></tbody></table>"
               },
               "subContentId": "d20aa8b0-e30c-5bf2-99c1-38d626ab55d5",
               "metadata": {
@@ -444,7 +444,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Slice or index?</h3><p>For <code>items = (\"oak\", \"elm\", \"ash\")</code>, what is the type of the value returned by <code>items[1:2]</code>? Answer for the entire slice result, not for the item inside it.</p>"
+                "question": "<h3>Slice or index?</h3><p>Now distinguish the slice result from the items inside it. For <code>items = (\"oak\", \"elm\", \"ash\")</code>, what is the type of the entire value returned by <code>items[1:2]</code>?</p>"
               },
               "subContentId": "13c607eb-69f7-5b3f-808b-b45755499d4d",
               "metadata": {
@@ -511,7 +511,7 @@
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "The direction is right, but stop=1 is excluded.",
+                      "chosenFeedback": "Your leftward steps are correct, but stop=1 is excluded.",
                       "notChosenFeedback": ""
                     }
                   },
