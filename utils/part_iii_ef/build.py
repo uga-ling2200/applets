@@ -4,8 +4,12 @@ import json
 import re
 import uuid
 import zipfile
+import sys
 from pathlib import Path
 from urllib.parse import urlencode
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from part_iii_scaffolding import revise_content
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/part_III'
@@ -44,6 +48,7 @@ PARTNER = '<p>Work with a partner. Before you choose an answer, write down what 
 def build(stem, title, chapters, source):
     content = copy.deepcopy(book)
     content['chapters'] = copy.deepcopy(chapters)
+    revise_content(stem, content)
     for c in content['chapters']:
         for unit in c['params']['content']:
             params = unit['content']['params']

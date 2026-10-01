@@ -27,6 +27,20 @@ The 0 result describes the scanned states and tool configuration; it is not a cl
 
 ## Wording and challenge review
 
+### September 30 scaffolding update
+
+All four published Part III activities now connect each of their five pages to
+the preceding reasoning step and briefly explain why that step matters. The
+III.B Q7 check for input `100` explicitly asks for the integer tens digit;
+the III.E Q1 slice check explicitly asks for the type of the returned slice,
+not the contained item. Question answers and scoring are unchanged.
+
+The editable H5P packages and standalone HTML pages carry the same text.
+After changing III.A or III.B source content, run
+`python3 -B utils/part_iii_scaffolding.py`; after changing III.E or III.F,
+run `python3 -B utils/part_iii_ef/build.py`. The latter builder imports the
+shared page notes from `utils/part_iii_scaffolding.py`.
+
 Rechecked the original III.A Q7 and III.B Q7 notebook prompts against the meeting guidance. Simplified surrounding prose while retaining Python terms and the print/return distinction. Students still predict, compare inputs, draw index diagrams, justify a rule and write their own function.
 
 Removed an opening example that gave away a later tens-digit answer. Randomized answer order and revised distractors to reflect plausible mistakes. Comparison prompts now ask students to discover what changes rather than stating the observation first. Loaded the Merriweather and Merriweather Sans fonts already specified by the shared 2200 template.
