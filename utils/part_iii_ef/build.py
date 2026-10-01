@@ -96,6 +96,7 @@ def build(stem, title, chapters, source):
     from urllib.parse import quote
     live = 'https://uga-ling2200.github.io/applets/part_III/' + stem + '.html'
     page = re.sub(r'(&amp;source-url=)[^"\s]*', lambda match: match[1] + quote(live, safe=''), page)
+    page = re.sub(r'[ \t]+(?=\n)', '', page)
     (OUT / (stem + '.html')).write_text(page)
     (Path(__file__).parent / (stem + '_content.json')).write_text(json.dumps(content, ensure_ascii=False, indent=2))
     return len(chapters), sum(p['content']['library'].startswith('H5P.MultiChoice') for c in chapters for p in c['params']['content'])
@@ -153,12 +154,78 @@ chapter('5. Plan, implement, test',
  q('A repeated-pair check','<p>Which output fits <code>"A (x) B (y) C"</code>?</p>',('"A B C"','All three outside pieces remain, with single spaces at the joins.'),('"A C"','This loses B, which was outside both pairs.'),('"A B (y) C"','This stops after only the first removal.')),
  q('No outside words remain','<p>What should remain from <code>"(aside)"</code>?</p>',('An empty string','Every character belongs to the parenthetical, including the opening and closing parentheses.'),('A single space','There are no surviving pieces to separate.'),('"aside"','The contents must be removed along with the parentheses.')))
 ]
-for stem,title,chapters,file in [('III_E_Q1_Reversing_Sequences','III.E Slicing, Q1 — Reversing Sequences',E,'III.E_Slicing.ipynb'),('III_F_Q4_Removing_Parentheticals','III.F Strings, Q4 — Removing Parentheticals',F,'III.F_Strings_III.ipynb')]:
+G = [
+chapter('1. Describe the target',
+ text('Start with examples', '<p>III.G Q2 · Sets</p><h3>Notebook task</h3><ul><li>Write <code>xor(first, second)</code>.</li><li>Accept two sets and return a set of the items that are in one set or the other, but not both.</li></ul><h3>Learning goals</h3><ul><li><strong>Classify</strong> items by membership in two sets.</li><li><strong>Compare</strong> familiar set operations with the target result.</li><li><strong>Test</strong> a rule on varied input pairs before coding.</li></ul>' + PARTNER + '<p>On paper, start with <code>first = {"a", "b", "c"}</code> and <code>second = {"b", "d"}</code>. List the candidate items, then predict the returned set. Focus on which items are present, not on the order in which Python might display them.</p>'),
+ q('Check the predicted members', '<p>For <code>first = {"a", "b", "c"}</code> and <code>second = {"b", "d"}</code>, which set contains exactly the items that <code>xor(first, second)</code> should return?</p>',
+   ('<code>{"a", "c", "d"}</code>', 'Yes. Each of these items occurs in exactly one input; b occurs in both.'),
+   ('<code>{"a", "b", "c", "d"}</code>', 'This includes b, which occurs in both inputs. Recheck the last part of the task rule.'),
+   ('<code>{"b"}</code>', 'This keeps only the shared item. The task asks for items in one input but not both.')),
+ q('Decide what a set answer means', '<p>If Python displays the same result set in a different order, which statement is correct?</p>',
+   ('The result can still be correct if it has the same members.', 'Correct. Set equality depends on membership, not display order.'),
+   ('The result is wrong unless its display order matches the first input.', 'A set does not preserve the first input as an answer order. Compare members instead.'),
+   ('The result must always be sorted alphabetically.', 'Sets do not promise an alphabetical display order.'))),
+chapter('2. Mark membership',
+ text('Use one row per candidate', '<p>Keep the same two sets from page 1. Copy this table and fill the two membership columns before deciding whether each candidate belongs in the returned set. Include <code>"e"</code> to test a value that occurs in neither input.</p><table><caption>Candidate membership to predict</caption><thead><tr><th scope="col">Item</th><th scope="col">In first?</th><th scope="col">In second?</th><th scope="col">In result?</th></tr></thead><tbody><tr><th scope="row">a</th><td>?</td><td>?</td><td>?</td></tr><tr><th scope="row">b</th><td>?</td><td>?</td><td>?</td></tr><tr><th scope="row">c</th><td>?</td><td>?</td><td>?</td></tr><tr><th scope="row">d</th><td>?</td><td>?</td><td>?</td></tr><tr><th scope="row">e</th><td>?</td><td>?</td><td>?</td></tr></tbody></table><p>Compare your rows with your partner. Explain each result decision using both membership columns.</p>'),
+ q('A member of both inputs', '<p>For <code>first = {"a", "b", "c"}</code> and <code>second = {"b", "d"}</code>, what should happen to <code>"b"</code> in the returned set?</p>',
+   ('Leave it out because it occurs in both inputs.', 'Yes. The word “both” in the task excludes this item.'),
+   ('Include it because it occurs in at least one input.', 'That rule describes union. Check whether b occurs in both.'),
+   ('Include it twice, once for each input.', 'A set cannot contain two copies of the same item. The task excludes shared items.')),
+ q('A member of neither input', '<p>The string <code>"e"</code> appears in neither input set. What should happen to it in the returned set?</p>',
+   ('Leave it out because it occurs in neither input.', 'Correct. An output member must come from one of the input sets.'),
+   ('Include it because it does not occur in both inputs.', '“Not both” alone is not enough: the item must occur in one input.'),
+   ('Include it as an empty placeholder.', 'Sets contain actual items. There is no placeholder item for a value that never appeared.'))),
+chapter('3. Order the set operations',
+ text('Fill in a flowchart', '<p>Return to <code>first = {"a", "b", "c"}</code> and <code>second = {"b", "d"}</code>. Copy this flowchart onto paper. Fill each blank with <em>union</em>, <em>intersection</em>, or <em>difference</em>. Both branches begin with the original input sets.</p><table><caption>Two branches followed by one final step</caption><thead><tr><th scope="col">Branch 1: all candidate items</th><th scope="col">Branch 2: shared items</th></tr></thead><tbody><tr><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>U</code></td><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>I</code></td></tr><tr><td colspan="2">↓ Use the two branch results in this order: ____ then ____<br>Final operation: ____<br>Remove the shared items from the broader collection.</td></tr></tbody></table><p>Predict the members of <code>U</code>, <code>I</code>, and the final result before using Check. The final step must happen after both branches, so the inputs to that step are the two intermediate sets.</p>'),
+ q('Inspect the union', '<p>What are the members of <code>first.union(second)</code> for these two sets?</p>',
+   ('<code>{"a", "b", "c", "d"}</code>', 'The union contains every item found in either input. Compare it with the target set.'),
+   ('<code>{"b"}</code>', 'That is only the shared item. Union includes items found in either input.'),
+   ('<code>{"a", "c", "d"}</code>', 'This leaves out the shared item. Union includes b as well.')),
+ q('Inspect the intersection', '<p>What are the members of <code>first.intersection(second)</code> for these two sets?</p>',
+   ('<code>{"b"}</code>', 'The intersection contains the item shared by both inputs.'),
+   ('<code>{"a", "c", "d"}</code>', 'Those items occur in only one input each. Intersection requires both.'),
+   ('<code>{"a", "b", "c", "d"}</code>', 'That is the union. Check which items appear in both inputs.')),
+ q('Order the final step', '<p>Let <code>U = first.union(second)</code> and <code>I = first.intersection(second)</code>. Which expression removes the shared items while retaining items unique to either input?</p>',
+   ('<code>U.difference(I)</code>', 'Yes. Start with all candidates in U, then remove the shared members in I.'),
+   ('<code>I.difference(U)</code>', 'Every shared item in I is also in U, so this removes everything. Check which collection should be larger.'),
+   ('<code>first.difference(second)</code>', 'This finds items unique to first, but misses items unique to second. The flowchart begins with both inputs.'))),
+chapter('4. Test other relationships',
+ text('Look for cases your first example missed', '<p>Now predict three pairs before checking: identical sets, disjoint sets, and a pair where one set is empty. Use the original rule for each item rather than assuming the first example covers every case.</p><p>If no items qualify, write the Python value for an empty <em>set</em>. Compare that value with an empty dictionary or list.</p>'),
+ q('Compare identical inputs', '<p>What set should <code>xor({1, 2}, {1, 2})</code> return?</p>',
+   ('<code>set()</code>', 'Every item occurs in both inputs, so no item qualifies.'),
+   ('<code>{1, 2}</code>', 'Each item is shared. The task excludes items in both.'),
+   ('<code>[1, 1, 2, 2]</code>', 'This is a list with repeated values, not a set. Shared items do not qualify.')),
+ q('Compare an empty input', '<p>What set should <code>xor({1, 2}, set())</code> return?</p>',
+   ('<code>{1, 2}</code>', 'Each item occurs in the first set and not the empty second set.'),
+   ('<code>set()</code>', 'The second set is empty, but the first has items that occur in exactly one input.'),
+   ('<code>{}</code>', 'That expression creates an empty dictionary, not the required result set.')),
+ q('Compare disjoint inputs', '<p>What set should <code>xor({1, 2}, {3, 4})</code> return when the inputs have no shared items?</p>',
+   ('<code>{1, 2, 3, 4}</code>', 'Every item occurs in exactly one input. Here the result happens to match the union.'),
+   ('<code>set()</code>', 'There are no shared items to exclude; each input still contributes its members.'),
+   ('<code>{}</code>', 'This is an empty dictionary, not the required result set.'))),
+chapter('5. Explain, implement, test',
+ text('Return to III.G Q2', '<p>Explain your rule to your partner before writing code. For any candidate item, what facts about the two input sets do you need? How will you prevent a shared item from entering the result? Then write your own <code>xor(first, second)</code> function in the course notebook.</p><h3>Make a test table</h3><ul><li>Overlapping inputs: <code>{1, 2}</code> and <code>{2, 3}</code>.</li><li>Identical inputs: <code>{1, 2}</code> and <code>{1, 2}</code>.</li><li>Disjoint inputs: <code>{1}</code> and <code>{2}</code>.</li><li>One or both inputs empty: use <code>set()</code>.</li></ul><p>Predict each returned set before running the function. Explain any mismatch by referring to membership, not display order. Check that your function returns a set.</p>'),
+ q('Diagnose a test result', '<p>For inputs <code>{1, 2}</code> and <code>{2, 3}</code>, which returned set would show that a function kept every item from either input, including the shared item?</p>',
+   ('<code>{1, 2, 3}</code>', 'This is the union; the shared item 2 has not been excluded.'),
+   ('<code>{1, 3}</code>', 'This contains only items in exactly one input, so it does not show that mistake.'),
+   ('<code>{2}</code>', 'This keeps only the shared item, which is a different mistake.')),
+ q('Check a set result', '<p>For those same inputs, which Python check verifies the expected <em>set members</em> without relying on their display order?</p>',
+   ('<code>result == {1, 3}</code>', 'Set equality compares members without requiring a display order.'),
+   ('<code>list(result) == [1, 3]</code>', 'Converting to a list introduces an order that the set does not promise.'),
+   ('<code>result[0] == 1</code>', 'Sets do not support indexing by position.')))
+]
+
+only = sys.argv[sys.argv.index('--only') + 1] if '--only' in sys.argv else None
+for stem,title,chapters,file in [('III_E_Q1_Reversing_Sequences','III.E Slicing, Q1 — Reversing Sequences',E,'III.E_Slicing.ipynb'),('III_F_Q4_Removing_Parentheticals','III.F Strings, Q4 — Removing Parentheticals',F,'III.F_Strings_III.ipynb'),('III_G_Q2_Exclusive_Set_Items','III.G Sets, Q2 — Items in Exactly One Set',G,'III.G_Sets.ipynb')]:
+    if only and stem != only:
+        continue
     source='https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/'+file
     chapters[-1]['params']['content'][0]['content']['params']['text']+='<p><a href="'+source+'" target="_blank" rel="noopener noreferrer">Open the original course notebook (new tab)</a></p>'
     print(stem,build(stem,title,chapters,source))
 
 for stem,mode in [('III_E_Q1_Reversing_Sequences','slice'),('III_F_Q4_Removing_Parentheticals','edit')]:
+    if only and stem != only:
+        continue
     options='<option value="word">String: plant</option><option value="tuple">Tuple of numbers</option><option value="list">List of colors</option><option value="empty">Empty list</option><option value="single">One-item tuple</option>' if mode=='slice' else ''.join('<option value="'+str(i)+'">'+html.escape(s)+'</option>' for i,s in enumerate(['A (x) B (y) C','We (quietly) left','(maybe) We can go','We left (quietly)','(aside)']))
     fields='<div class="lab-fields">'+''.join('<div><label for="lab-'+k+'">'+k.capitalize()+'</label><input id="lab-'+k+'" inputmode="numeric" value="'+v+'" aria-describedby="lab-help"></div>' for k,v in [('start','1'),('stop','4'),('step','1')])+'</div>' if mode=='slice' else '<label><input id="lab-clean" type="checkbox">Clean only the join: trim its edges and separate nonempty pieces with one space</label>'
     helper='Leave a slice field blank to omit it. Blank step means 1. Write your predicted Python value, or write empty or error.' if mode=='slice' else 'Preview one pair at a time. Compare a direct join with a cleaned join. This lab shows separate matched pairs; it does not run your function.'

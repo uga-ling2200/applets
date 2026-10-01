@@ -6,6 +6,7 @@ https://uga-ling2200.github.io/applets/part_III/
 
 - III.A Q7: `count_names()` — two tuple fields, word units rather than characters, independent singular/plural choices, and a printed message.
 - III.B Q7: `extract_tens_digit()` — indexing an indexable representation, missing-position guard returning integer 0, type conversion, and a returned integer. Signed inputs are a magnitude-based extension; floats are optional and explicitly ignore the fractional part rather than round.
+- III.G Q2: `xor(first, second)` — return the set of items found in exactly one of two input sets, independent of display order. The course task is in `classnotes/week08/III.G_Sets.ipynb`.
 
 ## Source and teaching design
 
@@ -26,6 +27,23 @@ Checked all 19 scored questions, correct/incorrect feedback, retry, chapter navi
 The 0 result describes the scanned states and tool configuration; it is not a claim that automated scanning alone proves every WCAG criterion. Local screenshots and the scan-state history are retained in the delivery outputs. Advanced AI checks are nondeterministic; future content edits should be rescanned.
 
 ## Wording and challenge review
+
+### III.G Q2 development
+
+The five-page activity carries the September 30 meeting guidance into a new
+sets exercise. Learners predict concrete outputs, classify candidate items by
+membership, fill in a three-step flowchart for union, intersection, and
+difference, test identical/disjoint/empty inputs, then implement their own
+`xor()` in the notebook. The book does not
+display a complete solution function. Questions say explicitly whether they
+ask for result members, an individual candidate, or an operation's direction;
+feedback addresses the particular misconception. Headings and page notes do
+not give away the following scored answer. Sets are compared by membership,
+not display order.
+
+Run `python3 -B utils/part_iii_ef/build.py --only
+III_G_Q2_Exclusive_Set_Items` after editing the G content. This writes the
+editable H5P, standalone HTML, and readable JSON from one source.
 
 ### September 30 scaffolding update
 

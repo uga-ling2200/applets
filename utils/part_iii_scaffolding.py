@@ -44,6 +44,13 @@ PAGE_NOTES = {
         "Once one parenthetical is removed, ask whether the old positions still identify the same characters. Rechecking this before the next removal helps preserve text between separate pairs.",
         "Combine boundary search, joining, and repetition in a plan you can test. Edge cases show whether the plan preserves outside text and avoids extra spaces.",
     ],
+    "III_G_Q2_Exclusive_Set_Items": [
+        "Before choosing a set operation, predict a few outputs from the task's rule. Concrete examples give you a result to explain before you plan an algorithm.",
+        "Now inspect one candidate item at a time. A membership table separates the question of where an item occurs from the question of whether it belongs in the result.",
+        "With the membership decisions in view, compare familiar set operations on the same inputs. This lets you check which information each operation keeps before combining ideas.",
+        "Try the rule on input pairs with different relationships. Edge cases can reveal a plan that happened to work only for the first example.",
+        "Use the examples and edge cases to explain your own plan in the notebook. Check the returned set by its members, because sets do not promise a display order.",
+    ],
 }
 
 QUESTION_CHANGES = {
