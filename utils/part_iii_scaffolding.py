@@ -17,10 +17,10 @@ OUT = ROOT / "docs" / "part_III"
 # disclosing the answers to the checks that follow them.
 PAGE_NOTES = {
     "III_A_Q7_Counting_Names": [
-        "Before counting anything, decide what counts as one unit. A tuple item, a character, and a name part give different counts, so choosing the unit first prevents a plausible but wrong use of len().",
+        "Before counting anything, decide what counts as one unit. A tuple item, a character, and a name part give different counts, so choosing the unit first helps you select an operation that measures the right thing.",
         "Now keep the tuple's two fields apart before working with the names inside them. This preserves the boundary between first and last names when the printed full name alone cannot show it.",
         "With the fields separated, compare a few small examples before choosing a counting operation. The pattern you find should explain both a one-part name and a name with several parts.",
-        "Once you can count each field, turn those counts into a message. Checking the two fields separately matters because one may need name while the other needs names.",
+        "Once you can count each field, turn those counts into a message. Checking the fields separately keeps each wording choice tied to its own count.",
         "Bring the unit choice, counting rule, and wording together in your own function. Predicting several outputs before running code helps reveal which part of the plan needs correction.",
     ],
     "III_B_Q7_Tens_Digit": [
@@ -28,7 +28,7 @@ PAGE_NOTES = {
         "Now compare numbers with different lengths using the diagrams you started. Look for a position that still identifies the tens digit when another digit is added on the left.",
         "The position you found works only when that position exists. Checking short inputs before indexing lets your function follow the exercise's rule without an indexing error.",
         "After deciding when indexing is safe, trace the value through each conversion. This helps you distinguish a minus sign from a digit and a string character from the required integer result.",
-        "Combine the position, missing-digit check, and type conversion in one plan. Test each branch, including a number whose tens digit is zero, before trying the optional float extension.",
+        "Combine the position, missing-digit check, and type conversion in one plan. Test inputs that exercise each branch, including 100, before trying the optional float extension.",
     ],
     "III_E_Q1_Reversing_Sequences": [
         "Before choosing slice syntax, locate the items you want to visit. Separating positions from direction will make the later boundary choices easier to explain.",
@@ -41,7 +41,7 @@ PAGE_NOTES = {
         "Start by deciding which outside words must survive. A target result gives you something to check against before you choose positions or edit the string.",
         "Now locate the punctuation around the material to remove. Using exact positions keeps repeated words outside the parentheses from being removed by mistake.",
         "The boundary slices may still contain spaces from both sides of the gap. Inspecting those pieces before joining them explains why a correct deletion can still produce the wrong spacing.",
-        "Once one parenthetical is removed, the remaining characters have new positions. Finding the next pair in the updated string avoids deleting text between two separate pairs.",
+        "Once one parenthetical is removed, ask whether the old positions still identify the same characters. Rechecking this before the next removal helps preserve text between separate pairs.",
         "Combine boundary search, joining, and repetition in a plan you can test. Edge cases show whether the plan preserves outside text and avoids extra spaces.",
     ],
 }
@@ -54,11 +54,16 @@ def revise_content(stem, book):
     for chapter, note in zip(book["chapters"], notes):
         units = chapter["params"]["content"]
         text = units[0]["content"]["params"]["text"]
-        note_html = f"<p>{note}</p>"
-        if note_html not in text:
-            text, count = re.subn(r"(</h2>)", r"\1" + note_html, text, count=1)
-            assert count == 1
-            units[0]["content"]["params"]["text"] = text
+        note_html = f'<p class="part-iii-rationale">{note}</p>'
+        text, count = re.subn(
+            r"(<h2>.*?</h2>)(?:<p class=\"part-iii-rationale\">.*?</p>)?",
+            lambda match: match[1] + note_html,
+            text,
+            count=1,
+            flags=re.S,
+        )
+        assert count == 1
+        units[0]["content"]["params"]["text"] = text
 
     if stem == "III_B_Q7_Tens_Digit":
         checks = book["chapters"][4]["params"]["content"]
