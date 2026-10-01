@@ -476,7 +476,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Fill in a flowchart</h2><p class=\"part-iii-rationale\">With the membership decisions in view, compare familiar set operations on the same inputs. This lets you check which information each operation keeps before combining ideas.</p><p>Return to <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>. Copy this flowchart onto paper. Fill each blank with <em>union</em>, <em>intersection</em>, or <em>difference</em>. Both branches begin with the original input sets.</p><table><caption>Two branches followed by one final step</caption><thead><tr><th scope=\"col\">Branch 1: all candidate items</th><th scope=\"col\">Branch 2: shared items</th></tr></thead><tbody><tr><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>U</code></td><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>I</code></td></tr><tr><td colspan=\"2\">↓ Use the two branch results in this order: ____ then ____<br>Final operation: ____<br>Remove the shared items from the broader collection.</td></tr></tbody></table><p>Predict the members of <code>U</code>, <code>I</code>, and the final result before using Check. The final step must happen after both branches, so the inputs to that step are the two intermediate sets.</p>"
+                "text": "<h2>Fill in a flowchart</h2><p class=\"part-iii-rationale\">With the membership decisions in view, compare familiar set operations on the same inputs. This lets you check which information each operation keeps before combining ideas.</p><p>Return to <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>. Copy this flowchart onto paper. Fill each operation blank with <em>union</em>, <em>intersection</em>, or <em>difference</em>. Both branches begin with the original input sets.</p><table><caption>Two branches followed by one final step</caption><thead><tr><th scope=\"col\">Branch A: all candidate items</th><th scope=\"col\">Branch B: shared items</th></tr></thead><tbody><tr><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>A</code></td><td><code>first</code> and <code>second</code><br>↓<br>Operation: ____<br>↓<br>Call the result <code>B</code></td></tr><tr><td colspan=\"2\">↓ Use the two branch results in this order: ____ then ____<br>Final operation: ____<br>Remove the shared items from the broader collection.</td></tr></tbody></table><p>Predict the members of <code>A</code>, <code>B</code>, and the final result before using Check. The final step must happen after both branches, so the inputs to that step are the two intermediate sets.</p>"
               },
               "subContentId": "9fbec23f-4155-5d9d-8310-2d6591e5ed86",
               "metadata": {
@@ -498,29 +498,29 @@
                 },
                 "answers": [
                   {
-                    "text": "<p><code>{\"a\", \"b\", \"c\", \"d\"}</code></p>",
+                    "text": "<p>Union</p>",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "The union contains every item found in either input. Compare it with the target set.",
+                      "chosenFeedback": "Union collects every item found in either input. Now decide which operation isolates the shared items.",
                       "notChosenFeedback": ""
                     }
                   },
                   {
-                    "text": "<p><code>{\"b\"}</code></p>",
+                    "text": "<p>Intersection</p>",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "That is only the shared item. Union includes items found in either input.",
+                      "chosenFeedback": "Intersection keeps only items found in both inputs. Branch A needs all candidates.",
                       "notChosenFeedback": ""
                     }
                   },
                   {
-                    "text": "<p><code>{\"a\", \"c\", \"d\"}</code></p>",
+                    "text": "<p>Difference</p>",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "This leaves out the shared item. Union includes b as well.",
+                      "chosenFeedback": "Difference removes items from one set. Branch A must still include every candidate.",
                       "notChosenFeedback": ""
                     }
                   }
@@ -576,12 +576,12 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Inspect the union</h3><p>What are the members of <code>first.union(second)</code> for these two sets?</p>"
+                "question": "<h3>Choose the operation for all candidates</h3><p>Which operation on <code>first</code> and <code>second</code> puts <code>{\"a\", \"b\", \"c\", \"d\"}</code> in branch <code>A</code>, including the item shared by both inputs?</p>"
               },
-              "subContentId": "89e61e6f-704e-5cc8-b36d-2dc5c86d32e8",
+              "subContentId": "948faec7-e08d-50cb-b3c4-f7440c5cf7db",
               "metadata": {
-                "title": "Inspect the union",
-                "extraTitle": "Inspect the union",
+                "title": "Choose the operation for all candidates",
+                "extraTitle": "Choose the operation for all candidates",
                 "license": "U",
                 "authors": [],
                 "changes": []
@@ -598,29 +598,29 @@
                 },
                 "answers": [
                   {
-                    "text": "<p><code>{\"b\"}</code></p>",
+                    "text": "<p>Intersection</p>",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "The intersection contains the item shared by both inputs.",
+                      "chosenFeedback": "Intersection keeps the item shared by both inputs. Compare this smaller set with branch A.",
                       "notChosenFeedback": ""
                     }
                   },
                   {
-                    "text": "<p><code>{\"a\", \"c\", \"d\"}</code></p>",
+                    "text": "<p>Union</p>",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "Those items occur in only one input each. Intersection requires both.",
+                      "chosenFeedback": "Union includes every item from either input, not just the shared item.",
                       "notChosenFeedback": ""
                     }
                   },
                   {
-                    "text": "<p><code>{\"a\", \"b\", \"c\", \"d\"}</code></p>",
+                    "text": "<p>Difference</p>",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "That is the union. Check which items appear in both inputs.",
+                      "chosenFeedback": "Difference removes members of one set from another; it does not isolate the shared item here.",
                       "notChosenFeedback": ""
                     }
                   }
@@ -676,12 +676,12 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Inspect the intersection</h3><p>What are the members of <code>first.intersection(second)</code> for these two sets?</p>"
+                "question": "<h3>Choose the operation for shared items</h3><p>Which operation on <code>first</code> and <code>second</code> puts only <code>{\"b\"}</code> in branch <code>B</code>?</p>"
               },
-              "subContentId": "7dc36540-9361-5a00-be08-bb8dbd06ebb4",
+              "subContentId": "20806722-8f32-5376-9a49-133024ac1d99",
               "metadata": {
-                "title": "Inspect the intersection",
-                "extraTitle": "Inspect the intersection",
+                "title": "Choose the operation for shared items",
+                "extraTitle": "Choose the operation for shared items",
                 "license": "U",
                 "authors": [],
                 "changes": []
@@ -698,20 +698,20 @@
                 },
                 "answers": [
                   {
-                    "text": "<p><code>U.difference(I)</code></p>",
+                    "text": "<p><code>A.difference(B)</code></p>",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "Yes. Start with all candidates in U, then remove the shared members in I.",
+                      "chosenFeedback": "Yes. Start with all candidates in A, then remove the shared members in B.",
                       "notChosenFeedback": ""
                     }
                   },
                   {
-                    "text": "<p><code>I.difference(U)</code></p>",
+                    "text": "<p><code>B.difference(A)</code></p>",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "Every shared item in I is also in U, so this removes everything. Check which collection should be larger.",
+                      "chosenFeedback": "Every shared item in B is also in A, so this removes everything. Check which collection should be larger.",
                       "notChosenFeedback": ""
                     }
                   },
@@ -776,7 +776,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Order the final step</h3><p>Let <code>U = first.union(second)</code> and <code>I = first.intersection(second)</code>. Which expression removes the shared items while retaining items unique to either input?</p>"
+                "question": "<h3>Order the final step</h3><p>Let <code>A</code> contain all candidates and <code>B</code> contain the shared items. Which expression removes the shared items while retaining items unique to either input?</p>"
               },
               "subContentId": "5182cfd1-825b-5769-83f9-0d57c1501317",
               "metadata": {

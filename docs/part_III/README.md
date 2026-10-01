@@ -1,4 +1,4 @@
-# LING2200 Part III Q7 guided activities
+# LING2200 Part III guided activities
 
 ## Live entry point
 
@@ -41,6 +41,11 @@ feedback addresses the particular misconception. Headings and page notes do
 not give away the following scored answer. Sets are compared by membership,
 not display order.
 
+The flowchart uses neutral branch labels A and B. Its follow-up questions ask
+learners to identify the operations, so question headings do not disclose the
+blanks before the learner has considered them. The blanks are copied and filled
+on paper; the H5P questions provide feedback on each operation and its order.
+
 Run `python3 -B utils/part_iii_ef/build.py --only
 III_G_Q2_Exclusive_Set_Items` after editing the G content. This writes the
 editable H5P, standalone HTML, and readable JSON from one source.
@@ -55,6 +60,11 @@ course-notebook link led to stronger focus styling; the final scan reported
 zero issues, and keyboard focus showed a 3 px blue outline and 4 px ring.
 Keyboard selection/submission and narrow-screen layout were also checked.
 Automatic scans do not establish complete accessibility compliance.
+After changing the page 3 operation questions, the local page was rescanned
+before and after submitting a correct answer with the keyboard. Axe DevTools
+Pro (axe-core 4.13.0, advanced rules and Best Practices enabled) reported zero
+automatic issues in both states. The new question headings and flowchart were
+also checked in the rendered page and accessibility tree.
 
 ### September 30 scaffolding update
 
