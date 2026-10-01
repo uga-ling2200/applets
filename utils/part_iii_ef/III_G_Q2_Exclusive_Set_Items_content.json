@@ -576,7 +576,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Choose the operation for all candidates</h3><p>Which operation on <code>first</code> and <code>second</code> puts <code>{\"a\", \"b\", \"c\", \"d\"}</code> in branch <code>A</code>, including the item shared by both inputs?</p>"
+                "question": "<h3>Choose the operation for all candidates</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts <code>{\"a\", \"b\", \"c\", \"d\"}</code> in branch <code>A</code>, including the item shared by both inputs?</p>"
               },
               "subContentId": "948faec7-e08d-50cb-b3c4-f7440c5cf7db",
               "metadata": {
@@ -676,7 +676,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Choose the operation for shared items</h3><p>Which operation on <code>first</code> and <code>second</code> puts only <code>{\"b\"}</code> in branch <code>B</code>?</p>"
+                "question": "<h3>Choose the operation for shared items</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts only the shared item <code>{\"b\"}</code> in branch <code>B</code>?</p>"
               },
               "subContentId": "20806722-8f32-5376-9a49-133024ac1d99",
               "metadata": {
@@ -1340,7 +1340,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check a set result</h3><p>For those same inputs, which Python check verifies the expected <em>set members</em> without relying on their display order?</p>"
+                "question": "<h3>Check a set result</h3><p>For <code>first = {1, 2}</code> and <code>second = {2, 3}</code>, the expected result contains <code>1</code> and <code>3</code>, but not the shared item <code>2</code>. Which Python check verifies exactly those <em>set members</em> without relying on display order?</p>"
               },
               "subContentId": "b7d36aff-a990-5f05-b84e-fe0852499ced",
               "metadata": {
