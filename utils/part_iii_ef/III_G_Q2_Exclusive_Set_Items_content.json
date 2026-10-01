@@ -112,7 +112,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check the predicted members</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which set contains exactly the items that <code>xor(first, second)</code> should return?</p>"
+                "question": "<h3>Check the predicted members</h3><p>Start with the two sets from your paper prediction: <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>. Which set contains exactly the items that <code>xor(first, second)</code> should return?</p>"
               },
               "subContentId": "3dc46d3a-f495-5ead-b9e8-fc755b066347",
               "metadata": {
@@ -212,7 +212,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Decide what a set answer means</h3><p>If Python displays the same result set in a different order, which statement is correct?</p>"
+                "question": "<h3>Decide what a set answer means</h3><p>After predicting the result members, decide how to check that prediction. If Python displays the same result set in a different order, which statement is correct?</p>"
               },
               "subContentId": "c1ccef2d-f561-5836-9ce1-d300acff628d",
               "metadata": {
@@ -344,7 +344,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>A member of both inputs</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, what should happen to <code>\"b\"</code> in the returned set?</p>"
+                "question": "<h3>A member of both inputs</h3><p>You predicted the whole result; now check one row of the membership table. For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, what should happen to <code>\"b\"</code> in the returned set?</p>"
               },
               "subContentId": "d64c4ea1-72d6-5599-b34b-988d0265e9b5",
               "metadata": {
@@ -444,7 +444,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>A member of neither input</h3><p>The string <code>\"e\"</code> appears in neither input set. What should happen to it in the returned set?</p>"
+                "question": "<h3>A member of neither input</h3><p>After checking an item found in both inputs, test the other boundary of the rule. The string <code>\"e\"</code> appears in neither input set. What should happen to it in the returned set?</p>"
               },
               "subContentId": "5175430c-914e-5680-96c7-e74ec3b57311",
               "metadata": {
@@ -576,7 +576,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Choose the operation for all candidates</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts <code>{\"a\", \"b\", \"c\", \"d\"}</code> in branch <code>A</code>, including the item shared by both inputs?</p>"
+                "question": "<h3>Choose the operation for all candidates</h3><p>The membership table covered every candidate item; branch <code>A</code> needs to collect them before any are excluded. For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts <code>{\"a\", \"b\", \"c\", \"d\"}</code> in branch <code>A</code>, including the item shared by both inputs?</p>"
               },
               "subContentId": "948faec7-e08d-50cb-b3c4-f7440c5cf7db",
               "metadata": {
@@ -676,7 +676,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Choose the operation for shared items</h3><p>For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts only the shared item <code>{\"b\"}</code> in branch <code>B</code>?</p>"
+                "question": "<h3>Choose the operation for shared items</h3><p>Branch <code>A</code> gathers candidates; branch <code>B</code> must identify what to remove. For <code>first = {\"a\", \"b\", \"c\"}</code> and <code>second = {\"b\", \"d\"}</code>, which operation puts only the shared item <code>{\"b\"}</code> in branch <code>B</code>?</p>"
               },
               "subContentId": "20806722-8f32-5376-9a49-133024ac1d99",
               "metadata": {
@@ -776,7 +776,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Order the final step</h3><p>Let <code>A</code> contain all candidates and <code>B</code> contain the shared items. Which expression removes the shared items while retaining items unique to either input?</p>"
+                "question": "<h3>Order the final step</h3><p>Now combine the two branches you just examined. Let <code>A</code> contain all candidates and <code>B</code> contain the shared items. Which expression removes the shared items while retaining items unique to either input?</p>"
               },
               "subContentId": "5182cfd1-825b-5769-83f9-0d57c1501317",
               "metadata": {
@@ -908,7 +908,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Compare identical inputs</h3><p>What set should <code>xor({1, 2}, {1, 2})</code> return?</p>"
+                "question": "<h3>Compare identical inputs</h3><p>Now test the flowchart when every input item is shared. What set should <code>xor({1, 2}, {1, 2})</code> return?</p>"
               },
               "subContentId": "dbfcba76-0a59-5c49-9b58-df40473038fd",
               "metadata": {
@@ -1008,7 +1008,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Compare an empty input</h3><p>What set should <code>xor({1, 2}, set())</code> return?</p>"
+                "question": "<h3>Compare an empty input</h3><p>After testing identical sets, change the relationship: one input has no items at all. What set should <code>xor({1, 2}, set())</code> return?</p>"
               },
               "subContentId": "8918eb08-9af9-596b-8799-a78b52b9080a",
               "metadata": {
@@ -1108,7 +1108,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Compare disjoint inputs</h3><p>What set should <code>xor({1, 2}, {3, 4})</code> return when the inputs have no shared items?</p>"
+                "question": "<h3>Compare disjoint inputs</h3><p>The empty-input case still had items in only one set. Now both inputs have items, but none are shared. What set should <code>xor({1, 2}, {3, 4})</code> return?</p>"
               },
               "subContentId": "3c263fa6-0493-5d5f-a9fc-df796a0e945b",
               "metadata": {
@@ -1240,7 +1240,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Diagnose a test result</h3><p>For inputs <code>{1, 2}</code> and <code>{2, 3}</code>, which returned set would show that a function kept every item from either input, including the shared item?</p>"
+                "question": "<h3>Diagnose a test result</h3><p>You have predicted outputs for several input relationships; use one overlap case to diagnose a possible coding mistake. For inputs <code>{1, 2}</code> and <code>{2, 3}</code>, which returned set would show that a function kept every item from either input, including the shared item?</p>"
               },
               "subContentId": "66ef1998-d3ee-52f7-8419-e5dad862c7e3",
               "metadata": {
@@ -1340,7 +1340,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check a set result</h3><p>For <code>first = {1, 2}</code> and <code>second = {2, 3}</code>, the expected result contains <code>1</code> and <code>3</code>, but not the shared item <code>2</code>. Which Python check verifies exactly those <em>set members</em> without relying on display order?</p>"
+                "question": "<h3>Check a set result</h3><p>After diagnosing a possible mistake, choose a check for the intended result. For <code>first = {1, 2}</code> and <code>second = {2, 3}</code>, the expected result contains <code>1</code> and <code>3</code>, but not the shared item <code>2</code>. Which Python check verifies exactly those <em>set members</em> without relying on display order?</p>"
               },
               "subContentId": "b7d36aff-a990-5f05-b84e-fe0852499ced",
               "metadata": {
