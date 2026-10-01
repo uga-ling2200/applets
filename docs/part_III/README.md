@@ -45,6 +45,17 @@ Run `python3 -B utils/part_iii_ef/build.py --only
 III_G_Q2_Exclusive_Set_Items` after editing the G content. This writes the
 editable H5P, standalone HTML, and readable JSON from one source.
 
+Accessibility check before publication (September 30, 2026): axe DevTools Pro
+4.138.0 / axe-core 4.13.0, full-page scans with advanced rules and Best
+Practices enabled. The initial page, a scored-answer state, and pages 2–5
+were scanned. Final scans reported zero issues. The advanced AI rule briefly
+misidentified ordinary paragraph/list text as a heading; semantic markup was
+checked and the repeat scans did not reproduce it. A focus warning on the
+course-notebook link led to stronger focus styling; the final scan reported
+zero issues, and keyboard focus showed a 3 px blue outline and 4 px ring.
+Keyboard selection/submission and narrow-screen layout were also checked.
+Automatic scans do not establish complete accessibility compliance.
+
 ### September 30 scaffolding update
 
 All four published Part III activities now connect each of their five pages to

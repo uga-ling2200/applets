@@ -92,7 +92,7 @@ def build(stem, title, chapters, source):
     page = page.replace('<div class="text-center mb-4">', '<div class="text-center mb-4" role="banner">', 1)
     page = page.replace('<div class="applet-wrapper">', '<main class="applet-wrapper" aria-label="' + title + '">', 1)
     page = page.replace('        </div>       \n        </div>', '        </div>       \n        </main>', 1)
-    page = page.replace('</head>', '<meta charset="UTF-8"><style>a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #0055a4;outline-offset:3px}.h5p-advanced-text{line-height:1.6}.h5p-alternative-inner p{font-weight:400!important;font-size:1rem!important}code{overflow-wrap:anywhere}</style></head>')
+    page = page.replace('</head>', '<meta charset="UTF-8"><style>a:focus,a:focus-visible,button:focus,button:focus-visible,[tabindex]:focus,[tabindex]:focus-visible{outline:3px solid #0055a4!important;outline-offset:3px!important}.h5p-advanced-text a:focus,.h5p-advanced-text a:focus-visible{background:#eaf2ff!important;box-shadow:0 0 0 4px #0055a4!important;border-radius:2px}.h5p-advanced-text{line-height:1.6}.h5p-alternative-inner p{font-weight:400!important;font-size:1rem!important}code{overflow-wrap:anywhere}</style></head>')
     from urllib.parse import quote
     live = 'https://uga-ling2200.github.io/applets/part_III/' + stem + '.html'
     page = re.sub(r'(&amp;source-url=)[^"\s]*', lambda match: match[1] + quote(live, safe=''), page)
