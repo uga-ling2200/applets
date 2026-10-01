@@ -92,7 +92,10 @@ def build(stem, title, chapters, source):
     page = page.replace('<div class="text-center mb-4">', '<div class="text-center mb-4" role="banner">', 1)
     page = page.replace('<div class="applet-wrapper">', '<main class="applet-wrapper" aria-label="' + title + '">', 1)
     page = page.replace('        </div>       \n        </div>', '        </div>       \n        </main>', 1)
-    page = page.replace('</head>', '<meta charset="UTF-8"><style>a:focus,a:focus-visible,button:focus,button:focus-visible,[tabindex]:focus,[tabindex]:focus-visible{outline:3px solid #0055a4!important;outline-offset:3px!important}.h5p-advanced-text a:focus,.h5p-advanced-text a:focus-visible{background:#eaf2ff!important;box-shadow:0 0 0 4px #0055a4!important;border-radius:2px}.h5p-advanced-text{line-height:1.6}.h5p-alternative-inner p{font-weight:400!important;font-size:1rem!important}code{overflow-wrap:anywhere}</style></head>')
+    table_style = ''
+    if stem == 'III_G_Q2_Exclusive_Set_Items':
+        table_style = '.h5p-advanced-text table{width:100%;max-width:48rem;margin:1rem 0;border-collapse:collapse}.h5p-advanced-text table caption{caption-side:top;text-align:left;font-weight:700;color:#333;padding:0 0 .5rem}.h5p-advanced-text table th,.h5p-advanced-text table td{border:1px solid #c9c9c9;padding:.55rem .8rem;text-align:left;vertical-align:top;overflow-wrap:normal;word-break:normal}.h5p-advanced-text table thead th{background:#f4e9ec}.h5p-advanced-text table tbody tr:nth-child(even){background:#faf7f8}@media(max-width:520px){.h5p-advanced-text table th,.h5p-advanced-text table td{padding:.35rem .4rem}.h5p-interactive-book-status{flex-wrap:wrap!important;height:auto!important;overflow:visible!important}.h5p-interactive-book-status-chapter{order:10!important;flex:0 0 100%!important;width:100%!important;padding:.35rem .75rem!important}}'
+    page = page.replace('</head>', '<meta charset="UTF-8"><style>a:focus,a:focus-visible,button:focus,button:focus-visible,[tabindex]:focus,[tabindex]:focus-visible{outline:3px solid #0055a4!important;outline-offset:3px!important}.h5p-advanced-text a:focus,.h5p-advanced-text a:focus-visible{background:#eaf2ff!important;box-shadow:0 0 0 4px #0055a4!important;border-radius:2px}.h5p-advanced-text{line-height:1.6}.h5p-alternative-inner p{font-weight:400!important;font-size:1rem!important}code{overflow-wrap:anywhere}' + table_style + '</style></head>')
     from urllib.parse import quote
     live = 'https://uga-ling2200.github.io/applets/part_III/' + stem + '.html'
     page = re.sub(r'(&amp;source-url=)[^"\s]*', lambda match: match[1] + quote(live, safe=''), page)
@@ -220,7 +223,8 @@ for stem,title,chapters,file in [('III_E_Q1_Reversing_Sequences','III.E Slicing,
     if only and stem != only:
         continue
     source='https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/'+file
-    chapters[-1]['params']['content'][0]['content']['params']['text']+='<p><a href="'+source+'" target="_blank" rel="noopener noreferrer">Open the original course notebook (new tab)</a></p>'
+    if stem != 'III_G_Q2_Exclusive_Set_Items':
+        chapters[-1]['params']['content'][0]['content']['params']['text']+='<p><a href="'+source+'" target="_blank" rel="noopener noreferrer">Open the original course notebook (new tab)</a></p>'
     print(stem,build(stem,title,chapters,source))
 
 for stem,mode in [('III_E_Q1_Reversing_Sequences','slice'),('III_F_Q4_Removing_Parentheticals','edit')]:

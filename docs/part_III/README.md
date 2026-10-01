@@ -46,6 +46,15 @@ learners to identify the operations, so question headings do not disclose the
 blanks before the learner has considered them. The blanks are copied and filled
 on paper; the H5P questions provide feedback on each operation and its order.
 
+The read-only GitHub notebook link was removed from page 5 because learners
+write their function in their own course notebook. The membership and
+flowchart tables now have distinct columns, visible borders, and captions above
+the cells. At a 390 px viewport the table fits within the document width;
+the chapter heading moves below the navigation controls instead of overlapping
+the page count. Axe DevTools Pro (axe-core 4.13.0, advanced rules and Best
+Practices enabled) reported zero automatic issues on the revised page 2 and
+page 5 states.
+
 Run `python3 -B utils/part_iii_ef/build.py --only
 III_G_Q2_Exclusive_Set_Items` after editing the G content. This writes the
 editable H5P, standalone HTML, and readable JSON from one source.
