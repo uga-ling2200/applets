@@ -93,7 +93,7 @@ def build(stem, title, chapters, source):
     page = page.replace('<div class="applet-wrapper">', '<main class="applet-wrapper" aria-label="' + title + '">', 1)
     page = page.replace('        </div>       \n        </div>', '        </div>       \n        </main>', 1)
     table_style = ''
-    if stem == 'III_G_Q2_Exclusive_Set_Items':
+    if stem in ('III_G_Q2_Exclusive_Set_Items', 'III_J_Q1_Add_Counters'):
         table_style = '.h5p-advanced-text table{width:100%;max-width:48rem;margin:1rem 0;border-collapse:collapse}.h5p-advanced-text table caption{caption-side:top;text-align:left;font-weight:700;color:#333;padding:0 0 .5rem}.h5p-advanced-text table th,.h5p-advanced-text table td{border:1px solid #c9c9c9;padding:.55rem .8rem;text-align:left;vertical-align:top;overflow-wrap:normal;word-break:normal}.h5p-advanced-text table thead th{background:#f4e9ec}.h5p-advanced-text table tbody tr:nth-child(even){background:#faf7f8}@media(max-width:520px){.h5p-advanced-text table th,.h5p-advanced-text table td{padding:.35rem .4rem}.h5p-interactive-book-status{flex-wrap:wrap!important;height:auto!important;overflow:visible!important}.h5p-interactive-book-status-chapter{order:10!important;flex:0 0 100%!important;width:100%!important;padding:.35rem .75rem!important}}'
     page = page.replace('</head>', '<meta charset="UTF-8"><style>a:focus,a:focus-visible,button:focus,button:focus-visible,[tabindex]:focus,[tabindex]:focus-visible{outline:3px solid #0055a4!important;outline-offset:3px!important}.h5p-advanced-text a:focus,.h5p-advanced-text a:focus-visible{background:#eaf2ff!important;box-shadow:0 0 0 4px #0055a4!important;border-radius:2px}.h5p-advanced-text{line-height:1.6}.h5p-alternative-inner p{font-weight:400!important;font-size:1rem!important}code{overflow-wrap:anywhere}' + table_style + '</style></head>')
     from urllib.parse import quote
@@ -218,12 +218,73 @@ chapter('5. Explain, implement, test',
    ('<code>result[0] == 1</code>', 'Sets do not support indexing by position.')))
 ]
 
+J = [
+chapter('1. Predict a combined count',
+ text('Begin with the notebook task', '<p>III.J Q1 · Dictionaries</p><h3>Notebook task</h3><ul><li>Write <code>add_counters(counter1, counter2)</code> for two dictionaries whose values are counts.</li><li>Return a <strong>new dictionary</strong> containing every key found in either input.</li><li>For each key, the returned count is the sum of its counts in the two inputs.</li></ul><h3>Learning goals</h3><ul><li><strong>Predict</strong> combined counts for shared and unshared keys.</li><li><strong>Explain</strong> how a missing key contributes to a sum.</li><li><strong>Plan and test</strong> a loop that builds a new dictionary.</li></ul>' + PARTNER + '<p>On paper, compare <code>counter1 = {"a": 2, "b": 1, "c": 3}</code> and <code>counter2 = {"a": 1, "b": 2, "d": 3}</code>. First predict the count for <code>"a"</code>, then list the keys that the result needs. Keep the two input dictionaries separate on your page.</p>'),
+ q('Predict one value', '<p>For the two dictionaries above, what value should the returned dictionary store under <code>"a"</code>?</p>',
+   ('<code>3</code>', 'Yes. The two inputs contribute 2 and 1 for the same key.'),
+   ('<code>2</code>', 'That reads only the first dictionary. The result combines both counts.'),
+   ('<code>1</code>', 'That reads only the second dictionary. Check the first input too.')),
+ q('List the result keys', '<p>Now look beyond the shared key. Which keys must appear in the new dictionary?</p>',
+   ('<code>"a", "b", "c", "d"</code>', 'Each key found in either input appears once in the result.'),
+   ('<code>"a", "b"</code>', 'Those are only the shared keys. The task also keeps keys found in just one input.'),
+   ('<code>"c", "d"</code>', 'Those are only the unshared keys. Shared keys also need summed counts.'))),
+chapter('2. Account for missing keys',
+ text('Make one row per key', '<p>Use the same dictionaries from page 1. Copy the table and fill each question mark before choosing an answer. Write <em>missing</em> when a key has no entry in that input; do not assume the missing entry is stored as a zero.</p><table><caption>Counts to combine from the two inputs</caption><thead><tr><th scope="col">Key</th><th scope="col"><code>counter1</code></th><th scope="col"><code>counter2</code></th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row"><code>"a"</code></th><td>2</td><td>1</td><td>?</td></tr><tr><th scope="row"><code>"b"</code></th><td>1</td><td>2</td><td>?</td></tr><tr><th scope="row"><code>"c"</code></th><td>3</td><td>missing</td><td>?</td></tr><tr><th scope="row"><code>"d"</code></th><td>missing</td><td>3</td><td>?</td></tr></tbody></table><p>Discuss how a missing count should affect addition while keeping the key in the result.</p>'),
+ q('Combine a key found once', '<p><code>"c"</code> occurs only in <code>counter1</code>, with count 3. What count belongs under <code>"c"</code> in the result?</p>',
+   ('<code>3</code>', 'Correct. The missing contribution from the other dictionary adds nothing.'),
+   ('No <code>"c"</code> entry', 'The result needs every key from either input, including c.'),
+   ('An error because <code>"c"</code> is missing from <code>counter2</code>', 'The function must handle a key that occurs in only one input. Plan a safe lookup for that case.')),
+ q('Separate missing from stored zero', '<p>Suppose <code>counter1 = {"x": 0}</code> and <code>counter2 = {}</code>. Which statement describes the inputs accurately?</p>',
+   ('<code>"x"</code> is present in the first dictionary with value 0.', 'Yes. A stored zero and an absent key are different states, even though each contributes zero to the sum.'),
+   ('<code>"x"</code> is missing from both dictionaries.', 'The first dictionary explicitly stores x with value 0.'),
+   ('<code>"x"</code> should be left out because its count is zero.', 'The task includes every key found in either input, even when its stored count is zero.'))),
+chapter('3. Read a count safely',
+ text('Try a default for a missing key', '<p>A direct lookup such as <code>counter2["c"]</code> fails when <code>"c"</code> is absent. A dictionary also has <code>get(key, default)</code>: it returns the stored value when the key exists, and the supplied default when it does not. For this activity, consider <code>missing_count = 0</code>. Predict each expression below before checking. This is one possible lookup tool, not a required complete solution.</p>'),
+ q('Read an absent key', '<p>With <code>counter2 = {"a": 1, "b": 2, "d": 3}</code> and <code>missing_count = 0</code>, what does <code>counter2.get("c", missing_count)</code> return?</p>',
+   ('<code>0</code>', 'Yes. c is absent, so get returns the value supplied by missing_count.'),
+   ('<code>3</code>', 'That is the value of d. get looks for the specific key c.'),
+   ('A <code>KeyError</code>', 'A direct square-bracket lookup would fail here; get uses its default for an absent key.')),
+ q('Read a stored value', '<p>With the same dictionary, what does <code>counter2.get("a", missing_count)</code> return?</p>',
+   ('<code>1</code>', 'Yes. An existing key returns its stored count; the default is not used.'),
+   ('<code>0</code>', 'The default applies only when the requested key is absent.'),
+   ('<code>None</code>', 'A value is stored under a, so get returns that value.')),
+ q('Check for a side effect', '<p>After evaluating <code>counter2.get("c", missing_count)</code>, what happens to <code>counter2</code>?</p>',
+   ('It stays unchanged.', 'Correct. get reads a value or returns the default; it does not insert c.'),
+   ('It gains <code>"c": 0</code>.', 'get does not add the missing key to the dictionary.'),
+   ('It loses one of its existing keys.', 'A lookup does not remove entries.'))),
+chapter('4. Plan the new dictionary',
+ text('Choose keys, then fill values', '<p>Make a short plan on paper. First choose which keys the loop must visit so no input key is missed. Then decide where each combined count will be stored. You may use <code>get</code> or another safe lookup plan. Keep the inputs unchanged and build a separate result dictionary.</p><p>Use this unfinished outline to mark the two decisions, without filling them in yet:</p><pre><code>result = {}\nmissing_count = 0\nfor key in ______:\n    result[key] = ______</code></pre><p>Trace your plan with <code>counter1 = {"a": 2, "c": 3}</code> and <code>counter2 = {"a": 1, "d": 3}</code>. Show the result after visiting each key. Your plan should not depend on a particular dictionary display order.</p>'),
+ q('Choose a complete set of keys', '<p>Which loop plan can visit every key needed by the result, including <code>"d"</code> in the second input?</p>',
+   ('Visit the keys found in either input.', 'Yes. You can form that collection or process both inputs without skipping repeated keys.'),
+   ('Visit only the keys in <code>counter1</code>.', 'That misses d, which occurs only in counter2.'),
+   ('Visit only keys that both inputs share.', 'That misses c and d, which must also be in the result.')),
+ q('Place the combined count', '<p>When your loop reaches a key, which action matches the requirement to return a new dictionary?</p>',
+   ('Store the combined count for that key in a separate result dictionary.', 'Correct. The result holds one combined value per key; the inputs remain as they were.'),
+   ('Replace the count in <code>counter1</code>.', 'That changes an input rather than building the required new dictionary.'),
+   ('Print the combined count without storing it.', 'Printing does not construct or return the requested dictionary.')),
+ q('Trace an unshared key', '<p>In the page 4 trace, <code>"d"</code> appears only in <code>counter2</code> with count 3. What should your plan place in the result under <code>"d"</code>?</p>',
+   ('<code>3</code>', 'Yes. The absent first count contributes zero; d is still a result key.'),
+   ('<code>0</code>', 'Zero is the missing contribution from counter1, not the entire combined count.'),
+   ('No entry for <code>"d"</code>', 'The loop must include keys found in either dictionary.'))),
+chapter('5. Implement and test',
+ text('Return to III.J Q1', '<p>Explain your key plan and safe count lookup to your partner. Then write your own <code>add_counters(counter1, counter2)</code> function in the course notebook. Return the new dictionary; printing it alone does not meet the task.</p><h3>Make a test table</h3><ul><li>The notebook example: <code>{"a": 2, "b": 1, "c": 3}</code> and <code>{"a": 1, "b": 2, "d": 3}</code>.</li><li>Shared keys with different counts: <code>{"x": 2}</code> and <code>{"x": 5}</code>.</li><li>A stored zero: <code>{"x": 0}</code> and <code>{}</code>.</li><li>One empty input and then two empty inputs.</li></ul><p>Predict each dictionary before running your function. Afterwards, compare the returned value with the prediction and check that neither input changed. For a nonempty input, check that the returned dictionary is a separate object.</p><h3>Discuss</h3><ol><li>Why can looping over only one input miss a result key?</li><li>How do you distinguish a missing key from a key with a stored zero?</li><li>What evidence shows that your function returned a new dictionary?</li></ol>'),
+ q('Check empty inputs', '<p>What should <code>add_counters({}, {})</code> return?</p>',
+   ('<code>{}</code>', 'Yes. There are no keys in either input, so the new result dictionary is empty.'),
+   ('<code>0</code>', 'The function returns a dictionary, even when it contains no keys.'),
+   ('<code>None</code>', 'The task requires a returned dictionary rather than no return value.')),
+ q('Check the complete contract', '<p>Suppose <code>counter1 = {"x": 2}</code> and <code>counter2 = {"x": 5}</code>. Which observation best supports that your function met the task?</p>',
+   ('It returns a separate <code>{"x": 7}</code> dictionary and leaves both inputs unchanged.', 'That checks the sum, the returned dictionary, and the new-object requirement.'),
+   ('It changes <code>counter1</code> to <code>{"x": 7}</code> and returns it.', 'The count is right, but the first input was changed instead of producing a new dictionary.'),
+   ('It prints <code>{"x": 7}</code> and returns <code>None</code>.', 'Printing shows a value on screen but does not return the required dictionary.')))
+]
+
 only = sys.argv[sys.argv.index('--only') + 1] if '--only' in sys.argv else None
-for stem,title,chapters,file in [('III_E_Q1_Reversing_Sequences','III.E Slicing, Q1 — Reversing Sequences',E,'III.E_Slicing.ipynb'),('III_F_Q4_Removing_Parentheticals','III.F Strings, Q4 — Removing Parentheticals',F,'III.F_Strings_III.ipynb'),('III_G_Q2_Exclusive_Set_Items','III.G Sets, Q2 — Items in Exactly One Set',G,'III.G_Sets.ipynb')]:
+for stem,title,chapters,file,week in [('III_E_Q1_Reversing_Sequences','III.E Slicing, Q1 — Reversing Sequences',E,'III.E_Slicing.ipynb','week08'),('III_F_Q4_Removing_Parentheticals','III.F Strings, Q4 — Removing Parentheticals',F,'III.F_Strings_III.ipynb','week08'),('III_G_Q2_Exclusive_Set_Items','III.G Sets, Q2 — Items in Exactly One Set',G,'III.G_Sets.ipynb','week08'),('III_J_Q1_Add_Counters','III.J Dictionaries, Q1 — Add Counters',J,'III.J_Data_types_III.ipynb','week10')]:
     if only and stem != only:
         continue
-    source='https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/'+file
-    if stem != 'III_G_Q2_Exclusive_Set_Items':
+    source='https://github.com/uga-ling2200/prep/blob/master/classnotes/'+week+'/'+file
+    if stem not in ('III_G_Q2_Exclusive_Set_Items', 'III_J_Q1_Add_Counters'):
         chapters[-1]['params']['content'][0]['content']['params']['text']+='<p><a href="'+source+'" target="_blank" rel="noopener noreferrer">Open the original course notebook (new tab)</a></p>'
     print(stem,build(stem,title,chapters,source))
 

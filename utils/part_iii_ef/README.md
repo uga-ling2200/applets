@@ -1,4 +1,4 @@
-# III.E Q1, III.F Q4, and III.G Q2
+# III.E Q1, III.F Q4, III.G Q2, and III.J Q1
 
 ## Source and scope
 
@@ -7,6 +7,7 @@ Reviewed on September 27–28, 2026:
 - [III.E Q1](https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/III.E_Slicing.ipynb): implement `reverse(group)` for strings, tuples and lists, returning the same sequence type in reverse order.
 - [III.F Q4](https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/III.F_Strings_III.ipynb): implement `remove_parentheticals(string)`, remove parentheses and their contents, retain a single space at surviving joins, and extend to multiple parentheticals. The question assumes at least one parenthetical.
 - [III.G Q2](https://github.com/uga-ling2200/prep/blob/master/classnotes/week08/III.G_Sets.ipynb): implement `xor()` for two sets, returning items present in one input but not both.
+- [III.J Q1](https://github.com/uga-ling2200/prep/blob/master/classnotes/week10/III.J_Data_types_III.ipynb): implement `add_counters()` for two count dictionaries, returning a new dictionary with every input key and its summed count.
 - The LING2200 activity plan identifies the ordering of union, intersection, and difference as the III.G Q2 pain point, and suggests a guided flowchart fill-in. Page 3 uses that structure before asking learners to choose the final difference direction.
 - Course source revision: `16ef77e`; applet infrastructure baseline: `3f1c34e`.
 - The activity plan emphasizes tracing negative slice boundaries by hand and explaining why repeated-character/string-edit attempts produce unexpected results.
@@ -30,11 +31,16 @@ python3 utils/part_iii_ef/test_slices.py
 
 # Regenerate only the new sets activity:
 python3 utils/part_iii_ef/build.py --only III_G_Q2_Exclusive_Set_Items
+
+# Regenerate only the dictionaries activity:
+python3 utils/part_iii_ef/build.py --only III_J_Q1_Add_Counters
 ```
 
 The builder uses the existing III.A HTML/H5P as the installed runtime and applies the teacher formatter. Content IDs are stable. It emits the HTML pages, editable H5P packages, and readable content JSON. The III.E and III.F HTML pages include the shared practice lab; the H5P packages contain the five guided book chapters. Keep the shared lab files with the published HTML.
 
 The builder also corrects the bundled InteractiveBook 1.11 `l10n.exitFullScreen` typo to `l10n.exitFullscreen`, so the exit button has a meaningful accessible name. This correction is applied to both standalone HTML and H5P library code.
+
+III.J Q1 follows the existing five-chapter guided-book format. It moves from predicting a combined count and listing keys, to a missing-key table, to safe dictionary lookup with a variable default, to planning a loop that builds a separate result, and finally to independent implementation and edge-case tests. `get(key, default)` is presented as one possible lookup tool, not as the prescribed full solution. The student-facing title avoids the instructor's “Dollar General” metaphor. No complete `add_counters()` implementation appears in the activity.
 
 ## Verification
 

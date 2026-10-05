@@ -51,6 +51,13 @@ PAGE_NOTES = {
         "Try the rule on input pairs with different relationships. Edge cases can reveal a plan that happened to work only for the first example.",
         "Use the examples and edge cases to explain your own plan in the notebook. Check the returned set by its members, because sets do not promise a display order.",
     ],
+    "III_J_Q1_Add_Counters": [
+        "Start with the function's promised result. Predicting one combined count gives you a target to explain before choosing Python operations.",
+        "Now account for every key in either input. A row for each key makes it easier to see which counts are present and which are missing.",
+        "Use the missing rows to examine dictionary lookup. A default value can supply a count for a missing key without adding that key to an input dictionary.",
+        "Once you know how to read a count, decide which keys your loop must visit and where the combined values belong. A plan should work when either input has a key the other lacks.",
+        "Test the plan against shared keys, missing keys, and empty inputs. Checking the new result and both original dictionaries covers the complete function contract.",
+    ],
 }
 
 QUESTION_CHANGES = {
