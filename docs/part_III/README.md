@@ -13,7 +13,9 @@ https://uga-ling2200.github.io/applets/part_III/
 
 The five-page activity follows the September 30 meeting guidance and the activity-plan row about initializing a new dictionary in a loop with a variable default count. Students predict a shared count, account for every key in a table, distinguish an absent key from a stored zero, try `get(key, default)` as one safe lookup option, complete an unfinished loop outline, and write their own function in the course notebook. The book does not display a complete solution. The instructor's “Dollar General” metaphor is kept out of student-facing copy.
 
-Regenerate the editable H5P, standalone HTML, and readable content JSON with `python3 -B utils/part_iii_ef/build.py --only III_J_Q1_Add_Counters`. The generated package and HTML were checked for identical chapter content, 12 scored questions with feedback, five page notes, and links from both activity indexes. Browser interaction and automated accessibility scans remain pending because the available browser blocked the local preview under its URL policy.
+Regenerate the editable H5P, standalone HTML, and readable content JSON with `python3 -B utils/part_iii_ef/build.py --only III_J_Q1_Add_Counters`. The generated package and HTML were checked for identical chapter content, 12 scored questions with feedback, five page notes, and links from both activity indexes.
+
+October 5 live checks: keyboard selection, Check, incorrect feedback, Retry, and page navigation worked. At 390 px the page and count table fit without horizontal document overflow. Axe-core 4.13.0 reported zero automatic WCAG/Best Practices violations in all five chapters at 1280 and 390 px, including first-page correct and incorrect feedback states; the Part III index also had zero. Axe could not automatically determine contrast for some H5P question headings, so their computed black text on a white surface was reviewed manually. The course index initially had one `region` finding because its university heading was outside a landmark; the heading is now wrapped in a top-level header. Automated scans do not establish complete WCAG compliance.
 
 ## Source and teaching design
 
