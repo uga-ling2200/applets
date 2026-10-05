@@ -212,7 +212,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>List the result keys</h3><p>Now look beyond the shared key. Which keys must appear in the new dictionary?</p>"
+                "question": "<h3>List the result keys</h3><p>You combined the counts for a shared key. Before adding any more values, which keys must appear in the new dictionary?</p>"
               },
               "subContentId": "a5f119c8-bc94-52ac-ac82-2abdf4e3dd59",
               "metadata": {
@@ -244,7 +244,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Make one row per key</h2><p class=\"part-iii-rationale\">Now account for every key in either input. A row for each key makes it easier to see which counts are present and which are missing.</p><p>Use the same dictionaries from page 1. Copy the table and fill each question mark before choosing an answer. Write <em>missing</em> when a key has no entry in that input; do not assume the missing entry is stored as a zero.</p><table><caption>Counts to combine from the two inputs</caption><thead><tr><th scope=\"col\">Key</th><th scope=\"col\"><code>counter1</code></th><th scope=\"col\"><code>counter2</code></th><th scope=\"col\">Result</th></tr></thead><tbody><tr><th scope=\"row\"><code>\"a\"</code></th><td>2</td><td>1</td><td>?</td></tr><tr><th scope=\"row\"><code>\"b\"</code></th><td>1</td><td>2</td><td>?</td></tr><tr><th scope=\"row\"><code>\"c\"</code></th><td>3</td><td>missing</td><td>?</td></tr><tr><th scope=\"row\"><code>\"d\"</code></th><td>missing</td><td>3</td><td>?</td></tr></tbody></table><p>Discuss how a missing count should affect addition while keeping the key in the result.</p>"
+                "text": "<h2>Make one row per key</h2><p class=\"part-iii-rationale\">Now account for every key in either input. A row for each key makes it easier to see which counts are present and which are missing.</p><p>On page 1 you found the keys needed in the result. Now use those same dictionaries to work out a count for every key. Copy the table and fill each question mark before choosing an answer. Write <em>missing</em> when a key has no entry in that input; do not assume the missing entry is stored as a zero.</p><table><caption>Counts to combine from the two inputs</caption><thead><tr><th scope=\"col\">Key</th><th scope=\"col\"><code>counter1</code></th><th scope=\"col\"><code>counter2</code></th><th scope=\"col\">Result</th></tr></thead><tbody><tr><th scope=\"row\"><code>\"a\"</code></th><td>2</td><td>1</td><td>?</td></tr><tr><th scope=\"row\"><code>\"b\"</code></th><td>1</td><td>2</td><td>?</td></tr><tr><th scope=\"row\"><code>\"c\"</code></th><td>3</td><td>missing</td><td>?</td></tr><tr><th scope=\"row\"><code>\"d\"</code></th><td>missing</td><td>3</td><td>?</td></tr></tbody></table><p>Discuss how a missing count should affect addition while keeping the key in the result.</p>"
               },
               "subContentId": "fb469407-10b1-5705-a9d1-8e6ae16069bf",
               "metadata": {
@@ -344,7 +344,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Combine a key found once</h3><p><code>\"c\"</code> occurs only in <code>counter1</code>, with count 3. What count belongs under <code>\"c\"</code> in the result?</p>"
+                "question": "<h3>Combine a key found once</h3><p>The table includes keys found in only one input. <code>\"c\"</code> occurs only in <code>counter1</code>, with count 3. What count belongs under <code>\"c\"</code> in the result?</p>"
               },
               "subContentId": "fde4bc4c-90a5-5672-a7e9-7dbac58c9661",
               "metadata": {
@@ -444,7 +444,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Separate missing from stored zero</h3><p>Suppose <code>counter1 = {\"x\": 0}</code> and <code>counter2 = {}</code>. Which statement describes the inputs accurately?</p>"
+                "question": "<h3>Separate missing from stored zero</h3><p>For <code>\"c\"</code>, you treated a missing count as contributing nothing. Now compare that with a stored zero: suppose <code>counter1 = {\"x\": 0}</code> and <code>counter2 = {}</code>. Which statement describes the inputs accurately?</p>"
               },
               "subContentId": "63b4c3fe-bb3f-565d-be76-92e628a95f47",
               "metadata": {
@@ -476,7 +476,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Try a default for a missing key</h2><p class=\"part-iii-rationale\">Use the missing rows to examine dictionary lookup. A default value can supply a count for a missing key without adding that key to an input dictionary.</p><p>A direct lookup such as <code>counter2[\"c\"]</code> fails when <code>\"c\"</code> is absent. A dictionary also has <code>get(key, default)</code>: it returns the stored value when the key exists, and the supplied default when it does not. For this activity, consider <code>missing_count = 0</code>. Predict each expression below before checking. This is one possible lookup tool, not a required complete solution.</p>"
+                "text": "<h2>Try a default for a missing key</h2><p class=\"part-iii-rationale\">Use the missing rows to examine dictionary lookup. A default value can supply a count for a missing key without adding that key to an input dictionary.</p><p>On page 2, an absent key and a stored zero were different cases. To combine their counts safely, consider how to read a key that may be absent. A direct lookup such as <code>counter2[\"c\"]</code> fails when <code>\"c\"</code> is absent. A dictionary also has <code>get(key, default)</code>: it returns the stored value when the key exists, and the supplied default when it does not. For this activity, consider <code>missing_count = 0</code>. Predict each expression below before checking. This is one possible lookup tool, not a required complete solution.</p>"
               },
               "subContentId": "516fc4f6-8119-5df9-b3a3-459afa63cfde",
               "metadata": {
@@ -576,7 +576,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Read an absent key</h3><p>With <code>counter2 = {\"a\": 1, \"b\": 2, \"d\": 3}</code> and <code>missing_count = 0</code>, what does <code>counter2.get(\"c\", missing_count)</code> return?</p>"
+                "question": "<h3>Read an absent key</h3><p>Return to the missing <code>\"c\"</code> row from page 2. With <code>counter2 = {\"a\": 1, \"b\": 2, \"d\": 3}</code> and <code>missing_count = 0</code>, what does <code>counter2.get(\"c\", missing_count)</code> return?</p>"
               },
               "subContentId": "27550463-8cf4-5d18-b01c-88b607c5f8ed",
               "metadata": {
@@ -676,7 +676,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Read a stored value</h3><p>With the same dictionary, what does <code>counter2.get(\"a\", missing_count)</code> return?</p>"
+                "question": "<h3>Read a stored value</h3><p>You checked what <code>get</code> does when <code>\"c\"</code> is absent. With the same dictionary, what does <code>counter2.get(\"a\", missing_count)</code> return when the key is present?</p>"
               },
               "subContentId": "1272869e-914c-570d-b2f6-e13875dcef08",
               "metadata": {
@@ -776,7 +776,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check for a side effect</h3><p>After evaluating <code>counter2.get(\"c\", missing_count)</code>, what happens to <code>counter2</code>?</p>"
+                "question": "<h3>Check for a side effect</h3><p>You have compared absent and present keys. After evaluating <code>counter2.get(\"c\", missing_count)</code>, what happens to <code>counter2</code>?</p>"
               },
               "subContentId": "86d72bdf-f04e-5846-ad59-46aaaaf14195",
               "metadata": {
@@ -808,7 +808,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Choose keys, then fill values</h2><p class=\"part-iii-rationale\">Once you know how to read a count, decide which keys your loop must visit and where the combined values belong. A plan should work when either input has a key the other lacks.</p><p>Make a short plan on paper. First choose which keys the loop must visit so no input key is missed. Then decide where each combined count will be stored. You may use <code>get</code> or another safe lookup plan. Keep the inputs unchanged and build a separate result dictionary.</p><p>Use this unfinished outline to mark the two decisions, without filling them in yet:</p><pre><code>result = {}\nmissing_count = 0\nfor key in ______:\n    result[key] = ______</code></pre><p>Trace your plan with <code>counter1 = {\"a\": 2, \"c\": 3}</code> and <code>counter2 = {\"a\": 1, \"d\": 3}</code>. Show the result after visiting each key. Your plan should not depend on a particular dictionary display order.</p>"
+                "text": "<h2>Choose keys, then fill values</h2><p class=\"part-iii-rationale\">Once you know how to read a count, decide which keys your loop must visit and where the combined values belong. A plan should work when either input has a key the other lacks.</p><p>The safe lookup on page 3 supplies counts without changing an input. Now make a short plan on paper. First choose which keys the loop must visit so no input key is missed. Then decide where each combined count will be stored. You may use <code>get</code> or another safe lookup plan. Keep the inputs unchanged and build a separate result dictionary.</p><p>Use this unfinished outline to mark the two decisions, without filling them in yet:</p><pre><code>result = {}\nmissing_count = 0\nfor key in ______:\n    result[key] = ______</code></pre><p>Trace your plan with <code>counter1 = {\"a\": 2, \"c\": 3}</code> and <code>counter2 = {\"a\": 1, \"d\": 3}</code>. Show the result after visiting each key. Your plan should not depend on a particular dictionary display order.</p>"
               },
               "subContentId": "4ad859c0-109c-5c82-bf6c-19c4617f9b6d",
               "metadata": {
@@ -908,7 +908,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Choose a complete set of keys</h3><p>Which loop plan can visit every key needed by the result, including <code>\"d\"</code> in the second input?</p>"
+                "question": "<h3>Choose a complete set of keys</h3><p>Use the key list you made on page 1 to fill the first blank in the outline. Which loop plan can visit every needed key, including <code>\"d\"</code> in the second input?</p>"
               },
               "subContentId": "df9a04d7-6151-51bd-9e54-c9ed2340bcc5",
               "metadata": {
@@ -1008,7 +1008,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Place the combined count</h3><p>When your loop reaches a key, which action matches the requirement to return a new dictionary?</p>"
+                "question": "<h3>Place the combined count</h3><p>After choosing which keys to visit, consider the second blank in the outline. When your loop reaches a key, which action matches the requirement to return a new dictionary?</p>"
               },
               "subContentId": "dcc522ba-563a-5808-b312-1852c5cc6b44",
               "metadata": {
@@ -1108,7 +1108,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Trace an unshared key</h3><p>In the page 4 trace, <code>\"d\"</code> appears only in <code>counter2</code> with count 3. What should your plan place in the result under <code>\"d\"</code>?</p>"
+                "question": "<h3>Trace an unshared key</h3><p>Apply your key choice and storage decision to the page 4 trace. <code>\"d\"</code> appears only in <code>counter2</code> with count 3. What should your plan place in the result under <code>\"d\"</code>?</p>"
               },
               "subContentId": "0df152a5-d2e1-56f3-9d2d-1cb5de19a178",
               "metadata": {
@@ -1140,7 +1140,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>Return to III.J Q1</h2><p class=\"part-iii-rationale\">Test the plan against shared keys, missing keys, and empty inputs. Checking the new result and both original dictionaries covers the complete function contract.</p><p>Explain your key plan and safe count lookup to your partner. Then write your own <code>add_counters(counter1, counter2)</code> function in the course notebook. Return the new dictionary; printing it alone does not meet the task.</p><h3>Make a test table</h3><ul><li>The notebook example: <code>{\"a\": 2, \"b\": 1, \"c\": 3}</code> and <code>{\"a\": 1, \"b\": 2, \"d\": 3}</code>.</li><li>Shared keys with different counts: <code>{\"x\": 2}</code> and <code>{\"x\": 5}</code>.</li><li>A stored zero: <code>{\"x\": 0}</code> and <code>{}</code>.</li><li>One empty input and then two empty inputs.</li></ul><p>Predict each dictionary before running your function. Afterwards, compare the returned value with the prediction and check that neither input changed. For a nonempty input, check that the returned dictionary is a separate object.</p><h3>Discuss</h3><ol><li>Why can looping over only one input miss a result key?</li><li>How do you distinguish a missing key from a key with a stored zero?</li><li>What evidence shows that your function returned a new dictionary?</li></ol>"
+                "text": "<h2>Return to III.J Q1</h2><p class=\"part-iii-rationale\">Test the plan against shared keys, missing keys, and empty inputs. Checking the new result and both original dictionaries covers the complete function contract.</p><p>Use the loop plan you traced on page 4 and the safe lookup you examined on page 3. Explain both decisions to your partner. Then write your own <code>add_counters(counter1, counter2)</code> function in the course notebook. Return the new dictionary; printing it alone does not meet the task.</p><h3>Make a test table</h3><ul><li>The notebook example: <code>{\"a\": 2, \"b\": 1, \"c\": 3}</code> and <code>{\"a\": 1, \"b\": 2, \"d\": 3}</code>.</li><li>Shared keys with different counts: <code>{\"x\": 2}</code> and <code>{\"x\": 5}</code>.</li><li>A stored zero: <code>{\"x\": 0}</code> and <code>{}</code>.</li><li>One empty input and then two empty inputs.</li></ul><p>Predict each dictionary before running your function. Afterwards, compare the returned value with the prediction and check that neither input changed. For a nonempty input, check that the returned dictionary is a separate object.</p><h3>Discuss</h3><ol><li>Why can looping over only one input miss a result key?</li><li>How do you distinguish a missing key from a key with a stored zero?</li><li>What evidence shows that your function returned a new dictionary?</li></ol>"
               },
               "subContentId": "e0e1110d-e547-5478-8059-e84210c0a2da",
               "metadata": {
@@ -1240,7 +1240,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check empty inputs</h3><p>What should <code>add_counters({}, {})</code> return?</p>"
+                "question": "<h3>Check empty inputs</h3><p>Your trace used nonempty inputs. Now test the smallest case: what should <code>add_counters({}, {})</code> return?</p>"
               },
               "subContentId": "85c94960-c0d2-5d76-9d29-68137d4fd9da",
               "metadata": {
@@ -1340,7 +1340,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Check the complete contract</h3><p>Suppose <code>counter1 = {\"x\": 2}</code> and <code>counter2 = {\"x\": 5}</code>. Which observation best supports that your function met the task?</p>"
+                "question": "<h3>Check the complete contract</h3><p>The empty case checked the return type. Now check the full contract with nonempty inputs: suppose <code>counter1 = {\"x\": 2}</code> and <code>counter2 = {\"x\": 5}</code>. Which observation best supports that your function met the task?</p>"
               },
               "subContentId": "89dce677-8abd-59bd-bae7-1f862aeaca5b",
               "metadata": {
