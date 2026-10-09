@@ -50,3 +50,10 @@ III.J Q1 follows the existing five-chapter guided-book format. It moves from pre
 - Keyboard activation, previous/next pages, menu and section navigation, fullscreen enter/exit; 390px layout checked without page overflow. The mobile chapter label no longer overlaps the page counter.
 - Paid axe DevTools Pro, axe-core 4.13.0, WCAG 2.1 AA, Best Practices and advanced rules enabled: all ten chapters scanned before/after answers, plus lab/error/mobile/fullscreen states. Real focus issues were fixed and rescanned. Final tested states returned Total Issues: 0, without ignored issues or disabled rules.
 - Advanced AI occasionally classified ordinary answer/list text as headings; semantic markup and font weight were inspected. Focus scans were repeated from a neutral page focus to avoid comparing an already-focused control with itself. These findings and subsequent results are retained in the local audit history. Automatic scans are supplemented by the interaction/keyboard checks above; they are not a WCAG certification.
+
+
+## October 7 meeting wording revision
+
+III.J Q1 now explicitly introduces lookup as accessing the value associated with a key. It explains why an absent key raises `KeyError`, why zero is the fallback contribution when adding counts, and why `get(key, default)` does not insert the missing key. The builder, readable content JSON, standalone HTML and editable H5P package are kept in sync. III.G Q2 has no new teaching change from this meeting and remains unchanged.
+
+Local verification on October 9, 2026: axe-core 4.10.3 with WCAG 2.1 A/AA and best-practice tags scanned all five chapters of each activity before and after answer feedback, plus 320 px layout and keyboard previous-page navigation. There were zero automatic violations. Some contrast checks require manual review because axe treats transparent H5P containers as overlapping; black headings on white and white button text on course red were reviewed separately. This is targeted automatic/keyboard/layout evidence, not full screen-reader certification. The detailed scan records are retained with the revision deliverables.
