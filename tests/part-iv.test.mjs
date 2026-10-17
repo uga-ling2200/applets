@@ -41,3 +41,19 @@ test("next followed by loop consumes each remaining line exactly once", () => {
   assert.ok(!t.some((s) => s.error));
   assert.deepEqual(fileTrace("a\nb\nc", 0, "skip").at(-1).output, ["b"]);
 });
+
+test("trace retains Python variables across reads and preserves the exception at close", () => {
+  const t = fileTrace(" a \nb\n", 3);
+  const loop = t.find(s => s.action === "Loop iteration 1");
+  assert.equal(loop.line, "a");
+  assert.equal(loop.i, 1);
+  const secondRead = t.find(s => s.returned === "b\n");
+  assert.equal(secondRead.line, "a", "assignment awaits strip in next(...).strip()");
+  assert.equal(secondRead.i, 1);
+  assert.equal(t.at(-1).line, "b");
+  assert.equal(t.at(-1).i, 2);
+  assert.equal(t.at(-1).exception, "StopIteration");
+  assert.equal(t.filter(s=>s.error).length, 1);
+  const skip=fileTrace("a\n b \n", 0, "skip");
+  assert.equal(skip.find(s=>s.action === "Print the second returned line").line, " b \n");
+});

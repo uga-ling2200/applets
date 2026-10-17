@@ -1,4 +1,4 @@
-import { fileLines, fileTrace } from "./core.mjs";
+import { fileLines, fileTrace } from "./core.mjs?v=20261017-state";
 const $ = (id) => document.getElementById(id);
 let steps = [],
   at = 0,
@@ -36,8 +36,12 @@ function render() {
   $("variables").textContent =
     `File: ${s.closed ? "closed" : "open"}. Consumed: ${s.position}/${lines.length}. ` +
     (s.line !== null ? `line = ${JSON.stringify(s.line)}. ` : "") +
-    (s.i !== undefined ? `i = ${s.i}.` : "");
+    (s.i !== undefined ? `i = ${s.i}. ` : "") +
+    (s.returned !== undefined ? `Last next() = ${JSON.stringify(s.returned)}. ` : "") +
+    (s.exception ? `Exception: ${s.exception}.` : "");
   $("output").textContent = s.output.join("\n") + (s.output.length ? "\n" : "");
+  $("prediction-comparison").textContent = s.closed && $("prediction").value.trim()
+    ? "Your prediction: " + $("prediction").value.trim() : "";
   $("status").textContent = `Step ${at + 1}/${steps.length}: ${s.action}`;
   $("error").textContent = s.error
     ? "StopIteration. The requested line does not exist. The with statement will still close the file."
@@ -76,3 +80,5 @@ for (const id of ["filetext", "n", "program"])
     $("status").textContent = "Inputs changed. Reopen the file to start again.";
   });
 prepare();
+
+$("prediction").addEventListener("input", render);
