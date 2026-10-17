@@ -6,7 +6,7 @@ The two buildless activities follow the course notebook exercises IV.A Q2 and IV
 
 `IV_A_Q2_Keyword_Arguments.html` follows `extract_and_filter_words(string, words_to_include=None)` from the reference solution. Omitted, empty and nonempty sets are separate call modes. In the reference, both None and an empty set lead to no filtering; repeated words and their original order are preserved. The helper lowercases and strips word-external punctuation using the same specified punctuation set as the reference.
 
-The exercise wording could imply that explicitly supplying an empty set should return no matches. The activity explicitly teaches the reference implementation's behavior and asks students to discuss the alternative. Confirm this content decision with the instructor before classroom publication.
+The exercise wording could imply that explicitly supplying an empty set should return no matches. The activity explicitly teaches the reference implementation's behavior and asks students to discuss the alternative. This version follows the reference solution and records the wording discrepancy for instructor review.
 
 ## Text files
 
