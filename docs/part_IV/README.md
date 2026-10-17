@@ -1,6 +1,6 @@
 # Part IV interactive simulations
 
-The two buildless activities follow the course notebook exercises IV.A Q2 and IV.C Q1. They run explicit simulations of the displayed Python, not arbitrary student code. The main catalog links to both pages.
+The two buildless activities follow the course notebook exercises IV.A Q2 and IV.C Q1. They run explicit simulations of the course operations, not arbitrary student code. Students compare predictions and traces before writing their own notebook functions; no complete notebook function solution is displayed. The main catalog links to both pages.
 
 ## Keyword arguments
 

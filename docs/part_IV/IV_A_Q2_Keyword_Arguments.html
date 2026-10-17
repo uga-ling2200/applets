@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../style.css?v=20261017-review" />
     <link rel="stylesheet" href="lab.css?v=20261017-review" />
     <link rel="stylesheet" href="../feedback-card.css" />
-    <script type="module" src="kwargs.mjs?v=20261017-state2"></script>
+    <script type="module" src="kwargs.mjs?v=20261017-teaching"></script>
     <script src="../reflection-notes.js?v=20261017-review" defer></script>
   </head>
   <body class="iv-lab">
@@ -39,11 +39,11 @@
           </li>
         </ul>
         <h4 class="uga-accent">Background</h4>
-        <p>An optional set controls which words the function keeps.</p>
+        <p>Comparing calls reveals which changes affect the returned words.</p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>
-          <li>Predict the result, then prepare the call.</li>
-          <li>Step through the words. Change the filter and compare.</li>
+          <li>With a partner, predict the result and explain why.</li>
+          <li>Trace the words, then change the filter and swap roles.</li>
         </ol>
       </section>
       <section class="app-wrapper" aria-labelledby="applet-title">
@@ -107,8 +107,9 @@ John, where Mary had had had, had had had had.</textarea
         <pre id="result" class="lab-code" aria-live="off"></pre>
             <p id="prediction-comparison" class="field-hint" role="status"></p>
         <details class="glossary-box">
-          <summary>Compare with the notebook implementation</summary>
-          <pre class="lab-code" id="code"></pre>
+          <summary>Build your function in IV.A Q2</summary>
+          <p>Which argument needs a default? What rule decides whether to keep a word?</p>
+          <p>Use your traces to write and test your own function in the course notebook.</p>
           <p>
             The course reference treats an empty set as “no filter”. The default
             value is None; an empty set is created inside the function. Keyword
