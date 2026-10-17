@@ -81,10 +81,12 @@ for (const id of ["sentence", "filter", "mode", "order"])
   $(id).addEventListener("input", () => {
     prepared = false;
     $("filter").disabled = $("mode").value !== "provided";
+    $("order").disabled = $("mode").value === "omitted";
     $("status").textContent = "Inputs changed. Prepare a new call.";
     render();
   });
 $("filter").disabled = true;
+$("order").disabled = true;
 prepare();
 
 $("prediction").addEventListener("input", render);

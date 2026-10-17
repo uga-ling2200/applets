@@ -50,8 +50,9 @@ function render() {
   $("run").disabled = !ready || at === steps.length - 1;
 }
 function prepare() {
-  const n = Number($("n").value);
-  if (!$("n").value.trim() || !Number.isInteger(n) || n < 0 || n > 100) {
+  const isHead = $("program").value === "head";
+  const n = isHead ? Number($("n").value) : 0;
+  if (isHead && (!$("n").value.trim() || !Number.isInteger(n) || n < 0 || n > 100)) {
     $("error").textContent = "Choose an integer n from 0 to 100.";
     return;
   }
@@ -74,6 +75,7 @@ $("run").onclick = () => {
 };
 for (const id of ["filetext", "n", "program"])
   $(id).addEventListener("input", () => {
+    $("n").disabled = $("program").value !== "head";
     ready = false;
     $("step").disabled = true;
     $("run").disabled = true;
