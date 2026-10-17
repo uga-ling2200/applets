@@ -68,7 +68,7 @@ $("prepare").onclick = prepare;
 $("step").onclick = () => {
   cursor++;
   render();
-  $("status").textContent = `Processed ${cursor} of ${rows.length} words.`;
+  $("status").textContent = `${rows[cursor - 1].word}: ${rows[cursor - 1].keep ? "kept" : "excluded"}. ${cursor} of ${rows.length} words processed.`;
 };
 $("run").onclick = () => {
   cursor = rows.length;
