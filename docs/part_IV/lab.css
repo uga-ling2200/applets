@@ -1,0 +1,158 @@
+/* Shared controls for the two Part IV simulations; existing course shell stays in style.css. */
+.iv-lab .app-wrapper {
+  font-family: "Merriweather Sans", sans-serif;
+}
+.iv-lab .hero-text h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+}
+.iv-lab .hero-text h2 span {
+  color: var(--uga-red);
+}
+.iv-lab .field {
+  margin-block: 16px;
+}
+.iv-lab .field label {
+  display: block;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.iv-lab .field input,
+.iv-lab .field select,
+.iv-lab .field textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  padding: 10px;
+  font:
+    15px "Merriweather Sans",
+    sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+}
+.iv-lab .field textarea {
+  resize: vertical;
+}
+.iv-lab .btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 16px;
+}
+.iv-lab .btn-row button,
+.iv-lab .btn-uga,
+.iv-lab .btn-uga-outline,
+.iv-lab .btn-uga-dark {
+  min-height: 44px;
+  font:
+    700 14px "Merriweather Sans",
+    sans-serif;
+}
+.iv-lab .field-hint {
+  font:
+    14px/1.6 "Merriweather Sans",
+    sans-serif;
+  color: #555;
+}
+.iv-lab .error-text {
+  font:
+    15px "Merriweather Sans",
+    sans-serif;
+  color: #a00020;
+}
+.iv-lab .uga-accent {
+  color: var(--uga-red);
+  font-weight: 700;
+}
+.iv-lab .glossary-box {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-block: 20px;
+}
+.iv-lab .glossary-box summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.iv-lab .lab-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.iv-lab .lab-grid > * {
+  min-width: 0;
+}
+.iv-lab .lab-code {
+  padding: 16px;
+  background: #f4f4f4;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font:
+    14px/1.7 "IBM Plex Mono",
+    monospace;
+  min-height: 60px;
+}
+.iv-lab .token-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.iv-lab .token-list li {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+}
+.iv-lab .kept {
+  background: #e4f2ec;
+}
+.iv-lab .excluded {
+  background: #f6e6e6;
+}
+.iv-lab .file-lines {
+  padding-left: 40px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.iv-lab .file-lines li {
+  padding: 7px;
+}
+.iv-lab .consumed {
+  color: #555;
+  background: #eee;
+}
+.iv-lab .next-line {
+  outline: 2px solid #004e60;
+  background: #e3f6f7;
+}
+.iv-lab .skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.iv-lab .skip-link:focus {
+  left: 20px;
+  top: 5px;
+  background: #fff;
+  color: #000;
+  padding: 12px;
+  z-index: 1000;
+}
+.iv-lab :focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .iv-lab .lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .iv-lab .lesson-container,
+  .iv-lab .reflection-container {
+    padding: 20px;
+  }
+}

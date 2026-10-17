@@ -1,0 +1,43 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {
+  extractWords,
+  filterTrace,
+  fileLines,
+  fileTrace,
+} from "../docs/part_IV/core.mjs";
+test("filter reference preserves repetitions and treats absent and empty sets as no filter", () => {
+  const s = "John, where Mary had had had, had had had had.";
+  assert.equal(
+    filterTrace(s, "provided", "had").filter((x) => x.keep).length,
+    7,
+  );
+  assert.ok(filterTrace(s, "omitted", "had").every((x) => x.keep));
+  assert.ok(filterTrace(s, "empty", "had").every((x) => x.keep));
+  assert.deepEqual(extractWords(" A  (cat)! "), ["a", "cat"]);
+});
+test("file line count follows Python iteration for terminal newline and blank lines", () => {
+  assert.deepEqual(fileLines(""), []);
+  assert.deepEqual(fileLines("a\n"), ["a\n"]);
+  assert.deepEqual(fileLines("a\n\n"), ["a\n", "\n"]);
+  assert.deepEqual(fileLines("\n"), ["\n"]);
+  assert.deepEqual(fileLines("a\r\nb"), ["a\n", "b"]);
+});
+test("head prints n lines including blanks, zero opens and closes without output", () => {
+  let t = fileTrace("a\n\nb\n", 2);
+  assert.deepEqual(t.at(-1).output, ["a", ""]);
+  assert.equal(t.at(-1).closed, true);
+  assert.deepEqual(fileTrace("a", 0).at(-1).output, []);
+});
+test("exhaustion raises StopIteration and with closes even after exception", () => {
+  const t = fileTrace("a\n", 2);
+  assert.equal(t.filter((x) => x.error).length, 1);
+  assert.deepEqual(t.at(-1).output, ["a"]);
+  assert.equal(t.at(-1).closed, true);
+});
+test("next followed by loop consumes each remaining line exactly once", () => {
+  const t = fileTrace("a\nb\nc", 0, "loop");
+  assert.deepEqual(t.at(-1).output, ["a", "b", "c"]);
+  assert.ok(!t.some((s) => s.error));
+  assert.deepEqual(fileTrace("a\nb\nc", 0, "skip").at(-1).output, ["b"]);
+});

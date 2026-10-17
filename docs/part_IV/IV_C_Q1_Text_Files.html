@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IV.C Text Files I, Q1: Reading with next()</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,800;1,400&family=Merriweather+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="lab.css" />
+    <link rel="stylesheet" href="../feedback-card.css" />
+    <script type="module" src="files.mjs"></script>
+    <script src="../reflection-notes.js" defer></script>
+  </head>
+  <body class="iv-lab">
+    <a class="skip-link" href="#main">Skip to activity</a>
+    <header class="page-header">
+      <h1><a href="https://linguistics.uga.edu/">University of Georgia</a></h1>
+      <h2><a href="../index.html">Quantitative Linguistics Webapps</a></h2>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="lesson-container" aria-labelledby="activity-title">
+        <h3 id="activity-title" class="h3 mb-4">
+          IV.C Text Files I, Q1: Reading with next()
+        </h3>
+        <h4 class="uga-accent">Learning Objectives</h4>
+        <ul>
+          <li><strong>Trace</strong> next() through a text file.</li>
+          <li><strong>Predict</strong> what head(filepath, n) prints.</li>
+        </ul>
+        <h4 class="uga-accent">Background</h4>
+        <p>
+          Each next() consumes one line. A for loop continues from that
+          position.
+        </p>
+        <h4 class="uga-accent">Instructions</h4>
+        <ol>
+          <li>Predict the output, then open the file.</li>
+          <li>Step through. Change n or the program and compare.</li>
+        </ol>
+      </section>
+      <section class="app-wrapper" aria-labelledby="applet-title">
+        <div class="hero">
+          <div class="hero-text">
+            <h2 id="applet-title">Read <span>the next line</span></h2>
+            <p>See the file position advance with each read.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="filetext">Text file contents (blank lines count)</label
+          ><textarea id="filetext" rows="6" maxlength="4000">
+First line
+
+Third line
+Fourth line
+</textarea
+          >
+        </div>
+        <div class="lab-grid">
+          <div class="field">
+            <label for="n">Number of lines n</label
+            ><input id="n" type="number" min="0" max="100" value="3" />
+          </div>
+          <div class="field">
+            <label for="program">Program</label
+            ><select id="program">
+              <option value="head">head(filepath, n)</option>
+              <option value="skip">Skip one line, then read one</option>
+              <option value="loop">
+                Read one line, then loop over the rest
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="prediction">Predict the printed lines</label
+          ><textarea id="prediction" rows="2" maxlength="4000"></textarea>
+        </div>
+        <div class="btn-row">
+          <button id="prepare" type="button" class="btn-uga">
+            Open file / restart</button
+          ><button id="step" type="button" class="btn-uga-outline">
+            Execute next step</button
+          ><button id="run" type="button" class="btn-uga-dark">
+            Run to end
+          </button>
+        </div>
+        <p id="status" class="field-hint" role="status" aria-live="polite"></p>
+        <p id="error" class="error-text" role="alert"></p>
+        <div class="lab-grid">
+          <section aria-labelledby="file-title">
+            <h3 id="file-title" class="h5">File and next unread line</h3>
+            <ol id="lines" class="file-lines"></ol>
+          </section>
+          <section aria-labelledby="execution-title">
+            <h3 id="execution-title" class="h5">Execution</h3>
+            <pre id="code" class="lab-code"></pre>
+            <p id="variables"></p>
+            <h4>Printed output</h4>
+            <pre id="output" class="lab-code"></pre>
+          </section>
+        </div>
+        <p class="field-hint">
+          Simulates the shown Python. Blank lines count; strip() removes
+          surrounding whitespace.
+        </p>
+      </section>
+      <section class="reflection-container" aria-labelledby="reflection-title">
+        <h3 id="reflection-title" class="uga-accent mb-3">
+          Reflection &amp; Discussion Guide
+        </h3>
+        <ol>
+          <li>Does a blank line count toward n?</li>
+          <li>What happens after the last line?</li>
+          <li>Where does a loop begin after one next()?</li>
+        </ol>
+        <div class="reflection-notes field">
+          <label for="reflection">Write down your thoughts</label
+          ><textarea id="reflection" rows="5" maxlength="4000"></textarea>
+          <div class="btn-row">
+            <button class="btn-uga" type="button" data-download-notes>
+              Download my notes</button
+            ><span class="field-hint" role="status" data-download-status></span>
+          </div>
+          <p class="field-hint">
+            Your notes stay in this browser and are not submitted to your
+            instructor. Download them before you close this page.
+          </p>
+        </div>
+      </section>
+    </main>
+    <section
+      class="applet-feedback-card"
+      aria-labelledby="applet-feedback-heading"
+    >
+      <div class="applet-feedback-card__content">
+        <div>
+          <h2 id="applet-feedback-heading">Help us improve this applet</h2>
+          <a
+            class="applet-feedback-card__tutorial"
+            href="https://kaltura.uga.edu/media/t/1_bhor4qfq"
+            target="_blank"
+            rel="noopener noreferrer"
+            >New to GitHub? Watch the one-minute account setup guide
+            <span class="visually-hidden">(opens in a new tab)</span></a
+          >
+        </div>
+        <a
+          class="applet-feedback-card__button"
+          href="https://github.com/uga-ling2200/applets/issues/new?template=applet-feedback.yml&amp;title=%5BApplet%20feedback%5D%20IV.C%20Text%20Files%20I%2C%20Q1%3A%20Reading%20with%20next%28%29&amp;applet=IV.C%20Text%20Files%20I%2C%20Q1%3A%20Reading%20with%20next%28%29&amp;source-url=https%3A%2F%2Fuga-ling2200.github.io%2Fapplets%2Fpart_IV%2FIV_C_Q1_Text_Files.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Report a problem or give feedback
+          <span class="visually-hidden">(opens in a new tab)</span></a
+        >
+      </div>
+    </section>
+  </body>
+</html>
