@@ -35,23 +35,19 @@ export function fileTrace(text, n, program = "head") {
       },
     ];
   let pos = 0,
-    out = [];
-  const add = (action, extra = {}) =>
-    steps.push({
-      action,
-      position: pos,
-      output: [...out],
-      line: null,
-      closed: false,
-      ...extra,
-    });
+    out = [],
+    state = {line: null};
+  const add = (action, extra = {}) => {
+    state = {...state, ...extra};
+    steps.push({action, position: pos, output: [...out], closed: false, ...state, error: extra.error || false});
+  };
   const read = () => {
     if (pos >= lines.length) {
-      add("StopIteration: no unread line remains", { error: true });
+      add("StopIteration: no unread line remains", { error: true, exception: "StopIteration" });
       return null;
     }
     const raw = lines[pos++];
-    add("next(in_file) returns " + JSON.stringify(raw), { line: raw });
+    add("next(in_file) returns " + JSON.stringify(raw), { returned: raw });
     return raw;
   };
   if (program === "head") {
@@ -70,6 +66,7 @@ export function fileTrace(text, n, program = "head") {
       add("Discard the first returned line");
       const second = read();
       if (second !== null) {
+        add("Assign the second returned line", {line: second});
         out.push(second.trim());
         add("Print the second returned line");
       }

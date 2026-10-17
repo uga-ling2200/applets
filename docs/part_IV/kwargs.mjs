@@ -1,4 +1,4 @@
-import { filterTrace } from "./core.mjs";
+import { filterTrace } from "./core.mjs?v=20261017-state";
 const $ = (id) => document.getElementById(id);
 let rows = [],
   cursor = 0,
@@ -30,6 +30,8 @@ function render() {
     if (i < cursor && r.keep) result.push(r.word);
   });
   $("result").textContent = repr(result);
+  $("prediction-comparison").textContent = cursor === rows.length && $("prediction").value.trim()
+    ? "Your prediction: " + $("prediction").value.trim() : "";
   $("step").disabled = !prepared || cursor >= rows.length;
   $("run").disabled = !prepared || cursor >= rows.length;
 }
@@ -84,3 +86,5 @@ for (const id of ["sentence", "filter", "mode", "order"])
   });
 $("filter").disabled = true;
 prepare();
+
+$("prediction").addEventListener("input", render);
