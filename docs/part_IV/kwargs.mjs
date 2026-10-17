@@ -3,19 +3,6 @@ const $ = (id) => document.getElementById(id);
 let rows = [],
   cursor = 0,
   prepared = false;
-const code = `def extract_and_filter_words(string, words_to_include=None):
-    if words_to_include is None:
-        words_to_include = set()
-    words = extract_words(string)
-    if words_to_include:
-        filtered_words = []
-        for word in words:
-            if word in words_to_include:
-                filtered_words.append(word)
-    else:
-        filtered_words = words
-    return filtered_words`;
-$("code").textContent = code;
 const repr = (values) => "[" + values.map(JSON.stringify).join(", ") + "]";
 function render() {
   const result = [];

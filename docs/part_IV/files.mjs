@@ -5,11 +5,10 @@ let steps = [],
   lines = [],
   ready = false;
 const codes = {
-  head: `def head(filepath, n):
-    with open(filepath, encoding="utf-8") as in_file:
-        for i in range(n):
-            line = next(in_file).strip()
-            print(line)`,
+  head: `# Operations to investigate, not a function solution
+next(in_file)
+returned_text.strip()
+print(line)`,
   skip: `with open(filepath, encoding="utf-8") as in_file:
     next(in_file)  # consume, discard
     line = next(in_file)
