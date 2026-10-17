@@ -17,7 +17,7 @@
       document.querySelectorAll(".reflection-container > ol > li"),
       function (li, i) { return (i + 1) + ". " + li.textContent.replace(/\s+/g, " ").trim(); }
     );
-    var text = "LING2150: " + title + "\n\n" +
+    var text = "LING2200: " + title + "\n\n" +
       "Reflection & Discussion Guide\n" + questions.join("\n") + "\n\n" +
       "My notes\n" + textarea.value + "\n";
     var code = (title.match(/Activity\s+(\w+)/i) || [])[1] ||
@@ -25,7 +25,7 @@
     var url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
     var link = document.createElement("a");
     link.href = url;
-    link.download = "LING2150-" + code + "-notes.txt";
+    link.download = "LING2200-" + code + "-notes.txt";
     document.body.appendChild(link);
     link.click();
     link.remove();
