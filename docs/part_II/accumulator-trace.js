@@ -27,6 +27,8 @@
     const response = await fetch('accumulator-' + mode + '.json');
     if (!response.ok) throw Error('Trace unavailable');
     trace = await response.json();
+    // Match the original Python Tutor embed, which opened the even trace at curInstr=40.
+    index = mode === 'even' ? Math.min(40, trace.steps.length - 1) : 0;
     document.title = trace.title + ': code trace'; byId('trace-title').textContent = trace.title;
     trace.code.trimEnd().split('\n').forEach(text => {const li = document.createElement('li');li.textContent = text;byId('code').append(li);});
     render();
