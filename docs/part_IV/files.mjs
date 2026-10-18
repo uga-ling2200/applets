@@ -6,9 +6,9 @@ let steps = [],
   ready = false;
 const codes = {
   head: `# Operations to investigate, not a function solution
-next(in_file)
-returned_text.strip()
-print(line)`,
+next(in_file)  # returns one line
+# Strip surrounding whitespace from the returned text.
+# Print the cleaned line.`,
   skip: `with open(filepath, encoding="utf-8") as in_file:
     next(in_file)  # consume, discard
     line = next(in_file)
