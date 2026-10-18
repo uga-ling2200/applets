@@ -1,0 +1,6 @@
+/* Keep a visible keyboard focus ring when H5P resets native outlines. */
+.h5p-content :is(button, a[href], input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px #fff !important;
+}

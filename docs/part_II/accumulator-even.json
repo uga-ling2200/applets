@@ -1,0 +1,1801 @@
+{
+  "title": "Sum of even numbers from 0 to 100",
+  "code": "sum = 0\nfor i in range(101):\n    if i % 2 == 0:\n        sum += i\nsum\n",
+  "steps": [
+    {
+      "line": 1,
+      "values": {}
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 0
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 0,
+        "i": 0
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 0,
+        "i": 0
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 0,
+        "i": 0
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 0,
+        "i": 1
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 0,
+        "i": 1
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 0,
+        "i": 2
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 0,
+        "i": 2
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2,
+        "i": 2
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2,
+        "i": 3
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2,
+        "i": 3
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2,
+        "i": 4
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2,
+        "i": 4
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 6,
+        "i": 4
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 6,
+        "i": 5
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 6,
+        "i": 5
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 6,
+        "i": 6
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 6,
+        "i": 6
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 12,
+        "i": 6
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 12,
+        "i": 7
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 12,
+        "i": 7
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 12,
+        "i": 8
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 12,
+        "i": 8
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 20,
+        "i": 8
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 20,
+        "i": 9
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 20,
+        "i": 9
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 20,
+        "i": 10
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 20,
+        "i": 10
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 30,
+        "i": 10
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 30,
+        "i": 11
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 30,
+        "i": 11
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 30,
+        "i": 12
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 30,
+        "i": 12
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 42,
+        "i": 12
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 42,
+        "i": 13
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 42,
+        "i": 13
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 42,
+        "i": 14
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 42,
+        "i": 14
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 56,
+        "i": 14
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 56,
+        "i": 15
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 56,
+        "i": 15
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 56,
+        "i": 16
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 56,
+        "i": 16
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 72,
+        "i": 16
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 72,
+        "i": 17
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 72,
+        "i": 17
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 72,
+        "i": 18
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 72,
+        "i": 18
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 90,
+        "i": 18
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 90,
+        "i": 19
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 90,
+        "i": 19
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 90,
+        "i": 20
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 90,
+        "i": 20
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 110,
+        "i": 20
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 110,
+        "i": 21
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 110,
+        "i": 21
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 110,
+        "i": 22
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 110,
+        "i": 22
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 132,
+        "i": 22
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 132,
+        "i": 23
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 132,
+        "i": 23
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 132,
+        "i": 24
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 132,
+        "i": 24
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 156,
+        "i": 24
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 156,
+        "i": 25
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 156,
+        "i": 25
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 156,
+        "i": 26
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 156,
+        "i": 26
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 182,
+        "i": 26
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 182,
+        "i": 27
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 182,
+        "i": 27
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 182,
+        "i": 28
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 182,
+        "i": 28
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 210,
+        "i": 28
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 210,
+        "i": 29
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 210,
+        "i": 29
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 210,
+        "i": 30
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 210,
+        "i": 30
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 240,
+        "i": 30
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 240,
+        "i": 31
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 240,
+        "i": 31
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 240,
+        "i": 32
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 240,
+        "i": 32
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 272,
+        "i": 32
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 272,
+        "i": 33
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 272,
+        "i": 33
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 272,
+        "i": 34
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 272,
+        "i": 34
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 306,
+        "i": 34
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 306,
+        "i": 35
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 306,
+        "i": 35
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 306,
+        "i": 36
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 306,
+        "i": 36
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 342,
+        "i": 36
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 342,
+        "i": 37
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 342,
+        "i": 37
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 342,
+        "i": 38
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 342,
+        "i": 38
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 380,
+        "i": 38
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 380,
+        "i": 39
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 380,
+        "i": 39
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 380,
+        "i": 40
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 380,
+        "i": 40
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 420,
+        "i": 40
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 420,
+        "i": 41
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 420,
+        "i": 41
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 420,
+        "i": 42
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 420,
+        "i": 42
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 462,
+        "i": 42
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 462,
+        "i": 43
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 462,
+        "i": 43
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 462,
+        "i": 44
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 462,
+        "i": 44
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 506,
+        "i": 44
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 506,
+        "i": 45
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 506,
+        "i": 45
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 506,
+        "i": 46
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 506,
+        "i": 46
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 552,
+        "i": 46
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 552,
+        "i": 47
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 552,
+        "i": 47
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 552,
+        "i": 48
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 552,
+        "i": 48
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 600,
+        "i": 48
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 600,
+        "i": 49
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 600,
+        "i": 49
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 600,
+        "i": 50
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 600,
+        "i": 50
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 650,
+        "i": 50
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 650,
+        "i": 51
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 650,
+        "i": 51
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 650,
+        "i": 52
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 650,
+        "i": 52
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 702,
+        "i": 52
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 702,
+        "i": 53
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 702,
+        "i": 53
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 702,
+        "i": 54
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 702,
+        "i": 54
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 756,
+        "i": 54
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 756,
+        "i": 55
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 756,
+        "i": 55
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 756,
+        "i": 56
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 756,
+        "i": 56
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 812,
+        "i": 56
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 812,
+        "i": 57
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 812,
+        "i": 57
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 812,
+        "i": 58
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 812,
+        "i": 58
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 870,
+        "i": 58
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 870,
+        "i": 59
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 870,
+        "i": 59
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 870,
+        "i": 60
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 870,
+        "i": 60
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 930,
+        "i": 60
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 930,
+        "i": 61
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 930,
+        "i": 61
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 930,
+        "i": 62
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 930,
+        "i": 62
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 992,
+        "i": 62
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 992,
+        "i": 63
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 992,
+        "i": 63
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 992,
+        "i": 64
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 992,
+        "i": 64
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1056,
+        "i": 64
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1056,
+        "i": 65
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1056,
+        "i": 65
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1056,
+        "i": 66
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1056,
+        "i": 66
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1122,
+        "i": 66
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1122,
+        "i": 67
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1122,
+        "i": 67
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1122,
+        "i": 68
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1122,
+        "i": 68
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1190,
+        "i": 68
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1190,
+        "i": 69
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1190,
+        "i": 69
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1190,
+        "i": 70
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1190,
+        "i": 70
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1260,
+        "i": 70
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1260,
+        "i": 71
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1260,
+        "i": 71
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1260,
+        "i": 72
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1260,
+        "i": 72
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1332,
+        "i": 72
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1332,
+        "i": 73
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1332,
+        "i": 73
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1332,
+        "i": 74
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1332,
+        "i": 74
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1406,
+        "i": 74
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1406,
+        "i": 75
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1406,
+        "i": 75
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1406,
+        "i": 76
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1406,
+        "i": 76
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1482,
+        "i": 76
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1482,
+        "i": 77
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1482,
+        "i": 77
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1482,
+        "i": 78
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1482,
+        "i": 78
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1560,
+        "i": 78
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1560,
+        "i": 79
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1560,
+        "i": 79
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1560,
+        "i": 80
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1560,
+        "i": 80
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1640,
+        "i": 80
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1640,
+        "i": 81
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1640,
+        "i": 81
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1640,
+        "i": 82
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1640,
+        "i": 82
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1722,
+        "i": 82
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1722,
+        "i": 83
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1722,
+        "i": 83
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1722,
+        "i": 84
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1722,
+        "i": 84
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1806,
+        "i": 84
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1806,
+        "i": 85
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1806,
+        "i": 85
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1806,
+        "i": 86
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1806,
+        "i": 86
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1892,
+        "i": 86
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1892,
+        "i": 87
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1892,
+        "i": 87
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1892,
+        "i": 88
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1892,
+        "i": 88
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1980,
+        "i": 88
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1980,
+        "i": 89
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1980,
+        "i": 89
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1980,
+        "i": 90
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 1980,
+        "i": 90
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2070,
+        "i": 90
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2070,
+        "i": 91
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2070,
+        "i": 91
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2070,
+        "i": 92
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2070,
+        "i": 92
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2162,
+        "i": 92
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2162,
+        "i": 93
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2162,
+        "i": 93
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2162,
+        "i": 94
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2162,
+        "i": 94
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2256,
+        "i": 94
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2256,
+        "i": 95
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2256,
+        "i": 95
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2256,
+        "i": 96
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2256,
+        "i": 96
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2352,
+        "i": 96
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2352,
+        "i": 97
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2352,
+        "i": 97
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2352,
+        "i": 98
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2352,
+        "i": 98
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2450,
+        "i": 98
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2450,
+        "i": 99
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2450,
+        "i": 99
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 2450,
+        "i": 100
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 2450,
+        "i": 100
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 2550,
+        "i": 100
+      }
+    },
+    {
+      "line": 5,
+      "values": {
+        "sum": 2550,
+        "i": 100
+      }
+    },
+    {
+      "line": null,
+      "values": {
+        "sum": 2550,
+        "i": 100
+      }
+    }
+  ]
+}
