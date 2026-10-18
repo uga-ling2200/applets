@@ -1,0 +1,100 @@
+{
+  "title": "Sum of 0 to 4",
+  "code": "sum = 0\nfor i in range(5):\n    sum += i\nsum\n",
+  "steps": [
+    {
+      "line": 1,
+      "values": {}
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 0
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 0,
+        "i": 0
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 0,
+        "i": 0
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 0,
+        "i": 1
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 1,
+        "i": 1
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 1,
+        "i": 2
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 3,
+        "i": 2
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 3,
+        "i": 3
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 6,
+        "i": 3
+      }
+    },
+    {
+      "line": 3,
+      "values": {
+        "sum": 6,
+        "i": 4
+      }
+    },
+    {
+      "line": 2,
+      "values": {
+        "sum": 10,
+        "i": 4
+      }
+    },
+    {
+      "line": 4,
+      "values": {
+        "sum": 10,
+        "i": 4
+      }
+    },
+    {
+      "line": null,
+      "values": {
+        "sum": 10,
+        "i": 4
+      }
+    }
+  ]
+}

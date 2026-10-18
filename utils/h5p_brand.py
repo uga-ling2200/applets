@@ -54,18 +54,14 @@ If --part is omitted, it is derived from the title's leading Roman
 numeral (e.g. "I.F While Loops, #1" -> "part_I", "II.B Numbers, Q5"
 -> "part_II"). Falls back to "part_I" if nothing can be detected.
 
-The GitHub issue link and the "source-url" query parameter are built to
-exactly match the encoding scheme used on the live site: the applet
-title is placed in the URL path with spaces (only) written as literal
-"%20", and the resulting URL is then percent-encoded once more for use
-as a query-string value -- which is why you'll see "%2520" (a doubly
-encoded space) but plain "%2C" (a singly encoded comma) in the output.
+Feedback links use the actual output filename in the published source URL.
 """
 
 import argparse
 import re
 import sys
 from pathlib import Path
+from html import escape
 from urllib.parse import quote
 
 # ---------------------------------------------------------------------------
@@ -75,6 +71,7 @@ from urllib.parse import quote
 HEAD_INSERT = """            <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../h5p-accessibility.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -228,11 +225,11 @@ PAGE_STYLE = """        <style>
 
 BODY_TEMPLATE = """    </head>
     <body class="pt-3 mt-1">
-    <div class="text-center mb-4">
+    <div class="text-center mb-4" role="banner">
         <h1 style="font-size: 1.4rem;"><a class="uga-header" href="{dept_url}">{dept_name}</a></h1>
         <h2 class="text-muted small"><a class="uga-applet-header" href="{index_url}">{index_name}</a></h2>
     </div>
-    <div class="applet-wrapper">
+    <div class="applet-wrapper" role="main" id="main" tabindex="-1" aria-label="{activity_title}">
         <div style="margin: 0px 0px;" >
             <div
                 style=""
@@ -345,12 +342,10 @@ def derive_part_dir(title: str) -> str:
     return f"part_{m.group(1)}" if m else "part_I"
 
 
-def build_issue_url(repo: str, part_dir: str, title: str) -> str:
-    """Reproduces the exact (slightly quirky) double-encoding scheme used
-    on the live site: only spaces in the title get pre-encoded as literal
-    '%20' before the whole source URL is percent-encoded once more."""
-    title_path = title.replace(" ", "%20")
-    source_url = f"https://uga-ling2200.github.io/applets/{part_dir}/{title_path}.html"
+def build_issue_url(repo: str, part_dir: str, title: str, source_url: str) -> str:
+    """Link feedback to the actual deployed file, never a title-derived path."""
+    if not source_url:
+        raise ValueError("Provide the published source_url for the feedback link")
     source_url_q = quote(source_url, safe="")
 
     issue_title = quote(f"[Applet feedback] {title}: ", safe="")
@@ -370,6 +365,7 @@ def transform(
     title: str = "",
     part_dir: str = "",
     page_title: str = "",
+    source_url: str = "",
     dept_name: str = "University of Georgia",
     dept_url: str = "https://linguistics.uga.edu/",
     index_name: str = "Quantitative Linguistics Webapps",
@@ -396,7 +392,7 @@ def transform(
     if not page_title:
         page_title = build_page_title(title, extract_subtitle(html))
 
-    issue_url = build_issue_url(repo, part_dir, title)
+    issue_url = build_issue_url(repo, part_dir, title, source_url)
 
     # 0. Mark the document's language.
     html = html.replace('<html class="h5p-iframe">', '<html lang="en" class="h5p-iframe">', 1)
@@ -411,6 +407,7 @@ def transform(
         + BRANDING_STYLE
         + PAGE_STYLE
         + BODY_TEMPLATE.format(
+            activity_title=escape(title, quote=True),
             dept_name=dept_name,
             dept_url=dept_url,
             index_name=index_name,
@@ -450,12 +447,15 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     html = args.input.read_text(encoding="utf-8")
+    output = args.output or args.input.with_name(args.input.stem + "_formatted.html")
+    part_dir = args.part_dir or derive_part_dir(args.title or extract_title(html))
 
     try:
         result = transform(
             html,
             title=args.title,
             part_dir=args.part_dir,
+            source_url=f"https://uga-ling2200.github.io/applets/{part_dir}/{quote(output.name)}",
             page_title=args.page_title,
             dept_name=args.dept_name,
             dept_url=args.dept_url,
@@ -468,7 +468,6 @@ def main(argv=None):
         print(f"error: {e}", file=sys.stderr)
         return 1
 
-    output = args.output or args.input.with_name(args.input.stem + "_formatted.html")
     output.write_text(result, encoding="utf-8")
     print(f"Wrote {output}")
     return 0
