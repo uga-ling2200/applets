@@ -32,7 +32,8 @@ What it does to the raw export
 
 The huge embedded H5PIntegration <script> blob (the actual interactive
 content/JSON/images) and the H5P core CSS block are left completely
-untouched -- only the surrounding page chrome changes.
+untouched. Targeted runtime repairs keep answer-group ARIA changes scoped to
+the current question and give the illustrated Karel wall an image role.
 
 Usage
 -----
@@ -63,6 +64,7 @@ import sys
 from pathlib import Path
 from html import escape
 from urllib.parse import quote
+from h5p_accessibility import repair_runtime
 
 # ---------------------------------------------------------------------------
 # Static templates (extracted verbatim from a known-good formatted export)
@@ -426,7 +428,7 @@ def transform(
             "export? The script only transforms files matching that shape."
         )
 
-    return new_html
+    return repair_runtime(new_html)
 
 
 def main(argv=None):
