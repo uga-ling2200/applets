@@ -15,9 +15,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../style.css?v=20261017-review" />
-    <link rel="stylesheet" href="lab.css?v=20261017-review" />
+    <link rel="stylesheet" href="lab.css?v=20261019-defaults" />
     <link rel="stylesheet" href="../feedback-card.css" />
-    <script type="module" src="kwargs.mjs?v=20261017-final"></script>
+    <script type="module" src="kwargs.mjs?v=20261019-defaults"></script>
     <script src="../reflection-notes.js?v=20261017-review" defer></script>
   </head>
   <body class="iv-lab">
@@ -33,99 +33,79 @@
         </h3>
         <h4 class="uga-accent">Learning Objectives</h4>
         <ul>
-          <li><strong>Trace</strong> named arguments and defaults.</li>
+          <li><strong>Trace</strong> a default set across repeated calls.</li>
           <li>
-            <strong>Compare</strong> omitted, empty, and nonempty filters.
+            <strong>Explain</strong> why a None default avoids shared mutable state.
           </li>
         </ul>
         <h4 class="uga-accent">Background</h4>
-        <p>Change one argument at a time to isolate its effect. Use that rule to build your function in IV.A Q2.</p>
+        <p>A default value is evaluated when Python defines the function, not each time it is called.</p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>
-          <li>With a partner, predict the result and explain why.</li>
-          <li>Trace the words, then change the filter and swap roles.</li>
+          <li>With a partner, predict the second call before running either version.</li>
+          <li>Compare the stored sets, check your explanation, then swap roles.</li>
         </ol>
       </section>
       <section class="app-wrapper" aria-labelledby="applet-title">
-        <div class="hero">
-          <div class="hero-text">
-            <h2 id="applet-title">Optional <span>word filters</span></h2>
-            <p>Follow one call from named arguments to its returned list.</p>
-          </div>
-        </div>
-        <div class="field">
-          <label for="sentence">String to process</label
-          ><textarea id="sentence" rows="3" maxlength="4000">
-John, where Mary had had had, had had had had.</textarea
-          >
-        </div>
+        <div class="hero"><div class="hero-text">
+          <h2 id="applet-title">One default, <span>many calls</span></h2>
+          <p>Does a new call get a new set?</p>
+        </div></div>
+        <p>This short example <strong>adds</strong> a word to a set. Compare the same calls with two different defaults.</p>
         <div class="lab-grid">
-          <div class="field">
-            <label for="mode">Optional argument</label
-            ><select id="mode">
-              <option value="omitted">Not provided (default None)</option>
-              <option value="provided">Provide a word set</option>
-              <option value="empty">Provide an empty set</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="filter">Words to include (separate with spaces)</label
-            ><textarea id="filter" rows="2" maxlength="4000">had</textarea>
-          </div>
+          <section aria-labelledby="shared-title"><h3 id="shared-title">A. A set in the signature</h3>
+<pre class="lab-code"><code>def remember(word, words_to_include=set()):
+    words_to_include.add(word)
+    return words_to_include</code></pre></section>
+          <section aria-labelledby="fresh-title"><h3 id="fresh-title">B. None in the signature</h3>
+<pre class="lab-code"><code>def remember(word, words_to_include=None):
+    if words_to_include is None:
+        words_to_include = set()
+    words_to_include.add(word)
+    return words_to_include</code></pre></section>
         </div>
-        <div class="field">
-          <label for="order">Argument order</label
-          ><select id="order">
-            <option value="normal">string, words_to_include</option>
-            <option value="reversed">words_to_include=…, string=…</option>
-          </select>
+        <p class="field-hint">The display labels sets by identity (S1, S2…), not by a memory address. Set display order is not significant.</p>
+        <div class="lab-grid">
+          <div class="field"><label for="first-word">First word</label><input id="first-word" value="cat" maxlength="30"></div>
+          <div class="field"><label for="second-word">Second word</label><input id="second-word" value="dog" maxlength="30"></div>
         </div>
-        <div class="field">
-          <label for="prediction">Predict the returned list</label
-          ><textarea id="prediction" rows="2" maxlength="4000"></textarea>
-        </div>
+        <div class="field"><label for="prediction">Predict what the second call returns in A and B</label><textarea id="prediction" rows="2" maxlength="4000"></textarea></div>
         <div class="btn-row">
-          <button id="prepare" type="button" class="btn-uga">
-            Prepare call</button
-          ><button id="step" type="button" class="btn-uga-outline">
-            Process next word</button
-          ><button id="run" type="button" class="btn-uga-dark">
-            Run to end
-          </button>
+          <button id="step" type="button" class="btn-uga">Run first call</button>
+          <button id="reset" type="button" class="btn-uga-outline">Redefine both functions</button>
         </div>
         <p id="status" class="field-hint" role="status" aria-live="polite"></p>
         <p id="error" class="error-text" role="alert"></p>
-        <h3 class="h5">Call and binding</h3>
-        <p class="field-hint">Function signature: <code>extract_and_filter_words(string, words_to_include=None)</code></p>
-        <pre id="call" class="lab-code"></pre>
-        <p id="binding"></p>
-        <ol
-          id="tokens"
-          class="token-list"
-          aria-label="Words in input order"
-        ></ol>
-        <h3 class="h5">Returned list</h3>
-        <pre id="result" class="lab-code" aria-live="off"></pre>
-            <p id="prediction-comparison" class="field-hint" role="status"></p>
-        <details class="glossary-box">
-          <summary>Build your function in IV.A Q2</summary>
-          <p>Which argument needs a default? What rule decides whether to keep a word?</p>
-          <p>Use your traces to write and test your own function in the course notebook.</p>
-          <p>
-            The course reference treats an empty set as “no filter”. The default
-            value is None; an empty set is created inside the function. Keyword
-            passing and having a default are distinct Python concepts: an
-            argument passed by name is not automatically optional.
-          </p>
+        <div class="lab-grid">
+          <section aria-labelledby="shared-state-title"><h3 id="shared-state-title">A. Shared default</h3><pre id="shared-state" class="lab-code"></pre></section>
+          <section aria-labelledby="fresh-state-title"><h3 id="fresh-state-title">B. Fresh set per omitted call</h3><pre id="fresh-state" class="lab-code"></pre></section>
+        </div>
+        <h3 class="h5">Calls and returned objects</h3>
+        <ol id="calls" aria-label="Repeated calls and object identities"></ol>
+        <p id="explanation"></p>
+        <p id="prediction-comparison" class="field-hint"></p>
+        <details class="glossary-box"><summary>What if the caller supplies a set?</summary>
+          <p>Both versions use the caller's set directly. None creates a new set only when the argument is omitted or explicitly None; it does not copy a supplied set.</p>
+          <pre class="lab-code"><code>chosen = {"bird"}
+remember("cat", words_to_include=chosen)
+# chosen is now {"bird", "cat"} in both versions.</code></pre>
+        </details>
+        <h3>Check your reasoning</h3>
+        <p>Predict, select an answer, then use Check for feedback. These practice scores are not submitted.</p>
+        <iframe class="defaults-check" src="defaults_check.html?v=20261019-defaults" title="Practice: mutable defaults and None" loading="lazy"></iframe>
+        <details class="glossary-box"><summary>Connect this to IV.A Q2</summary>
+          <p>The notebook uses <code>words_to_include=None</code> and creates a set inside the function. Write that initialization in your own solution.</p>
+          <p>The filter in the reference solution only <em>reads</em> the set. It does not itself produce the mutation shown above. The bug appears when a shared default is changed, as in <code>remember</code>.</p>
+          <p><code>{}</code> is an empty dictionary. Use <code>set()</code> for an empty set. Both are mutable when used as defaults.</p>
         </details>
       </section>
       <section class="reflection-container" aria-labelledby="reflection-title">
-        <h3 id="reflection-title" class="uga-accent mb-3">
+        <h3 id="reflection-title" class="uga-accent mb-3" role="heading" aria-level="2">
           Reflection &amp; Discussion Guide
         </h3>
         <ol>
-          <li>Why do omitted and empty filters keep all words here?</li>
-          <li>Why do repeated words remain in the result?</li>
+          <li>When was A’s default set created, and which calls use that same object?</li>
+          <li>Why does B create a fresh set? What changes if the caller supplies a set?</li>
         </ol>
         <div class="reflection-notes field">
           <label for="reflection">Write down your thoughts</label

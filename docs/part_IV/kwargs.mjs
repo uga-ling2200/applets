@@ -1,79 +1,50 @@
-import { filterTrace } from "./core.mjs?v=20261017-state";
-const $ = (id) => document.getElementById(id);
-let rows = [],
-  cursor = 0,
-  prepared = false;
-const repr = (values) => "[" + values.map(JSON.stringify).join(", ") + "]";
+import {createComparison, callBoth, setRepr} from './defaults.mjs?v=20261019-defaults';
+const $ = id => document.getElementById(id);
+let state;
 function render() {
-  const result = [];
-  $("tokens").replaceChildren();
-  rows.forEach((r, i) => {
-    const li = document.createElement("li");
-    li.textContent =
-      r.word +
-      (i < cursor ? (r.keep ? " — kept" : " — excluded") : " — waiting");
-    li.className = i < cursor ? (r.keep ? "kept" : "excluded") : "";
-    $("tokens").append(li);
-    if (i < cursor && r.keep) result.push(r.word);
+  const count = state.calls.length;
+  $('shared-state').textContent = `Stored default → S1\nS1 = ${setRepr(state.shared)}`;
+  $('fresh-state').textContent = count
+    ? `Stored default → None\nCall ${count} created S${count + 1} = ${setRepr(state.fresh)}`
+    : 'Stored default → None\nNo set has been created yet.';
+  $('calls').replaceChildren();
+  state.calls.forEach((call, i) => {
+    const li = document.createElement('li');
+    const code = document.createElement('code');
+    code.textContent = `remember(${JSON.stringify(call.word)})`;
+    const p = document.createElement('p');
+    p.textContent = `A returned S1 containing ${setRepr(call.sharedAtReturn)} at that moment. S1 now contains ${setRepr(state.shared)}. B returned S${i + 2}, still containing ${setRepr(call.fresh)}.`;
+    li.append(code, p); $('calls').append(li);
   });
-  $("result").textContent = repr(result);
-  $("prediction-comparison").textContent = cursor === rows.length && $("prediction").value.trim()
-    ? "Your prediction: " + $("prediction").value.trim() : "";
-  $("step").disabled = !prepared || cursor >= rows.length;
-  $("run").disabled = !prepared || cursor >= rows.length;
+  $('step').textContent = count === 0 ? 'Run first call' : count === 1 ? 'Run second call' : 'Both calls complete';
+  $('step').disabled = count === 2;
+  for (const id of ['first-word', 'second-word']) $(id).disabled = count > 0;
+  $('explanation').textContent = count === 2
+    ? 'A reused S1: changing it in the second call also changed the object returned by the first call. B created a different set in each call. Only redefining A creates a new default; calling it does not.'
+    : '';
+  $('prediction-comparison').textContent = count === 2 && $('prediction').value.trim()
+    ? 'Your prediction: ' + $('prediction').value.trim() : '';
 }
-function prepare() {
-  const mode = $("mode").value;
-  const words =
-    mode !== "provided" ? [] : $("filter").value.split(/\s+/).filter(Boolean);
-  const arg =
-    mode === "omitted"
-      ? "None"
-      : words.length
-        ? "{" + words.map(JSON.stringify).join(", ") + "}"
-        : "set()";
-  const string = JSON.stringify($("sentence").value);
-  $("call").textContent =
-    mode === "omitted"
-      ? `extract_and_filter_words(${string})`
-      : $("order").value === "reversed"
-        ? `extract_and_filter_words(words_to_include=${arg}, string=${string})`
-        : `extract_and_filter_words(${string}, words_to_include=${arg})`;
-  $("binding").textContent =
-    `words_to_include = ${arg}. ` +
-    (mode === "omitted"
-      ? "Default None → empty set → keep all words."
-      : words.length
-        ? "Keep words found in this set."
-        : "Empty set → keep all words in this reference.");
-  rows = filterTrace($("sentence").value, mode, $("filter").value);
-  cursor = 0;
-  prepared = true;
-  $("status").textContent =
-    "Call prepared. Your prediction stays above; process the words to check it.";
+function reset() {
+  state = createComparison(); $('error').textContent = '';
+  $('status').textContent = 'Both functions defined. A created S1 once; B stored None. Predict before running the calls.';
   render();
 }
-$("prepare").onclick = prepare;
-$("step").onclick = () => {
-  cursor++;
+$('step').addEventListener('click', () => {
+  if (state.calls.length >= 2) return;
+  if (!$('first-word').value.trim() || !$('second-word').value.trim()) {
+    $('error').textContent = 'Enter a word for both calls before starting.';
+    (!$('first-word').value.trim() ? $('first-word') : $('second-word')).focus(); return;
+  }
+  $('error').textContent = '';
+  callBoth(state, $(state.calls.length === 0 ? 'first-word' : 'second-word').value);
   render();
-  $("status").textContent = `${rows[cursor - 1].word}: ${rows[cursor - 1].keep ? "kept" : "excluded"}. ${cursor} of ${rows.length} words processed.`;
-};
-$("run").onclick = () => {
-  cursor = rows.length;
-  render();
-  $("status").textContent = "Function returned. Compare with your prediction.";
-};
-for (const id of ["sentence", "filter", "mode", "order"])
-  $(id).addEventListener("input", () => {
-    prepared = false;
-    $("filter").disabled = $("mode").value !== "provided";
-    $("order").disabled = $("mode").value === "omitted";
-    $("status").textContent = "Inputs changed. Prepare a new call.";
-    render();
-  });
-$("filter").disabled = true;
-$("order").disabled = true;
-prepare();
+  $('status').textContent = state.calls.length === 1
+    ? 'First call complete. Both sets contain the first word. Now test the second call.'
+    : 'Second call complete. A reused S1; B created S3. Compare the returned objects below.';
+  if (state.calls.length === 2) $('reset').focus();
+});
+$('reset').addEventListener('click', reset);
+$('prediction').addEventListener('input', render);
+reset();
 
-$("prediction").addEventListener("input", render);
