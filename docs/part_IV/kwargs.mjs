@@ -48,3 +48,22 @@ $('reset').addEventListener('click', reset);
 $('prediction').addEventListener('input', render);
 reset();
 
+// The Lumi book changes height on navigation, feedback, font load and reflow.
+// Observe its content box, not the iframe viewport (which would feed back).
+const practiceFrame = document.querySelector('.defaults-check');
+let bookObserver;
+function fitPractice() {
+  bookObserver?.disconnect();
+  const content = practiceFrame.contentDocument?.querySelector('.h5p-content');
+  if (!content) return;
+  const fit = () => {
+    const height = Math.ceil(content.getBoundingClientRect().height);
+    if (height > 0 && practiceFrame.style.height !== `${height + 2}px`)
+      practiceFrame.style.height = `${height + 2}px`;
+  };
+  bookObserver = new ResizeObserver(fit);
+  bookObserver.observe(content);
+  fit();
+}
+practiceFrame.addEventListener('load', fitPractice);
+if (practiceFrame.contentDocument?.readyState === 'complete') fitPractice();
