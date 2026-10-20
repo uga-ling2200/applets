@@ -67,3 +67,12 @@ function fitPractice() {
 }
 practiceFrame.addEventListener('load', fitPractice);
 if (practiceFrame.contentDocument?.readyState === 'complete') fitPractice();
+// H5P computes chapter heights itself; notify it when the embedding width changes.
+// Ignore height-only changes so fitting the iframe cannot create a resize loop.
+let previousBookWidth = 0;
+new ResizeObserver(([entry]) => {
+  const width = Math.round(entry.contentRect.width);
+  if (width === previousBookWidth) return;
+  previousBookWidth = width;
+  practiceFrame.contentWindow?.H5P?.instances?.forEach(book => book.trigger('resize'));
+}).observe(practiceFrame);
