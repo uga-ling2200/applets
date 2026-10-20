@@ -16,4 +16,6 @@ Run `node --test tests/part-iv.test.mjs` from the repository root. The two pages
 
 ## Lumi authoring and export
 
-Open `IV_A_Q2_Keyword_Arguments.h5p` in Lumi to edit the four-page Interactive Book. The package includes the same library/editor dependencies as the existing Part III packages. Keep this source alongside the published HTML, as in Part III. `utils/defaults_content.json` is its readable content. Run `python3 utils/build_defaults_check.py` to regenerate both the package and embedded standalone HTML from the current content builder; after edits in Lumi, export HTML and apply the repository UGA/accessibility formatting before replacing the published check. The surrounding editable-word comparison uses `kwargs.mjs` / `defaults.mjs` and is independent of the H5P score.
+Open `IV_A_Q2_Keyword_Arguments.h5p` in the local Lumi editor to edit the four-page Interactive Book. This package was actually opened, edited and saved in Lumi 1.0.3 on October 19, then exported with File > Export > All-in-one HTML file. The published check uses that Lumi-exported runtime with the repository's UGA formatting and narrow accessibility repairs.
+
+Keep the .h5p source canonical. After saving in Lumi and exporting HTML, run `python3 utils/build_defaults_check.py --export /path/to/lumi-export.html`. This updates the published check and readable `utils/defaults_content.json`; it never regenerates or overwrites the Lumi source. The surrounding editable-word comparison uses `kwargs.mjs` / `defaults.mjs` and is independent of the H5P score.
