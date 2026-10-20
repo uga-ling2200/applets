@@ -56,6 +56,15 @@ code{overflow-wrap:anywhere}
     body = list(re.finditer(r'<body[^>]*>', page))[-1]
     close = page.rfind('</body>')
     page = page[:body.end()]+'<main aria-label="Mutable defaults practice">'+page[body.end():close]+'</main>'+page[close:]
+# Keep the score announcement in the accessibility tree without painting transparent
+# text over the decorative meter. Numeric scoring and meter animation stay intact.
+score_label = '\'<span class="defaults-score-announcement">\'+o(i.score)+\'</span>\''
+page = page.replace('html:o(i.score),appendTo:i.$progressWrapper', 'html:' + score_label + ',appendTo:i.$progressWrapper')
+page = page.replace('i.$progress.html(o(i.score))', 'i.$progress.html(' + score_label + ')')
+if 'id="defaults-score-announcement-style"' not in page:
+    point = page.rfind('</head>')
+    page = page[:point] + '<style id="defaults-score-announcement-style">.defaults-score-announcement{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;color:#1a1a1a!important}</style>' + page[point:]
+
 page = re.sub(r'[ \t]+(?=\n)', '', page)
 output.write_text(page)
 (ROOT / 'utils/defaults_content.json').write_text(json.dumps(book, indent=2))
