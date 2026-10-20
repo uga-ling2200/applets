@@ -12,14 +12,15 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<p><code>def remember(word, words_to_include=set()):<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+                "text": "<p><code>def remember(word, words_to_include=set()):<br />\u00a0\u00a0\u00a0\u00a0words_to_include.add(word)<br />\u00a0\u00a0\u00a0\u00a0return words_to_include</code></p>"
               },
               "subContentId": "9e167612-dad4-506f-a6e1-1a3ed1abc387",
               "metadata": {
                 "title": "Example to inspect",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Text"
               }
             },
             "useSeparator": "disabled"
@@ -33,7 +34,7 @@
                 },
                 "answers": [
                   {
-                    "text": "<p>Both cat and dog</p>",
+                    "text": "Both cat and dog",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -42,7 +43,7 @@
                     }
                   },
                   {
-                    "text": "<p>Only dog</p>",
+                    "text": "Only dog",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -51,7 +52,7 @@
                     }
                   },
                   {
-                    "text": "<p>An empty set</p>",
+                    "text": "An empty set",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -111,7 +112,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h2>Predict a second call</h2><p>Start with a newly defined function A from the comparison above. Run <code>remember(\"cat\")</code>, then <code>remember(\"dog\")</code>, omitting the set both times. What is in the set returned by the second call?</p>"
+                "question": "<p>The set-default function above is newly defined. Predict remember(\"cat\") followed by remember(\"dog\"), with no set supplied. What does the second call return?</p>"
               },
               "subContentId": "0bcaa919-96b9-54af-bfc4-cdc221effb48",
               "metadata": {
@@ -119,7 +120,8 @@
                 "extraTitle": "Predict a second call",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Multiple Choice"
               }
             },
             "useSeparator": "disabled"
@@ -132,7 +134,8 @@
         "extraTitle": "Predict a second call",
         "license": "U",
         "authors": [],
-        "changes": []
+        "changes": [],
+        "contentType": "Column"
       }
     },
     {
@@ -143,14 +146,15 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<p><code>def remember(word, words_to_include=None):<br>&nbsp;&nbsp;&nbsp;&nbsp;if words_to_include is None:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words_to_include = set()<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+                "text": "<p><code>def remember(word, words_to_include=None):<br />\u00a0\u00a0\u00a0\u00a0if words_to_include is None:<br />\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0words_to_include = set()<br />\u00a0\u00a0\u00a0\u00a0words_to_include.add(word)<br />\u00a0\u00a0\u00a0\u00a0return words_to_include</code></p>"
               },
               "subContentId": "1a32c1e7-3125-5e8d-862c-e6525d8447f5",
               "metadata": {
                 "title": "Example to inspect",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Text"
               }
             },
             "useSeparator": "disabled"
@@ -164,7 +168,7 @@
                 },
                 "answers": [
                   {
-                    "text": "<p>The is None branch creates a new set during each omitted call.</p>",
+                    "text": "The is None branch creates a new set during each omitted call.",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -173,7 +177,7 @@
                     }
                   },
                   {
-                    "text": "<p>Python copies every default argument for each call.</p>",
+                    "text": "Python copies every default argument for each call.",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -182,7 +186,7 @@
                     }
                   },
                   {
-                    "text": "<p>None prevents the function from changing any set.</p>",
+                    "text": "None prevents the function from changing any set.",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -250,7 +254,8 @@
                 "extraTitle": "Identify the safe initialization",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Multiple Choice"
               }
             },
             "useSeparator": "disabled"
@@ -263,7 +268,8 @@
         "extraTitle": "Identify the safe initialization",
         "license": "U",
         "authors": [],
-        "changes": []
+        "changes": [],
+        "contentType": "Column"
       }
     },
     {
@@ -274,14 +280,15 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<p><code>def remember(word, words_to_include=set()):<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+                "text": "<p><code>def remember(word, words_to_include=set()):<br />\u00a0\u00a0\u00a0\u00a0words_to_include.add(word)<br />\u00a0\u00a0\u00a0\u00a0return words_to_include</code></p>"
               },
               "subContentId": "09c097ca-367f-5d76-a113-4c5fd0cf527e",
               "metadata": {
                 "title": "Example to inspect",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Text"
               }
             },
             "useSeparator": "disabled"
@@ -295,7 +302,7 @@
                 },
                 "answers": [
                   {
-                    "text": "<p>Raise AttributeError: a dictionary has no add method.</p>",
+                    "text": "Raise AttributeError: a dictionary has no add method.",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -304,7 +311,7 @@
                     }
                   },
                   {
-                    "text": "<p>Fix the shared-default problem.</p>",
+                    "text": "Fix the shared-default problem.",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -313,7 +320,7 @@
                     }
                   },
                   {
-                    "text": "<p>Create a fresh empty set for every call.</p>",
+                    "text": "Create a fresh empty set for every call.",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -381,7 +388,8 @@
                 "extraTitle": "Distinguish a set from a dictionary",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Multiple Choice"
               }
             },
             "useSeparator": "disabled"
@@ -394,7 +402,8 @@
         "extraTitle": "Distinguish a set from a dictionary",
         "license": "U",
         "authors": [],
-        "changes": []
+        "changes": [],
+        "contentType": "Column"
       }
     },
     {
@@ -412,7 +421,8 @@
                 "title": "Example to inspect",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Text"
               }
             },
             "useSeparator": "disabled"
@@ -426,7 +436,7 @@
                 },
                 "answers": [
                   {
-                    "text": "<p>No. The shared object must actually be changed for this mutation bug to appear.</p>",
+                    "text": "No. The shared object must actually be changed for this mutation bug to appear.",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -435,7 +445,7 @@
                     }
                   },
                   {
-                    "text": "<p>Yes. Calling any function automatically adds its input words to the default set.</p>",
+                    "text": "Yes. Calling any function automatically adds its input words to the default set.",
                     "correct": false,
                     "tipsAndFeedback": {
                       "tip": "",
@@ -503,7 +513,8 @@
                 "extraTitle": "Separate reading from mutation",
                 "license": "U",
                 "authors": [],
-                "changes": []
+                "changes": [],
+                "contentType": "Multiple Choice"
               }
             },
             "useSeparator": "disabled"
@@ -516,7 +527,8 @@
         "extraTitle": "Separate reading from mutation",
         "license": "U",
         "authors": [],
-        "changes": []
+        "changes": [],
+        "contentType": "Column"
       }
     }
   ],
