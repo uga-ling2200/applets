@@ -522,7 +522,7 @@
   ],
   "behaviour": {
     "baseColor": "#ba0c2f",
-    "defaultTableOfContents": true,
+    "defaultTableOfContents": false,
     "progressIndicators": true,
     "progressAuto": true,
     "displaySummary": false,

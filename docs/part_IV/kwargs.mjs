@@ -47,3 +47,4 @@ $('step').addEventListener('click', () => {
 $('reset').addEventListener('click', reset);
 $('prediction').addEventListener('input', render);
 reset();
+

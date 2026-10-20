@@ -15,10 +15,11 @@ for title,question,answers in questions:
  chapter=copy.deepcopy(col);q=copy.deepcopy(mc);v=q['content'];v['subContentId']=str(uuid.uuid5(uuid.NAMESPACE_URL, 'ling2200/defaults/' + title));v['metadata']['title']=v['metadata']['extraTitle']=title;v['params']['question']=f'<h2>{title}</h2>'+question;v['params']['answers']=[{'text':'<p>'+t+'</p>','correct':ok,'tipsAndFeedback':{'tip':'','chosenFeedback':fb,'notChosenFeedback':''}} for t,ok,fb in answers];intro = (code_a if len(chapters) == 0 or len(chapters) == 2 else code_b if len(chapters) == 1 else '<p>Apply your explanation to the notebook. The reference membership test reads the set without modifying it.</p>')
  intro_item={'content': {'library':'H5P.AdvancedText 1.1','params':{'text':intro},'subContentId':str(uuid.uuid5(uuid.NAMESPACE_URL,'ling2200/defaults/intro/'+title)),'metadata':{'title':'Example to inspect','license':'U','authors':[],'changes':[]}},'useSeparator':'disabled'}
  chapter['params']['content']=[intro_item,q];chapter['subContentId']=str(uuid.uuid5(uuid.NAMESPACE_URL, 'ling2200/defaults/chapter/' + title));chapter['metadata']['title']=chapter['metadata']['extraTitle']=title;chapters.append(chapter)
-book['chapters']=chapters;book['bookCover']={'coverDescription':'<p>Mutable defaults: check your reasoning</p>'};entry['metadata']['title']='Mutable defaults: check your reasoning';entry['jsonContent']=json.dumps(book);entry['displayOptions']['frame']=False
+book['chapters']=chapters;book['behaviour']['defaultTableOfContents']=False;book['bookCover']={'coverDescription':'<p>Mutable defaults: check your reasoning</p>'};entry['metadata']['title']='Mutable defaults: check your reasoning';entry['jsonContent']=json.dumps(book);entry['displayOptions']['frame']=False
 new=template[:a]+json.dumps(integ)+template[a+n:];body=list(re.finditer(r'<body(?:\s[^>]*)?>',new))[-1]
 assert body, 'actual body not found'
 new=new[:body.start()]+'<body><main aria-label="Mutable defaults practice"><div class="h5p-content" data-content-id="4096308226"></div></main></body></html>'
+new=new[:new.rfind('</head>')]+'<style>html.h5p-iframe,html.h5p-iframe body{min-height:0!important;height:auto!important;margin:0!important;padding:0!important}</style>'+new[new.rfind('</head>'):]
 new=re.sub(r'<title>.*?</title>','<title>Mutable defaults: practice checks</title>',new,count=1)
 (root/'docs/part_IV/defaults_check.html').write_text(new)
 
