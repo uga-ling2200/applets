@@ -40,6 +40,8 @@ if args.export:
     head_end = page.rfind('</head>')
     assert head_end > 0
     styles = '''<title>Mutable defaults: practice checks</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../h5p-accessibility.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;800&amp;family=Merriweather+Sans:wght@400;600;700&amp;display=swap">
 '''+BRANDING_STYLE+'''
 <style>
