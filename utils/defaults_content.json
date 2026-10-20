@@ -1,0 +1,565 @@
+{
+  "showCoverPage": false,
+  "bookCover": {
+    "coverDescription": "<p>Mutable defaults: check your reasoning</p>"
+  },
+  "chapters": [
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<p><code>def remember(word, words_to_include=set()):<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+              },
+              "subContentId": "9e167612-dad4-506f-a6e1-1a3ed1abc387",
+              "metadata": {
+                "title": "Example to inspect",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<p>Both cat and dog</p>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Both calls use the same default set; add changes that object.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>Only dog</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "That would require a fresh set. A\u2019s default is created at definition time.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>An empty set</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Both calls execute add on the shared set.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h2>Predict a second call</h2><p>Start with a newly defined function A from the comparison above. Run <code>remember(\"cat\")</code>, then <code>remember(\"dog\")</code>, omitting the set both times. What is in the set returned by the second call?</p>"
+              },
+              "subContentId": "0bcaa919-96b9-54af-bfc4-cdc221effb48",
+              "metadata": {
+                "title": "Predict a second call",
+                "extraTitle": "Predict a second call",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "56f99fa8-d46f-54f2-87bb-40bcb0d018f3",
+      "metadata": {
+        "title": "Predict a second call",
+        "extraTitle": "Predict a second call",
+        "license": "U",
+        "authors": [],
+        "changes": []
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<p><code>def remember(word, words_to_include=None):<br>&nbsp;&nbsp;&nbsp;&nbsp;if words_to_include is None:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words_to_include = set()<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+              },
+              "subContentId": "1a32c1e7-3125-5e8d-862c-e6525d8447f5",
+              "metadata": {
+                "title": "Example to inspect",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<p>The is None branch creates a new set during each omitted call.</p>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Correct. None is the sentinel; set() runs inside each such call.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>Python copies every default argument for each call.</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Python does not copy default arguments automatically.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>None prevents the function from changing any set.</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The function still calls add. It changes a fresh set, or the set supplied by the caller.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h2>Identify the safe initialization</h2><p>In version B, why does the second omitted call start with an empty set?</p>"
+              },
+              "subContentId": "b3d95390-56f5-5f9b-ad64-dec6c8763342",
+              "metadata": {
+                "title": "Identify the safe initialization",
+                "extraTitle": "Identify the safe initialization",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "725edbe1-c73b-529c-b5ac-d728ee0171a4",
+      "metadata": {
+        "title": "Identify the safe initialization",
+        "extraTitle": "Identify the safe initialization",
+        "license": "U",
+        "authors": [],
+        "changes": []
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<p><code>def remember(word, words_to_include=set()):<br>&nbsp;&nbsp;&nbsp;&nbsp;words_to_include.add(word)<br>&nbsp;&nbsp;&nbsp;&nbsp;return words_to_include</code></p>"
+              },
+              "subContentId": "09c097ca-367f-5d76-a113-4c5fd0cf527e",
+              "metadata": {
+                "title": "Example to inspect",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<p>Raise AttributeError: a dictionary has no add method.</p>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "{} creates a dict, not a set. An empty set is written set().",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>Fix the shared-default problem.</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "{} is still a mutable default, and its type is dict.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>Create a fresh empty set for every call.</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "{} creates one dictionary at definition time.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h2>Distinguish a set from a dictionary</h2><p>What would replacing <code>set()</code> with <code>{}</code> in version A\u2019s signature do when the first call reaches <code>words_to_include.add(word)</code>?</p>"
+              },
+              "subContentId": "655f147d-a36e-581a-bf33-58262688c6c5",
+              "metadata": {
+                "title": "Distinguish a set from a dictionary",
+                "extraTitle": "Distinguish a set from a dictionary",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "4572e645-b165-54ed-9ff0-6bf26b56ba36",
+      "metadata": {
+        "title": "Distinguish a set from a dictionary",
+        "extraTitle": "Distinguish a set from a dictionary",
+        "license": "U",
+        "authors": [],
+        "changes": []
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<p>Apply your explanation to the notebook. The reference membership test reads the set without modifying it.</p>"
+              },
+              "subContentId": "2897f524-d64e-5139-b21c-ae3ecfb9127d",
+              "metadata": {
+                "title": "Example to inspect",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<p>No. The shared object must actually be changed for this mutation bug to appear.</p>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Correct. remember demonstrates mutation explicitly. Use None as the robust initialization pattern in the exercise.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<p>Yes. Calling any function automatically adds its input words to the default set.</p>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Calling a function does not change a set unless the executed operations mutate it.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h2>Separate reading from mutation</h2><p>The IV.A Q2 reference filter only tests membership in <code>words_to_include</code>; it never changes that set. Does using a set default alone prove that repeated filter calls will accumulate words?</p>"
+              },
+              "subContentId": "730b064e-8bd8-55d1-89e1-b4cc6a0983db",
+              "metadata": {
+                "title": "Separate reading from mutation",
+                "extraTitle": "Separate reading from mutation",
+                "license": "U",
+                "authors": [],
+                "changes": []
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "9d59b839-9f38-56e8-9972-e8132010485a",
+      "metadata": {
+        "title": "Separate reading from mutation",
+        "extraTitle": "Separate reading from mutation",
+        "license": "U",
+        "authors": [],
+        "changes": []
+      }
+    }
+  ],
+  "behaviour": {
+    "baseColor": "#ba0c2f",
+    "defaultTableOfContents": true,
+    "progressIndicators": true,
+    "progressAuto": true,
+    "displaySummary": false,
+    "enableRetry": true
+  },
+  "read": "Read",
+  "displayTOC": "Display 'Table of contents'",
+  "hideTOC": "Hide 'Table of contents'",
+  "nextPage": "Next page",
+  "previousPage": "Previous page",
+  "chapterCompleted": "Page completed!",
+  "partCompleted": "@pages of @total completed",
+  "incompleteChapter": "Incomplete page",
+  "navigateToTop": "Navigate to the top",
+  "markAsFinished": "I have finished this page",
+  "fullscreen": "Fullscreen",
+  "exitFullscreen": "Exit fullscreen",
+  "bookProgressSubtext": "@count of @total pages",
+  "interactionsProgressSubtext": "@count of @total interactions",
+  "submitReport": "Submit Report",
+  "restartLabel": "Restart",
+  "summaryHeader": "Summary",
+  "allInteractions": "All interactions",
+  "unansweredInteractions": "Unanswered interactions",
+  "scoreText": "@score / @maxscore",
+  "leftOutOfTotalCompleted": "@left of @max interactions completed",
+  "noInteractions": "No interactions",
+  "score": "Score",
+  "summaryAndSubmit": "Summary &amp; submit",
+  "noChapterInteractionBoldText": "You have not interacted with any pages.",
+  "noChapterInteractionText": "You have to interact with at least one page before you can see the summary.",
+  "yourAnswersAreSubmittedForReview": "Your answers are submitted for review!",
+  "bookProgress": "Book progress",
+  "interactionsProgress": "Interactions progress",
+  "totalScoreLabel": "Total score",
+  "a11y": {
+    "progress": "Page @page of @total.",
+    "menu": "Toggle navigation menu"
+  }
+}
