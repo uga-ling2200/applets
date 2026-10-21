@@ -38,7 +38,7 @@
         </ul>
         <h4 class="uga-accent">Background</h4>
         <p>
-          A file behaves like a sequence with a current reading position. Each <code>next()</code> consumes one whole line, including its trailing newline, and advances the position even if the line is blank. <code>strip()</code> removes surrounding whitespace from the returned text, not from the file. A later loop continues from the next unread line. Reading past the end with <code>next()</code> raises <code>StopIteration</code>; a for loop instead ends normally. This trace demonstrates operations to help you write <code>head(filepath, n)</code> yourself.
+          A file behaves like a sequence with a current reading position. Each <code>next()</code> consumes one whole line, including a trailing newline when one is present, and advances the position even if the line is blank. <code>strip()</code> removes surrounding whitespace from the returned text, not from the file. A later loop continues from the next unread line. Reading past the end with <code>next()</code> raises <code>StopIteration</code>; a for loop instead ends normally. This trace demonstrates operations to help you write <code>head(filepath, n)</code> yourself.
         </p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>

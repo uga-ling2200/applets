@@ -46,8 +46,8 @@ function render() {
   $("prediction-comparison").textContent = s.closed && $("prediction").value.trim()
     ? "Your prediction: " + $("prediction").value.trim() : "";
   $("status").textContent = `Step ${at + 1}/${steps.length}: ${s.action}`;
-  $("error").textContent = s.error
-    ? "StopIteration. The requested line does not exist. The with statement will still close the file."
+  $("error").textContent = s.exception
+    ? "StopIteration. The requested line does not exist. " + (s.closed ? "The with statement closed the file." : "The next trace step closes the file.")
     : "";
   $("step").disabled = !ready || at === steps.length - 1;
   $("run").disabled = !ready || at === steps.length - 1;
@@ -72,8 +72,7 @@ $("step").onclick = () => {
   render();
 };
 $("run").onclick = () => {
-  const err = steps.findIndex((s, i) => i > at && s.error);
-  at = err >= 0 ? err : steps.length - 1;
+  at = steps.length - 1;
   render();
 };
 for (const id of ["filetext", "n", "program"])
