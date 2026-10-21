@@ -5,18 +5,22 @@ let steps = [],
   lines = [],
   ready = false;
 const codes = {
-  head: `# Operations to investigate, not a function solution
-next(in_file)  # returns one line
-# Strip surrounding whitespace from the returned text.
-# Print the cleaned line.`,
-  skip: `with open(filepath, encoding="utf-8") as in_file:
-    next(in_file)  # consume, discard
-    line = next(in_file)
-    print(line.strip())`,
-  loop: `with open(filepath, encoding="utf-8") as in_file:
-    print(next(in_file).strip())
-    for line in in_file:
-        print(line.strip())`,
+  head: `1. Open the text file at the beginning.
+2. Read the next line, counting blank lines too.
+3. Remove whitespace from the beginning and end of that line.
+4. Print the cleaned line.
+5. Repeat until n lines have been read, then close the file.
+If a requested line does not exist, report StopIteration and close the file.`,
+  skip: `1. Open the file at the beginning.
+2. Read and discard the first line.
+3. Read the next line and remove its surrounding whitespace.
+4. Print the cleaned second line, then close the file.
+If a requested line does not exist, report StopIteration and close the file.`,
+  loop: `1. Open the file at the beginning.
+2. Read, clean and print the first line.
+3. Continue from the next unread line; clean and print each remaining line.
+4. Stop at the end of the file and close it.
+If the first read finds an empty file, report StopIteration and close the file.`,
 };
 function render() {
   let s = steps[at];
