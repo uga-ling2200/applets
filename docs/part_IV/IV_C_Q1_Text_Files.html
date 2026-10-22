@@ -14,11 +14,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css?v=20261022-read-flow" />
-    <link rel="stylesheet" href="lab.css?v=20261022-read-flow" />
+    <link rel="stylesheet" href="../style.css?v=20261022-empty-layout" />
+    <link rel="stylesheet" href="lab.css?v=20261022-empty-layout" />
     <link rel="stylesheet" href="../feedback-card.css" />
-    <script type="module" src="files.mjs?v=20261022-read-flow"></script>
-    <script src="../reflection-notes.js?v=20261022-read-flow" defer></script>
+    <script type="module" src="files.mjs?v=20261022-empty-layout"></script>
+    <script src="../reflection-notes.js?v=20261022-empty-layout" defer></script>
   </head>
   <body class="iv-lab">
     <a class="skip-link" href="#main">Skip to activity</a>
@@ -93,9 +93,10 @@ Fourth line
         </div>
         <p id="status" class="field-hint" role="status" aria-live="polite"></p>
         <p id="error" class="error-text" role="alert"></p>
-        <div class="lab-grid">
+        <div id="file-trace-panels" class="lab-grid" data-empty="true">
           <section aria-labelledby="file-title">
             <h3 id="file-title" class="h5">File and next unread line</h3>
+            <p id="file-empty" class="field-hint">Open the file to see its lines and reading position.</p>
             <ol id="lines" class="file-lines"></ol>
           </section>
           <section aria-labelledby="execution-title">
@@ -103,6 +104,7 @@ Fourth line
             <pre id="code" class="lab-code"></pre>
             <p id="variables"></p>
             <h4>Printed output</h4>
+            <p id="output-empty" class="field-hint">No lines have been printed.</p>
             <pre id="output" class="lab-code"></pre>
             <p id="prediction-comparison" class="field-hint" role="status"></p>
           </section>

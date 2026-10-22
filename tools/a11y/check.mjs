@@ -60,6 +60,12 @@ try {
    if((await page.locator('#output').textContent())!=='a\nb\nc\n')throw Error('Loop did not continue from next unread line.');
    await page.locator('#filetext').fill('');await page.locator('#program').selectOption('head');await page.locator('#n').fill('1');await page.locator('#prepare').click();await page.locator('#run').click();
    if(!(await page.locator('#error').innerText()).includes('StopIteration')||!(await page.locator('#variables').innerText()).includes('closed'))throw Error('Empty file EOF or close incorrect.');
+   if(!await page.locator('#file-empty').isVisible()||!(await page.locator('#file-empty').innerText()).includes('0 lines'))throw Error('Empty file has no visible explanation.');
+   if(!await page.locator('#output-empty').isVisible())throw Error('No-output explanation missing.');
+   if((await page.locator('#file-trace-panels').getAttribute('data-empty'))!=='true')throw Error('Empty file retained a blank comparison column.');
+   const emptyColumns=await page.locator('#file-trace-panels').evaluate(n=>getComputedStyle(n).gridTemplateColumns.split(' ').length);if(emptyColumns!==1)throw Error('Empty file layout still has two columns.');
+   await page.locator('#filetext').fill('\n');await page.locator('#prepare').click();await page.locator('#run').click();
+   if(await page.locator('#file-empty').isVisible()||!await page.locator('#output-empty').isVisible()||!(await page.locator('#output-empty').innerText()).includes('1 blank line printed')||(await page.locator('#output').textContent())!=='\n')throw Error('A blank line was confused with an empty file.');
   }]);
   if(pathname.includes('Keyword')){
    states.push(['practice-feedback',async()=>{
@@ -86,6 +92,10 @@ try {
    await page.setViewportSize({width,height:844});
    const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth}));
    if(sizes.scroll>sizes.viewport+1){failed=true;summary.push({page:pathname,error:`Page overflows at ${width}px`,sizes});}
+   const mobileResult=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze();
+   await writeFile(`a11y-results/${pathname.split('/').pop()}-mobile-${width}.json`,JSON.stringify(mobileResult,null,2));
+   summary.push({page:pathname,state:`mobile-${width}`,violations:mobileResult.violations,manualReview:mobileResult.incomplete.map(x=>({id:x.id,description:x.description})),errors});
+   if(mobileResult.violations.length||errors.length)failed=true;
    await page.screenshot({path:`a11y-results/${pathname.split('/').pop()}-${width}px.png`,fullPage:true});
   }
   await context.close();

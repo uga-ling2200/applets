@@ -86,3 +86,6 @@
   border: 1px solid var(--line);
   border-radius: 6px;
 }
+
+/* An unopened or empty file has no line list to compare beside the operations. */
+#file-trace-panels[data-empty="true"] {grid-template-columns:minmax(0,1fr);}
