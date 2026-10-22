@@ -89,3 +89,10 @@
 
 /* An unopened or empty file has no line list to compare beside the operations. */
 #file-trace-panels[data-empty="true"] {grid-template-columns:minmax(0,1fr);}
+
+/* Keep the feedback panel aligned with the lesson and reflection cards. */
+.iv-lab .applet-feedback-card {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
