@@ -25,9 +25,18 @@ try {
    await page.getByRole('button',{name:'Build bigram model',exact:true}).click();
    await page.getByRole('button',{name:'Generate a whole sentence',exact:true}).click();
   }]);
-  if(pathname.includes('Keyword'))states.push(['second-call',async()=>{
+  if(pathname.includes('Keyword'))states.push(['invalid-word',async()=>{
+   await page.locator('#first-word').fill('');await page.locator('#step').click();
+   if(!(await page.locator('#error').innerText()).includes('Enter a word'))throw Error('Missing word feedback absent.');
+   await page.locator('#first-word').fill('cat');await page.locator('#prediction').fill('A keeps both words; B keeps only dog.');
+  }],['second-call',async()=>{
    await page.locator('#step').click();await page.locator('#step').click();
-   if(await page.locator('#calls li').count()<2)throw Error('Two calls were not shown.');
+   if(await page.locator('#calls li').count()!==2)throw Error('Two calls were not shown.');
+   if(!(await page.locator('#shared-state').innerText()).includes('cat')||!(await page.locator('#shared-state').innerText()).includes('dog'))throw Error('Shared set did not keep both words.');
+   if((await page.locator('#fresh-state').innerText()).includes('cat')||!(await page.locator('#fresh-state').innerText()).includes('dog'))throw Error('Fresh set retained first call.');
+   if(await page.locator('.lesson-container ol li').count()!==3)throw Error('Missing predict-run-explain sequence.');
+   await page.locator('#reset').click();if(await page.locator('#calls li').count())throw Error('Redefining did not reset calls.');
+   await page.locator('#step').click();await page.locator('#step').click();
   }]);
   if(pathname.includes('Text_Files'))states.push(['complete',async()=>{
    if(!await page.locator('#step').isDisabled()||!await page.locator('#run').isDisabled())throw Error('File opened before prediction.');
