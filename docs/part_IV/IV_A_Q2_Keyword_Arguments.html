@@ -39,11 +39,11 @@
           </li>
         </ul>
         <h4 class="uga-accent">Background</h4>
-        <p>A default value is evaluated when Python defines the function, not each time it is called.</p>
+        <p>A keyword argument supplies a value by parameter name, for example <code>words_to_include=chosen</code>. If a caller omits that argument, Python uses the default from the function signature (the first line of the definition). Defaults are evaluated once when the function is defined. A set is mutable: <code>.add()</code> changes the existing object. Consequently, <code>words_to_include=set()</code> creates one set shared across omitted-argument calls. Using <code>None</code> as a sentinel lets the function create a new empty set inside each such call. This activity makes that difference visible through two calls, rather than testing the loop in the notebook.</p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>
-          <li>With a partner, predict the second call before running either version.</li>
-          <li>Compare the stored sets, check your explanation, then swap roles.</li>
+          <li>Read versions A and B below. Both receive the same two words, and neither call supplies <code>words_to_include</code>. Before running, write what each version will return on the second call.</li>
+          <li>Run the first call and inspect S1 and S2 (labels for different set objects). Run the second call: check whether A reused S1 while B created S3. Compare the set contents with your prediction, then redefine the functions to start again. Complete the practice questions below and explain why None changes the result.</li>
         </ol>
       </section>
       <section class="app-wrapper" aria-labelledby="applet-title">
