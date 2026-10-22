@@ -37,6 +37,7 @@ function invalidate(message) {
   $("step").disabled = true; $("run").disabled = true;
   $("n").disabled = $("program").value !== "head";
   $("code").textContent = codes[$("program").value];
+  $("file-trace-panels").dataset.empty = "true";
   $("file-empty").hidden = false;
   $("file-empty").textContent = "Open the file to see its lines and reading position.";
   $("output-empty").hidden = false;
@@ -47,6 +48,7 @@ function render() {
   let s = steps[at];
   if (!s || !ready) return;
   $("lines").replaceChildren();
+  $("file-trace-panels").dataset.empty = String(lines.length === 0);
   $("file-empty").hidden = lines.length > 0;
   $("file-empty").textContent = "Empty file (0 lines). There is no line to read. Add text above and reopen the file to try a non-empty example.";
   lines.forEach((line, i) => {
