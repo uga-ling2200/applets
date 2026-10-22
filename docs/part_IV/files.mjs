@@ -65,8 +65,11 @@ function render() {
     (s.i !== undefined ? `i = ${s.i}. ` : "") +
     (s.returned !== undefined ? `Last next() = ${JSON.stringify(s.returned)}. ` : "") +
     (s.exception ? `Exception: ${s.exception}.` : "");
-  $("output-empty").hidden = s.output.length > 0;
-  $("output-empty").textContent = s.closed ? "No lines were printed." : "No lines have been printed yet.";
+  const onlyBlankLines = s.output.length > 0 && s.output.every(line => line === "");
+  $("output-empty").hidden = s.output.length > 0 && !onlyBlankLines;
+  $("output-empty").textContent = onlyBlankLines
+    ? `${s.output.length} blank ${s.output.length === 1 ? "line" : "lines"} printed.`
+    : s.closed ? "No lines were printed." : "No lines have been printed yet.";
   $("output").textContent = s.output.join("\n") + (s.output.length ? "\n" : "");
   $("prediction-comparison").textContent = s.closed && $("prediction").value.trim()
     ? "Your prediction: " + $("prediction").value.trim() : "";

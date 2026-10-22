@@ -63,7 +63,7 @@ try {
    if(!await page.locator('#file-empty').isVisible()||!(await page.locator('#file-empty').innerText()).includes('0 lines'))throw Error('Empty file has no visible explanation.');
    if(!await page.locator('#output-empty').isVisible())throw Error('No-output explanation missing.');
    await page.locator('#filetext').fill('\n');await page.locator('#prepare').click();await page.locator('#run').click();
-   if(await page.locator('#file-empty').isVisible()||await page.locator('#output-empty').isVisible()||(await page.locator('#output').textContent())!=='\n')throw Error('A blank line was confused with an empty file.');
+   if(await page.locator('#file-empty').isVisible()||!await page.locator('#output-empty').isVisible()||!(await page.locator('#output-empty').innerText()).includes('1 blank line printed')||(await page.locator('#output').textContent())!=='\n')throw Error('A blank line was confused with an empty file.');
   }]);
   if(pathname.includes('Keyword')){
    states.push(['practice-feedback',async()=>{
