@@ -29,10 +29,28 @@ try {
    await page.locator('#step').click();await page.locator('#step').click();
    if(await page.locator('#calls li').count()<2)throw Error('Two calls were not shown.');
   }]);
-  if(pathname.includes('Text_Files'))states.push(['complete',async()=>{await page.locator('#run').click();}],['EOF',async()=>{
+  if(pathname.includes('Text_Files'))states.push(['complete',async()=>{
+   if(!await page.locator('#step').isDisabled()||!await page.locator('#run').isDisabled())throw Error('File opened before prediction.');
+   await page.locator('#prepare').click();await page.locator('#step').click();await page.locator('#step').click();
+   if(!(await page.locator('#status').innerText()).includes('Read the next line'))throw Error('Mixed code fragments in operation status.');
+   await page.locator('#run').click();
+   if((await page.locator('#output').textContent())!=='First line\n\nThird line\n')throw Error('Blank line output is incorrect.');
+  }],['EOF',async()=>{
    await page.locator('#n').fill('8');await page.locator('#prepare').click();await page.locator('#run').click();
    if(!(await page.locator('#variables').innerText()).includes('File: closed.'))throw Error('Run to end did not close the file after EOF.');
    if(!(await page.locator('#error').innerText()).includes('StopIteration'))throw Error('EOF evidence was lost.');
+  }]);
+  if(pathname.includes('Text_Files'))states.push(['invalid-and-recovery',async()=>{
+   await page.locator('#n').fill('-1');await page.locator('#prepare').click();await page.locator('#prediction').fill('A prediction should not erase validation.');
+   if(!(await page.locator('#error').innerText()).includes('integer'))throw Error('Prediction erased invalid-n feedback.');
+   if(!await page.locator('#run').isDisabled()||(await page.locator('#output').innerText()))throw Error('Stale execution remained after invalidation.');
+   await page.locator('#n').fill('0');await page.locator('#prepare').click();await page.locator('#run').click();
+   if((await page.locator('#output').textContent())!=='')throw Error('n=0 printed a line.');
+  }],['loop-and-empty-file',async()=>{
+   await page.locator('#filetext').fill('a\nb\nc');await page.locator('#program').selectOption('loop');await page.locator('#prepare').click();await page.locator('#run').click();
+   if((await page.locator('#output').textContent())!=='a\nb\nc\n')throw Error('Loop did not continue from next unread line.');
+   await page.locator('#filetext').fill('');await page.locator('#program').selectOption('head');await page.locator('#n').fill('1');await page.locator('#prepare').click();await page.locator('#run').click();
+   if(!(await page.locator('#error').innerText()).includes('StopIteration')||!(await page.locator('#variables').innerText()).includes('closed'))throw Error('Empty file EOF or close incorrect.');
   }]);
   if(pathname.includes('Keyword')){
    states.push(['practice-feedback',async()=>{
