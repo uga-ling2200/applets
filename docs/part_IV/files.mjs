@@ -37,12 +37,18 @@ function invalidate(message) {
   $("step").disabled = true; $("run").disabled = true;
   $("n").disabled = $("program").value !== "head";
   $("code").textContent = codes[$("program").value];
+  $("file-empty").hidden = false;
+  $("file-empty").textContent = "Open the file to see its lines and reading position.";
+  $("output-empty").hidden = false;
+  $("output-empty").textContent = "No lines have been printed.";
   $("status").textContent = message;
 }
 function render() {
   let s = steps[at];
   if (!s || !ready) return;
   $("lines").replaceChildren();
+  $("file-empty").hidden = lines.length > 0;
+  $("file-empty").textContent = "Empty file (0 lines). There is no line to read. Add text above and reopen the file to try a non-empty example.";
   lines.forEach((line, i) => {
     const li = document.createElement("li");
     const active = i === s.position && !s.closed;
@@ -59,6 +65,8 @@ function render() {
     (s.i !== undefined ? `i = ${s.i}. ` : "") +
     (s.returned !== undefined ? `Last next() = ${JSON.stringify(s.returned)}. ` : "") +
     (s.exception ? `Exception: ${s.exception}.` : "");
+  $("output-empty").hidden = s.output.length > 0;
+  $("output-empty").textContent = s.closed ? "No lines were printed." : "No lines have been printed yet.";
   $("output").textContent = s.output.join("\n") + (s.output.length ? "\n" : "");
   $("prediction-comparison").textContent = s.closed && $("prediction").value.trim()
     ? "Your prediction: " + $("prediction").value.trim() : "";

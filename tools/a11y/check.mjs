@@ -60,6 +60,10 @@ try {
    if((await page.locator('#output').textContent())!=='a\nb\nc\n')throw Error('Loop did not continue from next unread line.');
    await page.locator('#filetext').fill('');await page.locator('#program').selectOption('head');await page.locator('#n').fill('1');await page.locator('#prepare').click();await page.locator('#run').click();
    if(!(await page.locator('#error').innerText()).includes('StopIteration')||!(await page.locator('#variables').innerText()).includes('closed'))throw Error('Empty file EOF or close incorrect.');
+   if(!await page.locator('#file-empty').isVisible()||!(await page.locator('#file-empty').innerText()).includes('0 lines'))throw Error('Empty file has no visible explanation.');
+   if(!await page.locator('#output-empty').isVisible())throw Error('No-output explanation missing.');
+   await page.locator('#filetext').fill('\n');await page.locator('#prepare').click();await page.locator('#run').click();
+   if(await page.locator('#file-empty').isVisible()||await page.locator('#output-empty').isVisible()||(await page.locator('#output').textContent())!=='\n')throw Error('A blank line was confused with an empty file.');
   }]);
   if(pathname.includes('Keyword')){
    states.push(['practice-feedback',async()=>{
