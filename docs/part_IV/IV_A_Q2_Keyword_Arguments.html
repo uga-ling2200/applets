@@ -39,11 +39,12 @@
           </li>
         </ul>
         <h4 class="uga-accent">Background</h4>
-        <p>A keyword argument supplies a value by parameter name, for example <code>words_to_include=chosen</code>. If a caller omits that argument, Python uses the default from the function signature (the first line of the definition). Defaults are evaluated once when the function is defined. A set is mutable: <code>.add()</code> changes the existing object. Consequently, <code>words_to_include=set()</code> creates one set shared across omitted-argument calls. Using <code>None</code> as a sentinel lets the function create a new empty set inside each such call. This activity makes that difference visible through two calls, rather than testing the loop in the notebook.</p>
+        <p>Python creates a default value once, when a function is defined. If that value is a set and the function changes it, later calls reuse the changed set. A <code>None</code> default lets the function create a fresh set inside each call instead.</p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>
-          <li>Read versions A and B below. Both receive the same two words, and neither call supplies <code>words_to_include</code>. Before running, write what each version will return on the second call.</li>
-          <li>Run the first call and inspect S1 and S2 (labels for different set objects). Run the second call: check whether A reused S1 while B created S3. Compare the set contents with your prediction, then redefine the functions to start again. Complete the practice questions below and explain why None changes the result.</li>
+          <li><strong>Predict.</strong> Compare A and B below. Keep the example words and predict what each version returns on its second call.</li>
+          <li><strong>Run and compare.</strong> Click <strong>Run first call</strong>, then <strong>Run second call</strong>. Follow the set labels and contents. Use <strong>Redefine both functions</strong> to try again.</li>
+          <li><strong>Explain.</strong> Complete all four H5P practice pages below. Use <strong>Check</strong> for feedback and the arrow to continue, then write and download your reflection.</li>
         </ol>
       </section>
       <section class="app-wrapper" aria-labelledby="applet-title">
@@ -51,7 +52,7 @@
           <h2 id="applet-title">One default, <span>many calls</span></h2>
           <p>Does a new call get a new set?</p>
         </div></div>
-        <p>This short example <strong>adds</strong> a word to a set. Compare the same calls with two different defaults.</p>
+        <p>Both versions receive the same words, one call at a time. Each call supplies only <code>word</code>, so Python uses the default for <code>words_to_include</code>. The <code>.add()</code> line changes the set.</p>
         <div class="lab-grid">
           <section aria-labelledby="shared-title"><h3 id="shared-title">A. A set in the signature</h3>
 <pre class="lab-code"><code>def remember(word, words_to_include=set()):
@@ -91,7 +92,7 @@ remember("cat", words_to_include=chosen)
 # chosen is now {"bird", "cat"} in both versions.</code></pre>
         </details>
         <h3>Check your reasoning</h3>
-        <p>Predict, select an answer, then use Check for feedback. These practice scores are not submitted.</p>
+        <p>Work through four pages: predict the shared default, explain None, distinguish set() from {}, and connect the example to the notebook. Choose an answer, use Check for feedback, then use Next page. These practice scores are not submitted.</p>
         <iframe class="defaults-check" src="defaults_check.html?v=20261019-score-a11y" title="Practice: mutable defaults and None" loading="lazy"></iframe>
         <details class="glossary-box"><summary>Connect this to IV.A Q2</summary>
           <p>The notebook uses <code>words_to_include=None</code> and creates a set inside the function. Write that initialization in your own solution.</p>
