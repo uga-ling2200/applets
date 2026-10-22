@@ -65,11 +65,12 @@
     words_to_include.add(word)
     return words_to_include</code></pre></section>
         </div>
-        <p class="field-hint">The display labels sets by identity (S1, S2…), not by a memory address. Set display order is not significant.</p>
-        <div class="lab-grid">
+        <fieldset class="lab-grid" aria-describedby="set-identity-help">
+          <legend class="visually-hidden">Words used in both versions</legend>
           <div class="field"><label for="first-word">First word</label><input id="first-word" value="cat" maxlength="30"></div>
           <div class="field"><label for="second-word">Second word</label><input id="second-word" value="dog" maxlength="30"></div>
-        </div>
+        </fieldset>
+        <p id="set-identity-help" class="field-hint">Each word is used in both versions. S1, S2 and S3 identify set objects; they are not memory addresses. Set display order is not significant.</p>
         <div class="field"><label for="prediction">Predict what the second call returns in A and B</label><textarea id="prediction" rows="2" maxlength="4000"></textarea></div>
         <div class="btn-row">
           <button id="step" type="button" class="btn-uga">Run first call</button>
