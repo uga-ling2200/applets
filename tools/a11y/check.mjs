@@ -63,6 +63,7 @@ try {
    if(!await page.locator('#file-empty').isVisible()||!(await page.locator('#file-empty').innerText()).includes('0 lines'))throw Error('Empty file has no visible explanation.');
    if(!await page.locator('#output-empty').isVisible())throw Error('No-output explanation missing.');
    if((await page.locator('#file-trace-panels').getAttribute('data-empty'))!=='true')throw Error('Empty file retained a blank comparison column.');
+   const emptyColumns=await page.locator('#file-trace-panels').evaluate(n=>getComputedStyle(n).gridTemplateColumns.split(' ').length);if(emptyColumns!==1)throw Error('Empty file layout still has two columns.');
    await page.locator('#filetext').fill('\n');await page.locator('#prepare').click();await page.locator('#run').click();
    if(await page.locator('#file-empty').isVisible()||!await page.locator('#output-empty').isVisible()||!(await page.locator('#output-empty').innerText()).includes('1 blank line printed')||(await page.locator('#output').textContent())!=='\n')throw Error('A blank line was confused with an empty file.');
   }]);
