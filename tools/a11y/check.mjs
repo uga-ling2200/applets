@@ -9,6 +9,11 @@ try {
   const context=await browser.newContext();const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto(`http://127.0.0.1:8765/${pathname.replace(/^docs\//,'')}`);if(!response?.ok())throw Error(`Preview failed to load ${pathname}: ${response?.status()}`);await page.locator('#main').waitFor();await page.waitForTimeout(1500);
   if(pathname.includes('Keyword')){await page.locator('iframe.defaults-check').scrollIntoViewIfNeeded();await page.frameLocator('iframe.defaults-check').locator('.h5p-content').waitFor();}
+  async function assertCardAlignment(){
+   const bounds=await page.evaluate(()=>['.reflection-container','.applet-feedback-card'].map(selector=>{const r=document.querySelector(selector).getBoundingClientRect();return {left:r.left,right:r.right};}));
+   if(Math.abs(bounds[0].left-bounds[1].left)>1||Math.abs(bounds[0].right-bounds[1].right)>1)throw Error('Feedback and reflection card edges do not align: '+JSON.stringify(bounds));
+  }
+  await assertCardAlignment();
   const states=[['initial',async()=>{}]];
   if(pathname.includes('11A_'))states.push(['annotated',async()=>{
    await page.getByText('Offline comparison',{exact:true}).click();await page.getByRole('button',{name:'Load practice examples',exact:true}).click();
@@ -90,6 +95,7 @@ try {
   if(!await page.locator('#main').evaluate(n=>n===document.activeElement)){failed=true;summary.push({page:pathname,error:'Skip link did not focus main'});}
   for(const width of [390,320]){
    await page.setViewportSize({width,height:844});
+   await assertCardAlignment();
    const sizes=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth}));
    if(sizes.scroll>sizes.viewport+1){failed=true;summary.push({page:pathname,error:`Page overflows at ${width}px`,sizes});}
    const mobileResult=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze();
