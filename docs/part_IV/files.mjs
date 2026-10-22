@@ -22,9 +22,26 @@ If a requested line does not exist, report StopIteration and close the file.`,
 4. Stop at the end of the file and close it.
 If the first read finds an empty file, report StopIteration and close the file.`,
 };
+function describeAction(action) {
+  if (action.startsWith("next(in_file) returns ")) return "Read the next line: " + action.slice("next(in_file) returns ".length);
+  if (action.startsWith("Loop iteration ")) return "Begin requested line " + (Number(action.slice("Loop iteration ".length)) + 1);
+  if (action === "strip() removes surrounding whitespace") return "Remove surrounding whitespace from the returned line";
+  if (action === "print(line)") return "Print the cleaned line";
+  if (action === "for line in in_file reads the next line") return "Read the next unread line in the loop";
+  if (action === "Exit with: file closed") return "Close the file";
+  return action;
+}
+function invalidate(message) {
+  ready = false; steps = []; at = 0;
+  for (const id of ["lines", "variables", "output", "prediction-comparison", "error"]) $(id).textContent = "";
+  $("step").disabled = true; $("run").disabled = true;
+  $("n").disabled = $("program").value !== "head";
+  $("code").textContent = codes[$("program").value];
+  $("status").textContent = message;
+}
 function render() {
   let s = steps[at];
-  if (!s) return;
+  if (!s || !ready) return;
   $("lines").replaceChildren();
   lines.forEach((line, i) => {
     const li = document.createElement("li");
@@ -45,14 +62,15 @@ function render() {
   $("output").textContent = s.output.join("\n") + (s.output.length ? "\n" : "");
   $("prediction-comparison").textContent = s.closed && $("prediction").value.trim()
     ? "Your prediction: " + $("prediction").value.trim() : "";
-  $("status").textContent = `Step ${at + 1}/${steps.length}: ${s.action}`;
+  $("status").textContent = `Step ${at + 1}/${steps.length}: ${describeAction(s.action)}`;
   $("error").textContent = s.exception
-    ? "StopIteration. The requested line does not exist. " + (s.closed ? "The with statement closed the file." : "The next trace step closes the file.")
+    ? "StopIteration. The requested line does not exist. " + (s.closed ? "The file is closed." : "The next trace step closes the file.")
     : "";
   $("step").disabled = !ready || at === steps.length - 1;
   $("run").disabled = !ready || at === steps.length - 1;
 }
 function prepare() {
+  invalidate("Choose valid inputs, then reopen the file.");
   const isHead = $("program").value === "head";
   const n = isHead ? Number($("n").value) : 0;
   if (isHead && (!$("n").value.trim() || !Number.isInteger(n) || n < 0 || n > 100)) {
@@ -76,13 +94,6 @@ $("run").onclick = () => {
   render();
 };
 for (const id of ["filetext", "n", "program"])
-  $(id).addEventListener("input", () => {
-    $("n").disabled = $("program").value !== "head";
-    ready = false;
-    $("step").disabled = true;
-    $("run").disabled = true;
-    $("status").textContent = "Inputs changed. Reopen the file to start again.";
-  });
-prepare();
-
-$("prediction").addEventListener("input", render);
+  $(id).addEventListener("input", () => invalidate("Inputs changed. Reopen the file to start again."));
+invalidate("Predict the output, then choose Open file / restart to begin.");
+$("prediction").addEventListener("input", () => { if (ready) render(); });

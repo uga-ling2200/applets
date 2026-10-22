@@ -14,11 +14,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css?v=20261021-meeting-final" />
-    <link rel="stylesheet" href="lab.css?v=20261021-meeting-final" />
+    <link rel="stylesheet" href="../style.css?v=20261022-read-flow" />
+    <link rel="stylesheet" href="lab.css?v=20261022-read-flow" />
     <link rel="stylesheet" href="../feedback-card.css" />
-    <script type="module" src="files.mjs?v=20261021-meeting-final"></script>
-    <script src="../reflection-notes.js?v=20261021-meeting-final" defer></script>
+    <script type="module" src="files.mjs?v=20261022-read-flow"></script>
+    <script src="../reflection-notes.js?v=20261022-read-flow" defer></script>
   </head>
   <body class="iv-lab">
     <a class="skip-link" href="#main">Skip to activity</a>
@@ -37,13 +37,12 @@
           <li><strong>Predict</strong> what head(filepath, n) prints.</li>
         </ul>
         <h4 class="uga-accent">Background</h4>
-        <p>
-          A file behaves like a sequence with a current reading position. Each <code>next()</code> consumes one whole line, including a trailing newline when one is present, and advances the position even if the line is blank. <code>strip()</code> removes surrounding whitespace from the returned text, not from the file. A later loop continues from the next unread line. Reading past the end with <code>next()</code> raises <code>StopIteration</code>; a for loop instead ends normally. This trace demonstrates operations to help you write <code>head(filepath, n)</code> yourself.
-        </p>
+        <p>A text file has a reading position. Each <code>next()</code> reads one line and moves forward; a blank line counts too. This activity shows the reads and output step by step, to help you write <code>head(filepath, n)</code>.</p>
         <h4 class="uga-accent">Instructions</h4>
         <ol>
-          <li>Enter a small text file and select a program. For head, choose how many lines n to print; blank lines count. Write your prediction before opening the file.</li>
-          <li>Choose Open file / restart, then Execute next step to follow the next unread line and printed output. Compare the trace with the natural-language operations. Try n = 0, a blank line, and n larger than the file. Reopen after changing the inputs, then swap roles.</li>
+          <li><strong>Predict.</strong> Keep the example file, program and n = 3. Write the lines you expect to be printed.</li>
+          <li><strong>Follow the reads.</strong> Click <strong>Open file / restart</strong>, then <strong>Execute next step</strong>. Watch the next unread line, the operation and the printed output. Use <strong>Run to end</strong> to finish.</li>
+          <li><strong>Compare.</strong> Try n = 0, n larger than the file, and the other programs. Reopen after changing an input. Explain what happens to blank lines and at the end of the file.</li>
         </ol>
       </section>
       <section class="app-wrapper" aria-labelledby="applet-title">
@@ -86,9 +85,9 @@ Fourth line
         <div class="btn-row">
           <button id="prepare" type="button" class="btn-uga">
             Open file / restart</button
-          ><button id="step" type="button" class="btn-uga-outline">
+          ><button id="step" disabled type="button" class="btn-uga-outline">
             Execute next step</button
-          ><button id="run" type="button" class="btn-uga-dark">
+          ><button id="run" disabled type="button" class="btn-uga-dark">
             Run to end
           </button>
         </div>
@@ -109,7 +108,7 @@ Fourth line
           </section>
         </div>
         <p class="field-hint">
-          Blank lines count. Use the trace to build and test head(filepath, n) in IV.C Q1.
+          Blank lines count. Cleaning removes surrounding whitespace from the returned text, not from the file. A later loop starts at the next unread line; it stops normally at the end. A direct next() past the end raises StopIteration.
         </p>
       </section>
       <section class="reflection-container" aria-labelledby="reflection-title">
