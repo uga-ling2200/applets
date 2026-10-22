@@ -52,7 +52,7 @@
           <h2 id="applet-title">One default, <span>many calls</span></h2>
           <p>Does a new call get a new set?</p>
         </div></div>
-        <p>Both versions receive the same words, one call at a time. Each call supplies only <code>word</code>, so Python uses the default for <code>words_to_include</code>. The <code>.add()</code> line changes the set.</p>
+        <p>Both versions receive the same words, one call at a time. Each call supplies only <code>word</code>, so Python uses the default for <code>words_to_include</code>. The default follows <code>=</code> in the first line of each definition. A keyword argument would supply a value by name, such as <code>words_to_include=chosen</code>; these calls omit it. The <code>.add()</code> line changes the set.</p>
         <div class="lab-grid">
           <section aria-labelledby="shared-title"><h3 id="shared-title">A. A set in the signature</h3>
 <pre class="lab-code"><code>def remember(word, words_to_include=set()):
