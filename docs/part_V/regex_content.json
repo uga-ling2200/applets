@@ -1,0 +1,1326 @@
+{
+  "showCoverPage": false,
+  "bookCover": {
+    "coverDescription": "<p>V.A Regex I, Q2 \u2014 Filtering strings with a pattern</p>"
+  },
+  "chapters": [
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>1. Define the result</h2><p>The notebook asks you to write <code>re_hits(pattern, candidates)</code>. It returns the complete input strings that contain a match, preserving their order and repeated entries. First establish what the result should contain before choosing operations.</p><p>Use pattern <code>r\"a\"</code> with <code>[\"apple\", \"banana\", \"cherry\", \"donut\"]</code>. Predict on paper, explain to a partner, then check. Switch roles on each page. Working alone? Write your explanation before checking.</p>"
+              },
+              "subContentId": "a28430eb-e02c-5752-a055-24ab9dc2cf43",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "\"apple\" and \"banana\" in a list",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Both complete strings contain a. The function filters strings; it does not extract individual matches.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "\"a\", \"a\", \"a\", \"a\" in a list",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "These are matching substrings. Return complete input strings instead.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "True, True, False, False in a list",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "These describe decisions, not the requested strings.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Choose the returned items</h3><p>Which list meets the task?</p>"
+              },
+              "subContentId": "356f4f68-4caf-5ce0-bffa-c3451b62cf2d",
+              "metadata": {
+                "title": "Choose the returned items",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Choose the returned items"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "Once",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Each candidate is considered once. Several matching positions still lead to one addition.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Three times",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "You are counting matching positions rather than input entries.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Zero times",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "A match anywhere qualifies, even if it is not at the beginning.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Count one candidate</h3><p>The string \"banana\" contains several a characters. How many times should this one input entry be added?</p>"
+              },
+              "subContentId": "65d0b2ff-198a-5685-918a-9ab122aaff07",
+              "metadata": {
+                "title": "Count one candidate",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Count one candidate"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "5b73006a-3349-597e-8f8b-9a7ad8f741a6",
+      "metadata": {
+        "title": "1. Define the result",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "1. Define the result"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>2. Follow a search result</h2><p>Now investigate the decision that selects an input string. <code>re.search(pattern, candidate)</code> looks anywhere in the candidate. A successful search returns a Match object; an unsuccessful search returns <code>None</code>. An <code>if</code> tests the truth value of that result.</p><p>A Match object is truthy; None is falsy. Neither is itself the Boolean True or False. Converting a search result with bool() is valid but unnecessary in the condition.</p>"
+              },
+              "subContentId": "98e28735-0b84-5ace-908f-a0fd6359a596",
+              "metadata": {
+                "title": "2. Follow a search result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "re.search()",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "search looks anywhere. match checks the beginning; fullmatch requires the whole string.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "re.match()",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "match only checks the beginning. It would miss the a in pear.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "re.fullmatch()",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "fullmatch would require the entire string to match a.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Select a search operation</h3><p>Pattern r\"a\" must keep \"pear\", where the match is inside the string. Which operation fits?</p>"
+              },
+              "subContentId": "249477f7-178a-5fd8-8d90-216501041a80",
+              "metadata": {
+                "title": "Select a search operation",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Select a search operation"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "Skip this candidate",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "None is falsy, so no string is added for this candidate.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Add \"cherry\"",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "An unsuccessful search must not add the candidate.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Add False",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The condition controls whether to add; it does not supply the stored value.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Read the condition</h3><p>For pattern r\"a\" and candidate \"cherry\", the search returns None. Which branch should run?</p>"
+              },
+              "subContentId": "1528a497-e078-5a34-a51a-6a8f29cce6a7",
+              "metadata": {
+                "title": "Read the condition",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Read the condition"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "a0cd64ae-e0e4-58a7-b355-54c9adb830f1",
+      "metadata": {
+        "title": "2. Follow a search result",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "2. Follow a search result"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>3. Complete the flow</h2><p>You have identified what a search returns. Now connect that result to a loop. Copy this flow onto paper and fill A, B and C before checking below.</p><ol><li>Start with an empty result list.</li><li>Take the next candidate. If none remain, go to C.</li><li>A: __________.</li><li>If the search succeeds, B. Otherwise, leave the result unchanged.</li><li>Return to step 2.</li><li>C: finish the function.</li></ol><p>The flowchart is written as numbered steps: the success and failure branches both return to the next-candidate step.</p>"
+              },
+              "subContentId": "f15a75cd-086f-5425-9c78-f9555cc28638",
+              "metadata": {
+                "title": "3. Complete the flow",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "re.search(pattern, candidate)",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The pattern is first; the string to search is second.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "re.search(candidate, pattern)",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "These arguments are reversed.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "candidate == pattern",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Equality cannot find a matching substring inside a longer string.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Fill A</h3><p>Which expression supplies the search result?</p>"
+              },
+              "subContentId": "264cb542-3cdc-5e3b-950f-b8e423913444",
+              "metadata": {
+                "title": "Fill A",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Fill A"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "The complete current candidate",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The task asks for complete original strings. The search result decides whether; the append argument decides what.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "The Match object",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "That records match information rather than the complete original string.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "The Boolean value of the search result",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "That stores True rather than the requested input string.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Fill B</h3><p>A successful search has occurred. Which value should be added to the result list?</p>"
+              },
+              "subContentId": "9fb98b83-0785-5f8f-9f8a-6a5438c6752f",
+              "metadata": {
+                "title": "Fill B",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Fill B"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "Return the accumulated list",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Return after the loop, including when the list is empty.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Return after the first successful search",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This stops early and can miss later matching candidates.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Print the list without returning it",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The task requires a return value that other functions can use.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Fill C</h3><p>When all candidates have been considered, what should happen?</p>"
+              },
+              "subContentId": "0e888a71-dc98-5893-9dfd-ac9334779813",
+              "metadata": {
+                "title": "Fill C",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Fill C"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "9967bdd7-7456-589b-a5ee-fd2c04d1d107",
+      "metadata": {
+        "title": "3. Complete the flow",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "3. Complete the flow"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>4. Test the branches</h2><p>The flow should handle more than the opening example. Trace each candidate in order, keeping a separate result list. In the trace lab on the main page, predict first, then advance one candidate at a time. The matched substring is evidence for the decision; it is not the returned item.</p>"
+              },
+              "subContentId": "3ea59077-35e9-56bd-b64f-b506c4098913",
+              "metadata": {
+                "title": "4. Test the branches",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": " [\"pear\", \"pear\"]",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Both matching entries remain in order. Filtering does not deduplicate.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "[\"pear\"]",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "That removes a repeated input entry. A list is not a set.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "[\"a\", \"a\"]",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Those are substrings rather than complete strings.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Preserve input entries</h3><p>For r\"a\" and [\"pear\", \"fig\", \"pear\"], which result is correct?</p>"
+              },
+              "subContentId": "31b0e90a-d575-5ab8-ad23-ef9ed52cd798",
+              "metadata": {
+                "title": "Preserve input entries",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Preserve input entries"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "[]",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "No candidates qualify, so the initially empty list stays empty.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "None",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The function promises a list, including when no strings match.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "[False, False]",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The result stores selected strings, not a Boolean for every candidate.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Try no matches</h3><p>For r\"z\" and [\"pear\", \"fig\"], what should be returned?</p>"
+              },
+              "subContentId": "f4f0bed9-953c-57b1-a5ad-491fb3add19d",
+              "metadata": {
+                "title": "Try no matches",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Try no matches"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "No; the append argument determines the stored value",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Explicit bool conversion in the condition is valid. Appending a Boolean is a separate operation.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Yes; conditions determine the stored type",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The condition selects a branch; append supplies the stored value.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "Yes; re.search always returns a Boolean",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "re.search returns a Match object or None.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Compare two valid conditions</h3><p>Does using if bool(re.search(pattern, candidate)): force the result list to contain Booleans?</p>"
+              },
+              "subContentId": "bed2acc4-8c30-5c92-aab7-9aaccf674512",
+              "metadata": {
+                "title": "Compare two valid conditions",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Compare two valid conditions"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "e6c48a0f-9641-57b0-86c7-1f0cd5ddb4cb",
+      "metadata": {
+        "title": "4. Test the branches",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "4. Test the branches"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>5. Explain and implement</h2><p>You have specified the result, traced a search, and connected the branches. Now write your own <code>re_hits()</code> function in your course notebook. Do not copy a completed function from this activity.</p><ul><li>Initialize a new list for each call.</li><li>Visit every candidate and decide whether to keep it.</li><li>Return complete original strings in input order.</li><li>Test an empty input, no matches, repeated entries, and a match inside a string.</li></ul><p>Explain to your partner which operation decides whether to keep a string and which operation supplies the value being stored. Then switch roles and suggest a test that could expose a mistake.</p>"
+              },
+              "subContentId": "66449ec1-25b1-56ae-9ccb-60aed4245cb8",
+              "metadata": {
+                "title": "5. Explain and implement",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "[]",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The loop has no candidates. Return the newly created empty list.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "An error because the first item is missing",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Iteration over an empty list is valid; no first-item lookup is needed.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "[None]",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "No candidate was supplied, so there is nothing to add.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Check an empty input</h3><p>For any valid pattern and candidates=[], which result matches the function contract?</p>"
+              },
+              "subContentId": "4b318f34-18ae-5f4b-9bbf-bd929b3002c2",
+              "metadata": {
+                "title": "Check an empty input",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "Check an empty input"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "f827d801-1fba-5b1a-b9b9-885a1645d24a",
+      "metadata": {
+        "title": "5. Explain and implement",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "5. Explain and implement"
+      }
+    }
+  ],
+  "behaviour": {
+    "baseColor": "#ba0c2f",
+    "defaultTableOfContents": false,
+    "progressIndicators": true,
+    "progressAuto": true,
+    "displaySummary": false,
+    "enableRetry": true
+  },
+  "read": "Read",
+  "displayTOC": "Display 'Table of contents'",
+  "hideTOC": "Hide 'Table of contents'",
+  "nextPage": "Next page",
+  "previousPage": "Previous page",
+  "chapterCompleted": "Page completed!",
+  "partCompleted": "@pages of @total completed",
+  "incompleteChapter": "Incomplete page",
+  "navigateToTop": "Navigate to the top",
+  "markAsFinished": "I have finished this page",
+  "fullscreen": "Fullscreen",
+  "exitFullscreen": "Exit fullscreen",
+  "bookProgressSubtext": "@count of @total pages",
+  "interactionsProgressSubtext": "@count of @total interactions",
+  "submitReport": "Submit Report",
+  "restartLabel": "Restart",
+  "summaryHeader": "Summary",
+  "allInteractions": "All interactions",
+  "unansweredInteractions": "Unanswered interactions",
+  "scoreText": "@score / @maxscore",
+  "leftOutOfTotalCompleted": "@left of @max interactions completed",
+  "noInteractions": "No interactions",
+  "score": "Score",
+  "summaryAndSubmit": "Summary &amp; submit",
+  "noChapterInteractionBoldText": "You have not interacted with any pages.",
+  "noChapterInteractionText": "You have to interact with at least one page before you can see the summary.",
+  "yourAnswersAreSubmittedForReview": "Your answers are submitted for review!",
+  "bookProgress": "Book progress",
+  "interactionsProgress": "Interactions progress",
+  "totalScoreLabel": "Total score",
+  "a11y": {
+    "progress": "Page @page of @total.",
+    "menu": "Toggle navigation menu"
+  }
+}
