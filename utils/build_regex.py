@@ -20,6 +20,11 @@ page=page[:start]+json.dumps(d).replace('</','<\\/')+page[start+consumed:]
 page=page.replace('.flow','.h5p-advanced-text ol')
 page=page.replace('</head>','<style>.h5p-alternative-inner{font-weight:400!important;font-size:1rem!important}</style></head>') if 'id="regex-answer-style"' not in page else page
 page=page.replace('<style>.h5p-alternative-inner{','<style id="regex-answer-style">.h5p-alternative-inner{')
+# The footer repeats the page title as navigation status, not a new H1 section.
+heading_old = 'key:"createChapterTitle",value:function(){var e=document.createElement("h1")'
+heading_new = 'key:"createChapterTitle",value:function(){var e=document.createElement(this.params.displayToTopButton?"p":"h1")'
+assert heading_old in page or heading_new in page, "Review the Interactive Book status renderer after a library update"
+page = page.replace(heading_old, heading_new)
 (PART/'regex_check.html').write_text(page)
 (PART/'regex_content.json').write_text(json.dumps(book,indent=2))
 print('Synchronized',len(book['chapters']),'chapters;',sum(len(c['params']['content'])-1 for c in book['chapters']),'questions. Lumi source unchanged.')
