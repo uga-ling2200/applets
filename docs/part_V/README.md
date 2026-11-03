@@ -39,3 +39,35 @@ one correct answer and explanatory feedback for each distractor.
 Manual browser/Pro verification results are recorded with the delivery report.
 Automated checks do not prove all WCAG criteria. Retain labels, landmarks,
 visible focus, live status messages and keyboard operability when editing.
+
+## Requirements audit (November 3)
+
+Reviewed all 60 visible Freedcamp tasks, including the expanded accessibility
+comments, and the 13 local meeting-record files (the revised August 26 record
+supersedes its earlier copy). The original plan row identifies V.A Q2 as
+“Regex and Conditions”, with guided flow fill-in and the distinction between
+a condition and the value added to a list. The book retains this focus.
+
+The October 28 review asks for selective red emphasis. The introductory and
+reflection accents remain; ordinary work panels use neutral borders. The
+introductory subheadings use the shared UGA accent and the Part IV title spacing.
+Page-specific rules live in `regex.css` rather than an inline style block.
+
+A fresh all-in-one HTML export was made in Lumi 1.0.3 and passed through the
+current `utils/h5p_brand.py` during this audit. Its question JSON exactly matches
+the canonical package and production runtime. Production keeps its already
+verified course runtime and accessibility patches rather than replacing those
+patches with an unverified raw export.
+
+The numbered flow is intentionally readable as text; its two branches both
+return to the next candidate. Python Tutor is not used: the bounded trace
+exposes decisions without publishing the complete notebook solution or linking
+to the Python Tutor main site with AI tools.
+
+Publication and automated checks are implementation evidence, not Ryan's
+acceptance or a comprehensive WCAG certification. Team review remains separate.
+
+Structure guided testing identified the bottom pagination title as a misused H1.
+The synchronizer now renders that repeated footer status as a paragraph while
+retaining the top page heading and all navigation controls. This targeted
+Interactive Book runtime repair is preserved on future content synchronization.

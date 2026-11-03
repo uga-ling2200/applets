@@ -1,0 +1,22 @@
+body.iv-lab{padding-bottom:32px}
+.iv-lab>.applet-feedback-card{margin-bottom:0}
+#inputs{overflow-wrap:anywhere}
+ a:focus,button:focus,input:focus,select:focus,textarea:focus,summary:focus,[tabindex]:focus{outline:3px solid #0055a4!important;outline-offset:3px!important;box-shadow:0 0 0 2px white!important}
+.btn-uga-outline{background:white;color:#222;border:2px solid #555;border-radius:5px;padding:10px 16px}
+.btn-uga-outline:disabled{color:#555;background:#eee}
+ .iv-lab .defaults-check{width:100%;height:1050px;border:1px solid #777}
+select,textarea{max-width:100%}
+#history li{margin:.6rem 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+button{min-height:44px}
+mark{background:#fff0aa;color:#171717}
+@media(max-width:520px){.defaults-check{height:1350px}
+}
+
+
+/* Keep the introductory accent; ordinary work panels use neutral boundaries (Oct 28 review). */
+.iv-lab .app-wrapper{border-top:1px solid var(--line)}
+
+.iv-lab .lesson-container h3{margin-top:1.25rem;margin-bottom:.5rem;text-transform:none;letter-spacing:normal}
+
+
