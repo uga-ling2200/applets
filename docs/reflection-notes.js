@@ -17,9 +17,14 @@
       document.querySelectorAll(".reflection-container > ol > li"),
       function (li, i) { return (i + 1) + ". " + li.textContent.replace(/\s+/g, " ").trim(); }
     );
+    var context = Array.prototype.map.call(document.querySelectorAll("[data-notes-include]"), function (field) {
+      var label = document.querySelector('label[for="' + field.id + '"]');
+      var value = field.tagName === "SELECT" ? field.options[field.selectedIndex].text : field.value;
+      return ((label && label.textContent) || field.id) + "\n" + value;
+    }).join("\n\n");
     var text = "LING2200: " + title + "\n\n" +
       "Reflection & Discussion Guide\n" + questions.join("\n") + "\n\n" +
-      "My notes\n" + textarea.value + "\n";
+      "My notes\n" + textarea.value + "\n" + (context ? "\nTrace lab\n" + context + "\n" : "");
     var code = (title.match(/Activity\s+(\w+)/i) || [])[1] ||
       title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
     var url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
