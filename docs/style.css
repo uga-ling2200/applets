@@ -846,3 +846,26 @@ a:focus-visible { outline: 3px solid #f9a825; outline-offset: 3px; }
   outline-offset: 3px;
 }
 .iv-lab .reflection-container h3 { text-transform: none; line-height: 1.6; }
+
+
+/* Activity panels: keep supporting headings quieter than the course shell. */
+.app-wrapper h2,
+.app-wrapper h3 {
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.app-wrapper h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.app-wrapper h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.app-wrapper .lab-grid > section > h3:first-child {
+  margin-top: 0;
+}
