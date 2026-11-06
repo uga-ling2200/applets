@@ -107,3 +107,17 @@ repairs, including the pagination status heading repair. Tests compare every
 lab result and span with Python and verify source/runtime content equality.
 Publication and automatic scanning are not a comprehensive WCAG certification.
 Paid Pro and manual check results are recorded separately in the delivery report.
+
+### Shared embedded-practice repairs (November 6)
+
+`../h5p-embed.js` is shared by V.A Q2, V.B Q1 and IV.A Q2. It measures the
+same-origin practice content after navigation, feedback and width changes so
+the frame can grow and shrink. Active chapters use normal document flow;
+code wraps on narrow screens. Do not restore a fixed frame height or use the
+iframe viewport's scrollHeight as the content measurement.
+
+Checking an unanswered multiple-choice question now prompts for a selection
+without scoring or locking it. Fullscreen uses the native promise and leaves
+the activity usable if permission is denied. These host repairs do not change
+the Lumi package or answers. Run `node --test tests/*.test.mjs` after changes;
+also exercise all pages, feedback and responsive reflow in a real browser.

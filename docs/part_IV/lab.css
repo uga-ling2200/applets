@@ -82,7 +82,8 @@
 .iv-lab .defaults-check {
   display: block;
   width: 100%;
-  height: 650px;
+  /* A scrollable fallback until h5p-embed.js measures the actual content. */
+  height: 32rem;
   border: 1px solid var(--line);
   border-radius: 6px;
 }
