@@ -136,7 +136,7 @@ test('empty submission stays unscored and editable; tab alone does not dismiss t
   page.answerEvent('keydown');
   assert.ok(page.hint, 'keep the reminder until an answer is actually chosen');
   page.setSelected(true);
-  page.answerEvent('click');
+  page.answerEvent('keyup');
   assert.equal(page.hint, undefined, 'remove the hint and its empty margins');
   assert.deepEqual(page.check(), { prevented: false, stopped: false });
 });

@@ -127,6 +127,10 @@
       doc.addEventListener('click', checkAnswer, true);
       doc.addEventListener('click', answerChanged);
       doc.addEventListener('keydown', answerChanged);
+      // H5P handles Space/arrow selection during keydown; inspect the updated
+      // selection on keyup as well, after its delegated keyboard handler.
+      doc.addEventListener('keyup', answerChanged);
+      doc.addEventListener('change', answerChanged);
       doc.addEventListener('fullscreenchange', schedule);
       const mutations = new MutationObserver(schedule);
       mutations.observe(doc.body, { childList: true, subtree: true, attributes: true });
@@ -141,6 +145,8 @@
         doc.removeEventListener('click', checkAnswer, true);
         doc.removeEventListener('click', answerChanged);
         doc.removeEventListener('keydown', answerChanged);
+        doc.removeEventListener('keyup', answerChanged);
+        doc.removeEventListener('change', answerChanged);
         doc.removeEventListener('fullscreenchange', schedule);
       };
     }
