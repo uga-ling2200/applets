@@ -1,0 +1,908 @@
+{
+  "showCoverPage": false,
+  "bookCover": {
+    "coverDescription": "<p>Greedy and lazy quantifiers: predict, compare, explain.</p>"
+  },
+  "chapters": [
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>1. Predict the greedy match</h2><p>Compare possible endings before checking. A dot can match a bracket as well as a letter.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "b017c3c4-9d0c-4d3b-82a5-ef0175064ad3",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<code>&lt;red&gt;</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This would be the result with &lt;.*?&gt;. Here, .* is greedy and can include the first &gt; and the text after it.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>&lt;red&gt; and &lt;blue&gt;</code>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The match starts at the first &lt;. Greedy .* tries more repetitions first, then gives back characters so the final &gt; can match. The match ends at the last &gt;.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>&lt;blue&gt;</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "re.search() finds a match beginning at the earlier &lt;. Greedy does not mean choose the last opening bracket.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>A &lt;red&gt; and &lt;blue&gt; balloon.</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The pattern requires the match to begin with &lt; and end with &gt;. Text outside those boundaries is not included.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*&gt;\", text).group()</code></pre><p></p>"
+              },
+              "subContentId": "9e8e1b86-46f2-4d27-8257-b469fec0444b",
+              "metadata": {
+                "title": "1. Predict the greedy match",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "1. Predict the greedy match"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "8735c436-ebc0-489f-8012-e765a4960be3",
+      "metadata": {
+        "title": "1. Predict the greedy match",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "1. Predict the greedy match"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>2. Change only the quantifier</h2><p>Keep the text and search operation unchanged. This makes the effect of adding ? easier to identify.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "e9f46e54-d8c3-4b92-8074-bab99fd8b223",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<code>&lt;red&gt; and &lt;blue&gt;</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "That is the greedy result. With .*?, the pattern can finish at the first &gt;, so it does not need to extend farther.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>red</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "group() returns the complete match. The literal &lt; and &gt; are part of this pattern, so they are included.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>&lt;red&gt;</code>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Lazy .*? tries fewer repetitions first. Starting at the first &lt;, the earliest successful ending for this complete pattern is the &gt; after red.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>[\"&lt;red&gt;\", \"&lt;blue&gt;\"]</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This is a list of two matches. search() and group() return the text of the first match, not a list of all matches.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>What does this code return now?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt;\", text).group()</code></pre><p></p>"
+              },
+              "subContentId": "559f8b48-6ba0-434c-858f-33599ec1b49f",
+              "metadata": {
+                "title": "2. Change only the quantifier",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "2. Change only the quantifier"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "920ccc7e-3f43-4d35-bb0c-6c5c68e551a5",
+      "metadata": {
+        "title": "2. Change only the quantifier",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "2. Change only the quantifier"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>3. Explain the difference</h2><p>Now explain the mechanism rather than only recognizing an output.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "12be997c-9607-4ec5-a71c-c771aadb4772",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "A lazy quantifier always matches exactly one character.",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Lazy controls which repetition counts are tried first. It does not set the count to one. Here, .*? matches the three characters red.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "The dot cannot match &gt;.",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "A dot can match &gt; in this example. The greedy pattern includes an earlier &gt; inside its match.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "The first &gt; allows the entire pattern to succeed with fewer repetitions.",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The engine can match &lt;, then red, then &gt;. This completes the pattern, so the lazy quantifier does not need to expand farther.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "The question mark makes the closing &gt; optional.",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This ? follows *, making that quantifier lazy. The closing &gt; is still required.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>Why does <code>&lt;.*?&gt;</code> match <code>&lt;red&gt;</code> in this text?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
+              },
+              "subContentId": "d235698f-7e7c-427c-bf27-39e729041745",
+              "metadata": {
+                "title": "3. Explain the difference",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "3. Explain the difference"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "1def7798-663a-4bad-9bf5-0c2ddf5ef05a",
+      "metadata": {
+        "title": "3. Explain the difference",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "3. Explain the difference"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>4. Choose for a goal</h2><p>Use the desired output to choose a pattern. Explain why another pattern would include too much.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "6dcd30dd-7e40-457d-92d7-4ae71854cfe0",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "<code>r\"&lt;.*&gt;\"</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "On this text, the greedy quantifier extends the match through &lt;blue&gt;. That includes more than the first bracketed piece.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>r\"&lt;.*?&gt;\"</code>",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "For this text, the lazy quantifier lets the match finish at the &gt; after red, giving &lt;red&gt;.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>r\".*?\"</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This pattern has no required brackets. Since *? allows zero repetitions, its first match is an empty string.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "<code>r\"&lt;.*\"</code>",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "This pattern does not require a closing &gt;. Its greedy quantifier continues to the end of this text.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>You want the first angle-bracketed piece, including its brackets, from this text. Which pattern should you use with <code>re.search()</code>?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
+              },
+              "subContentId": "78adcdb9-d017-422b-a9d4-798bf9fe4754",
+              "metadata": {
+                "title": "4. Choose for a goal",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "4. Choose for a goal"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "54dd2da3-717d-4eb5-8108-1a22d2d8fe09",
+      "metadata": {
+        "title": "4. Choose for a goal",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "4. Choose for a goal"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>5. Check a missing boundary</h2><p>Test whether your explanation still works when a required character is absent.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "d89ac48f-5b47-4e1a-9821-0bf835c8a99d",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "None",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The pattern requires a closing &gt;, but the text has none. A lazy quantifier does not remove that requirement.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "A Match object containing &lt;red",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The required closing &gt; is missing. A partial match of the pattern is not enough.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "A Match object containing an empty string",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "Although .*? allows zero repetitions, the complete pattern still requires both &lt; and &gt;.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "An empty list []",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "search() returns None when no match exists. An empty list is the no-match result of findall().",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>What does <code>re.search()</code> return here?</p><pre><code>text = \"A &lt;red balloon.\"\nre.search(r\"&lt;.*?&gt;\", text)</code></pre><p></p>"
+              },
+              "subContentId": "1eec2a3b-4107-4ef7-a0a7-a77c66d74d77",
+              "metadata": {
+                "title": "5. Check a missing boundary",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "5. Check a missing boundary"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "9e6d3299-f230-497b-a197-c7a00bf69e18",
+      "metadata": {
+        "title": "5. Check a missing boundary",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "5. Check a missing boundary"
+      }
+    },
+    {
+      "library": "H5P.Column 1.18",
+      "params": {
+        "content": [
+          {
+            "content": {
+              "library": "H5P.AdvancedText 1.1",
+              "params": {
+                "text": "<h2>6. Optional: satisfy the whole pattern</h2><p>Lazy does not mean stop at the first &gt; regardless of the rest of the pattern. Try this extension after the five core pages.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+              },
+              "subContentId": "d328e8d5-2073-4a29-98c5-a2249c1ccbf1",
+              "metadata": {
+                "title": "1. Define the result",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Text"
+              }
+            },
+            "useSeparator": "disabled"
+          },
+          {
+            "content": {
+              "library": "H5P.MultiChoice 1.16",
+              "params": {
+                "media": {
+                  "disableImageZooming": false
+                },
+                "answers": [
+                  {
+                    "text": "&lt;red&gt;",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The pattern also requires a space followed by balloon. Those characters do not immediately follow the &gt; after red.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "&lt;blue&gt; balloon",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "A successful match can begin at the first &lt;. search() finds that earlier match, even though a later start would produce a shorter one.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "&lt;red&gt; and &lt;blue&gt; balloon",
+                    "correct": true,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "The first &gt; does not allow the rest of the pattern to match. Lazy .*? expands until &gt; balloon can match after blue.",
+                      "notChosenFeedback": ""
+                    }
+                  },
+                  {
+                    "text": "No match is found.",
+                    "correct": false,
+                    "tipsAndFeedback": {
+                      "tip": "",
+                      "chosenFeedback": "A match is possible. Lazy quantifiers can expand when needed; they are not forced to stop at the first closing bracket.",
+                      "notChosenFeedback": ""
+                    }
+                  }
+                ],
+                "overallFeedback": [
+                  {
+                    "from": 0,
+                    "to": 100
+                  }
+                ],
+                "behaviour": {
+                  "enableRetry": true,
+                  "enableSolutionsButton": false,
+                  "enableCheckButton": true,
+                  "type": "single",
+                  "singlePoint": true,
+                  "randomAnswers": true,
+                  "showSolutionsRequiresInput": true,
+                  "confirmCheckDialog": false,
+                  "confirmRetryDialog": false,
+                  "autoCheck": false,
+                  "passPercentage": 100,
+                  "showScorePoints": true
+                },
+                "UI": {
+                  "checkAnswerButton": "Check",
+                  "submitAnswerButton": "Submit",
+                  "showSolutionButton": "Show solution",
+                  "tryAgainButton": "Retry",
+                  "tipsLabel": "Show tip",
+                  "scoreBarLabel": "You got :num out of :total points",
+                  "tipAvailable": "Tip available",
+                  "feedbackAvailable": "Feedback available",
+                  "readFeedback": "Read feedback",
+                  "wrongAnswer": "Wrong answer",
+                  "correctAnswer": "Correct answer",
+                  "shouldCheck": "Should have been checked",
+                  "shouldNotCheck": "Should not have been checked",
+                  "noInput": "Please answer before viewing the solution",
+                  "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                  "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                  "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                  "header": "Finish ?",
+                  "body": "Are you sure you wish to finish ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                  "header": "Retry ?",
+                  "body": "Are you sure you wish to retry ?",
+                  "cancelLabel": "Cancel",
+                  "confirmLabel": "Confirm"
+                },
+                "question": "<h3>Predict and explain</h3><p>The pattern now includes the word balloon. What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt; balloon\", text).group()</code></pre><p></p>"
+              },
+              "subContentId": "126e2644-aa7d-461f-8a7b-143864d77d33",
+              "metadata": {
+                "title": "6. Optional: satisfy the whole pattern",
+                "license": "U",
+                "authors": [],
+                "changes": [],
+                "contentType": "Multiple Choice",
+                "extraTitle": "6. Optional: satisfy the whole pattern"
+              }
+            },
+            "useSeparator": "disabled"
+          }
+        ]
+      },
+      "subContentId": "d806d956-a237-4998-9699-0604c2e2af56",
+      "metadata": {
+        "title": "6. Optional: satisfy the whole pattern",
+        "license": "U",
+        "authors": [],
+        "changes": [],
+        "contentType": "Column",
+        "extraTitle": "6. Optional: satisfy the whole pattern"
+      }
+    }
+  ],
+  "behaviour": {
+    "baseColor": "#ba0c2f",
+    "defaultTableOfContents": false,
+    "progressIndicators": true,
+    "progressAuto": true,
+    "displaySummary": false,
+    "enableRetry": true
+  },
+  "read": "Read",
+  "displayTOC": "Display 'Table of contents'",
+  "hideTOC": "Hide 'Table of contents'",
+  "nextPage": "Next page",
+  "previousPage": "Previous page",
+  "chapterCompleted": "Page completed!",
+  "partCompleted": "@pages of @total completed",
+  "incompleteChapter": "Incomplete page",
+  "navigateToTop": "Navigate to the top",
+  "markAsFinished": "I have finished this page",
+  "fullscreen": "Fullscreen",
+  "exitFullscreen": "Exit fullscreen",
+  "bookProgressSubtext": "@count of @total pages",
+  "interactionsProgressSubtext": "@count of @total interactions",
+  "submitReport": "Submit Report",
+  "restartLabel": "Restart",
+  "summaryHeader": "Summary",
+  "allInteractions": "All interactions",
+  "unansweredInteractions": "Unanswered interactions",
+  "scoreText": "@score / @maxscore",
+  "leftOutOfTotalCompleted": "@left of @max interactions completed",
+  "noInteractions": "No interactions",
+  "score": "Score",
+  "summaryAndSubmit": "Summary &amp; submit",
+  "noChapterInteractionBoldText": "You have not interacted with any pages.",
+  "noChapterInteractionText": "You have to interact with at least one page before you can see the summary.",
+  "yourAnswersAreSubmittedForReview": "Your answers are submitted for review!",
+  "bookProgress": "Book progress",
+  "interactionsProgress": "Interactions progress",
+  "totalScoreLabel": "Total score",
+  "a11y": {
+    "progress": "Page @page of @total.",
+    "menu": "Toggle navigation menu"
+  }
+}

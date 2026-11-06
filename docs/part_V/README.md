@@ -71,3 +71,39 @@ Structure guided testing identified the bottom pagination title as a misused H1.
 The synchronizer now renders that repeated footer status as a paragraph while
 retaining the top page heading and all navigation controls. This targeted
 Interactive Book runtime repair is preserved on future content synchronization.
+
+## V.B Q1 — Greedy and lazy quantifiers
+
+The activity-plan row V.B / #1 identifies greedy versus lazy quantifiers as
+the pain point and asks learners to analyze what patterns capture. The notes
+repository main branch was checked on November 6; the V.B notebook was not yet
+present. These are supporting examples, not a transcription of its original
+exercise. No lookaround or capturing-group lesson is added from course-progress
+remarks alone.
+
+Five core H5P pages address greedy matching, lazy matching, the mechanism,
+choosing a pattern for a goal and missing boundaries. A sixth optional page
+requires the whole pattern to succeed. Every question has one correct answer
+and feedback for each alternative. The bounded comparison lab exposes five
+Python-verified pairs, matched text and half-open spans; it runs no arbitrary
+regular expression and does not claim JavaScript is Python re. Changing the
+case clears the prediction; hiding results preserves it. Notes remain local.
+
+The outer page uses the current 2200 shell, shared CSS, feedback card and
+reflection download. The October 21 self-study scaffolding, October 28 selective
+red emphasis, November 4 heading hierarchy and August 26 accessibility workflow
+are retained. LING2150 conventions are not applied to this course.
+
+Canonical source: `V_B_Q1_Greedy_Lazy.h5p`. It was opened and saved in Lumi
+1.0.3. After future Lumi edits run:
+
+```
+python3 utils/build_greedy.py
+node --test tests/greedy.test.mjs
+```
+
+The synchronizer retains the existing branded runtime and accessibility
+repairs, including the pagination status heading repair. Tests compare every
+lab result and span with Python and verify source/runtime content equality.
+Publication and automatic scanning are not a comprehensive WCAG certification.
+Paid Pro and manual check results are recorded separately in the delivery report.
