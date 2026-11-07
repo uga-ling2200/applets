@@ -338,11 +338,11 @@
                     }
                   },
                   {
-                    "text": "The first &gt; allows the entire pattern to succeed with fewer repetitions.",
+                    "text": "The lazy quantifier tries fewer repetitions first, so the match ends at the first &gt; that allows the entire pattern to succeed.",
                     "correct": true,
                     "tipsAndFeedback": {
                       "tip": "",
-                      "chosenFeedback": "The engine can match &lt;, then red, then &gt;. This completes the pattern, so the lazy quantifier does not need to expand farther.",
+                      "chosenFeedback": "Starting at the first &lt;, lazy .*? expands only as needed. The &gt; after red completes the pattern, so the match is &lt;red&gt;.",
                       "notChosenFeedback": ""
                     }
                   },
