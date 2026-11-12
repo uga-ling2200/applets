@@ -12,7 +12,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>1. Predict the greedy match</h2><p>Compare possible endings before checking. A dot can match a bracket as well as a letter.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Compare possible endings before checking. A dot can match a bracket as well as a letter.</p>"
               },
               "subContentId": "b017c3c4-9d0c-4d3b-82a5-ef0175064ad3",
               "metadata": {
@@ -121,7 +121,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*&gt;\", text).group()</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*&gt;\", text).group()</code></pre><p></p>"
               },
               "subContentId": "9e8e1b86-46f2-4d27-8257-b469fec0444b",
               "metadata": {
@@ -155,7 +155,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>2. Change only the quantifier</h2><p>Keep the text and search operation unchanged. This makes the effect of adding \u201c?\u201d easier to identify.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Keep the text and search operation unchanged. This makes the effect of adding \u201c?\u201d easier to identify.</p>"
               },
               "subContentId": "e9f46e54-d8c3-4b92-8074-bab99fd8b223",
               "metadata": {
@@ -264,7 +264,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>What does this code return now?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt;\", text).group()</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>What does this code return now?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt;\", text).group()</code></pre><p></p>"
               },
               "subContentId": "559f8b48-6ba0-434c-858f-33599ec1b49f",
               "metadata": {
@@ -298,7 +298,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>3. Explain the difference</h2><p>Now explain the mechanism rather than only recognizing an output.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Now explain the mechanism rather than only recognizing an output.</p>"
               },
               "subContentId": "12be997c-9607-4ec5-a71c-c771aadb4772",
               "metadata": {
@@ -407,7 +407,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>Why does <code>&lt;.*?&gt;</code> match <code>&lt;red&gt;</code> in this text?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>Why does <code>&lt;.*?&gt;</code> match <code>&lt;red&gt;</code> in this text?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
               },
               "subContentId": "d235698f-7e7c-427c-bf27-39e729041745",
               "metadata": {
@@ -441,7 +441,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>4. Choose for a goal</h2><p>Use the desired output to choose a pattern. Explain why another pattern would include too much.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Use the desired output to choose a pattern. Explain why another pattern would include too much.</p>"
               },
               "subContentId": "6dcd30dd-7e40-457d-92d7-4ae71854cfe0",
               "metadata": {
@@ -550,7 +550,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>You want the first angle-bracketed piece, including its brackets, from this text. Which pattern should you use with <code>re.search()</code>?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>You want the first angle-bracketed piece, including its brackets, from this text. Which pattern should you use with <code>re.search()</code>?</p><pre><code>A &lt;red&gt; and &lt;blue&gt; balloon.</code></pre><p></p>"
               },
               "subContentId": "78adcdb9-d017-422b-a9d4-798bf9fe4754",
               "metadata": {
@@ -584,7 +584,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>5. Check a missing boundary</h2><p>Test whether your explanation still works when a required character is absent.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Test whether your explanation still works when a required character is absent.</p>"
               },
               "subContentId": "d89ac48f-5b47-4e1a-9821-0bf835c8a99d",
               "metadata": {
@@ -693,7 +693,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>What does <code>re.search()</code> return here?</p><pre><code>text = \"A &lt;red balloon.\"\nre.search(r\"&lt;.*?&gt;\", text)</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>What does <code>re.search()</code> return here?</p><pre><code>text = \"A &lt;red balloon.\"\nre.search(r\"&lt;.*?&gt;\", text)</code></pre><p></p>"
               },
               "subContentId": "1eec2a3b-4107-4ef7-a0a7-a77c66d74d77",
               "metadata": {
@@ -727,7 +727,7 @@
             "content": {
               "library": "H5P.AdvancedText 1.1",
               "params": {
-                "text": "<h2>6. Optional: satisfy the whole pattern</h2><p>Lazy does not mean stop at the first \u201c&gt;\u201d regardless of the rest of the pattern. Try this extension after the five core pages.</p><p>Predict first. With a partner, alternate explaining and checking; alone, write your reasoning before choosing Check.</p>"
+                "text": "<p>Lazy does not mean stop at the first \u201c&gt;\u201d regardless of the rest of the pattern. Try this extension after the five core pages.</p>"
               },
               "subContentId": "d328e8d5-2073-4a29-98c5-a2249c1ccbf1",
               "metadata": {
@@ -836,7 +836,7 @@
                   "cancelLabel": "Cancel",
                   "confirmLabel": "Confirm"
                 },
-                "question": "<h3>Predict and explain</h3><p>The pattern now includes the word balloon. What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt; balloon\", text).group()</code></pre><p></p>"
+                "question": "<h2>Predict and explain</h2><p>The pattern now includes the word balloon. What does this code return?</p><pre><code>text = 'A &lt;red&gt; and &lt;blue&gt; balloon.'\nre.search(r\"&lt;.*?&gt; balloon\", text).group()</code></pre><p></p>"
               },
               "subContentId": "126e2644-aa7d-461f-8a7b-143864d77d33",
               "metadata": {
